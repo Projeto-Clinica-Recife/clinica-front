@@ -1,0 +1,53 @@
+<mat-drawer-container class="home">
+  <mat-drawer mode="side" opened>Menu Lateral</mat-drawer>
+  <mat-drawer-content>Aqui é ficam os botões</mat-drawer-content>
+</mat-drawer-container>
+
+
+<button mat-button [matMenuTriggerFor]="aboveMenu">Btão de exemplo sem estilização</button>
+
+<mat-menu #aboveMenu="matMenu" yPosition="above">
+  <button mat-menu-item> blabla</button>
+  <button mat-menu-item>blablablablalba</button>
+</mat-menu>
+
+
+
+
+<!--
+  <mat-grid-list cols="5" rowHeight="100px">
+  <mat-grid-tile
+      *ngFor="let tile of tiles"
+      [colspan]="tile.cols"
+      [rowspan]="tile.rows"
+      [style.background]="tile.color">
+    {{tile.text}}
+  </mat-grid-tile>
+</mat-grid-list> -->
+
+<mat-grid-list cols="5" rowHeight="100px">
+
+
+  <mat-grid-tile
+      [colspan]='1'
+      [rowspan]='2'
+      [style.background]='color'>
+
+
+
+
+<button mat-button [matMenuTriggerFor]="afterMenu">teste para um menu lateral</button>
+<mat-menu #afterMenu="matMenu" xPosition="after">
+  <button mat-menu-item>hahaha</button>
+  <button mat-menu-item>jajaja</button>
+</mat-menu>
+
+<!-- <mat-menu #afterMenu="matMenu" xPosition="after">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu> -->
+  </mat-grid-tile>
+
+<!--
+
+</mat-grid-list> -->
