@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 export interface Tile {
   color: string;
@@ -23,11 +24,16 @@ export class HomeComponent implements OnInit {
  textobotao : string ='teste';
  color : string ='pink';
 
-  constructor() { }
+  constructor(
+    private router : Router
+  ) { }
+
   ngOnInit(): void {
   }
 
-
+  goToDetail() {
+    this.router.navigate(['/user-detail']);
+  }
 
 
 }
