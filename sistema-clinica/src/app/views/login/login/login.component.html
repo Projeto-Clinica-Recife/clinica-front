@@ -1,6 +1,26 @@
+<div class="form-login">
+  <div class="header">
+    <h1>Instituto Coelho</h1>
+  </div>
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <input placeholder="Login" name="login" type="text" class="inpt">
+        </mat-form-field>
+        <mat-form-field>
+          <input placeholder="Senha" name="password" type="password" class="inpt">
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="light" type="submit">Entrar</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
 <!-- <mat-card>
-  <mat-card-content> -->
-    <!-- <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <h2>Log In</h2>
       <mat-error *ngIf="loginInvalid">
         Login ou senha incorretos
@@ -18,6 +38,6 @@
         </mat-error>
       </mat-form-field>
       <button mat-raised-button color="primary">Login</button>
-    </form> -->
-  <!-- </mat-card-content>
+    </form>
+  </mat-card-content>
 </mat-card> -->

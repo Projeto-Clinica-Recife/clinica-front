@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,12 +10,16 @@ import { FooterModule } from './shared/footer/footer.module';
 import { LoginModule } from './views/login/login.module';
 import { UserDetailModule } from './views/user-detail/user-detail.module';
 import { HomeModule } from './views/home/home.module';
+import { LoginComponent } from './views/login/login/login.component';
 import { AuthService } from './auth.service';
-
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +27,13 @@ import { AuthService } from './auth.service';
     HeaderModule,
     FooterModule,
     LoginModule,
-    UserDetailModule
+    UserDetailModule,
+    AppRoutingModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

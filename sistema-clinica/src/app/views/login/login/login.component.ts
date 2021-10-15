@@ -25,24 +25,31 @@ export class LoginComponent implements OnInit {
     private authService: AuthService
   ) {
    }
+  
+  login: string = '';
+  password: string = '';
 
   ngOnInit(): void {
 
   }
 
   async onSubmit(): Promise<void> {
-    this.loginInvalid = false;
-    this.formSubmitAttempt = false;
-    if (this.form.valid) {
-      try {
-        const username = this.form.get('username')?.value;
-        const password = this.form.get('password')?.value;
-        //await this.authService.login(username, password);
-      } catch (err) {
-        this.loginInvalid = true;
-      }
-    } else {
-      this.formSubmitAttempt = true;
-    }
+    // this.loginInvalid = false;
+    // this.formSubmitAttempt = false;
+    // if (this.form.valid) {
+    //   try {
+    //     const username = this.form.get('username')?.value;
+    //     const password = this.form.get('password')?.value;
+    //     //await this.authService.login(username, password);
+    //   } catch (err) {
+    //     this.loginInvalid = true;
+    //   }
+    // } else {
+    //   this.formSubmitAttempt = true;
+    // }
+    const login = this.form.get('login')?.value;
+    const password = this.form.get('password')?.value;
+    alert(login);
+    
   }
 }

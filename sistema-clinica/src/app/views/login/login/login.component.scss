@@ -1,9 +1,54 @@
-mat-card {
-  max-width: 400px;
-  margin: 2em auto;
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+
+.form-login{
+  transform: translateY(50%)
 }
 
-mat-form-field {
-  display: block;
+.header{
+  display: flex;
+  justify-content: center;
+}
+
+.header h1{
+  font-size: 35px;
+  padding-top: 10px;
+  color: #7f6255;
+  text-align: center;
+  font-family: 'Crimson Text', serif;
+}
+
+mat-card {
+  max-width: 300px;
+  margin: 2em auto;
+  text-align: center;
+  border-radius: 40px;
+  background-color: #bdb39b;
+}
+
+mat-card-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inpt{
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  padding: 0 60px 0 120px;
+  transform: translateX(-50px);
+}
+
+@media only screen and (max-width: 300px){
+  mat-card{
+    width: 80%;
+    transform: translateY(50%);
+  }
+
+  .inpt{
+    width: 70%;
+    padding: 0 20px 0 80px;
+    transform: translateX(-25px);
+  }
 }
