@@ -6,11 +6,10 @@ import { AppComponent } from './app.component';
 
 import { HeaderModule } from './shared/header/header.module';
 import { FooterModule } from './shared/footer/footer.module';
-import { LoginModule } from './views/login/login.module';
-import { UserDetailModule } from './views/user-detail/user-detail.module';
-import { HomeModule } from './views/home/home.module';
 import { AuthService } from './auth.service';
 
+import { SharedModule } from 'src/app/shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,11 +17,10 @@ import { AuthService } from './auth.service';
   ],
   imports: [
     BrowserModule,
-    HomeModule,
     HeaderModule,
     FooterModule,
-    LoginModule,
-    UserDetailModule
+    SharedModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
