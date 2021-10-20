@@ -56,7 +56,7 @@ const imports = [
   providers: [],
   exports: [
     ...components,
-    ...imports],
+    imports],
   bootstrap: [
   ],
   entryComponents: [
@@ -64,3 +64,5 @@ const imports = [
   ],
 })
 export class SharedModule {}
+
+
