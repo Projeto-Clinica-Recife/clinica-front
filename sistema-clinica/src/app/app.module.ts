@@ -11,10 +11,12 @@ import { LoginModule } from './views/login/login.module';
 import { UserDetailModule } from './views/user-detail/user-detail.module';
 import { HomeModule } from './views/home/home.module';
 import { LoginComponent } from './views/login/login/login.component';
-import { AuthService } from './auth.service';
-import {MatCardModule} from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatButtonModule} from '@angular/material/button';
+import { AuthService } from './providers/auth.service';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatButtonModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
+    MatInputModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

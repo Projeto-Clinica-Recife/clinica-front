@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../../../auth.service';
+import { AuthService } from '../../../providers/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +9,9 @@ import { AuthService } from '../../../auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  
   form : FormGroup = this.fb.group({
-    username: ['', Validators.email],
+    login: ['', Validators.email],
     password: ['', Validators.required]
   });
   public loginInvalid = false;
@@ -22,10 +22,11 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
   ) {
    }
   
+
   login: string = '';
   password: string = '';
 
@@ -33,23 +34,17 @@ export class LoginComponent implements OnInit {
 
   }
 
-  async onSubmit(): Promise<void> {
-    // this.loginInvalid = false;
-    // this.formSubmitAttempt = false;
-    // if (this.form.valid) {
-    //   try {
-    //     const username = this.form.get('username')?.value;
-    //     const password = this.form.get('password')?.value;
-    //     //await this.authService.login(username, password);
-    //   } catch (err) {
-    //     this.loginInvalid = true;
-    //   }
-    // } else {
-    //   this.formSubmitAttempt = true;
-    // }
-    const login = this.form.get('login')?.value;
-    const password = this.form.get('password')?.value;
-    alert(login);
-    
+  async onSubmit() {
+    this.loginInvalid = false;
+    this.formSubmitAttempt = false;
+      try {
+        const login = this.login;
+        const password = this.password;
+        await this.authService.login({login, password});
+      } catch (err) {
+        this.loginInvalid = true;
+      }
+    const login = this.login;
+    const password = this.password;
   }
 }
