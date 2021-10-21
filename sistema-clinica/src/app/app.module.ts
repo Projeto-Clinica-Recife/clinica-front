@@ -27,13 +27,11 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HomeModule } from './pages/recepcao/home/home.module';
 import { PatientModule } from './pages/recepcao/patient/patient.module';
-import { HomeComponent } from './medicos/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
   ],
   imports: [
     BrowserModule,
