@@ -1,83 +1,104 @@
-<!-- <a routerLink="/login" routerLinkActive="selected">Login</a><br>
-<a routerLink="/home" routerLinkActive="selected">Home</a><br>
-<a routerLink="/user-detail" routerLinkActive="selected">Detalhes</a><br> -->
 
-<!-- <mat-drawer-container class="home"> -->
-  <!-- <mat-drawer mode="side" opened>Menu Lateral</mat-drawer>
-  <mat-drawer-content>Aqui é ficam os botões</mat-drawer-content> -->
-<!-- </mat-drawer-container>  -->
-
-
-<!-- <button mat-button [matMenuTriggerFor]="aboveMenu">Btão de exemplo sem estilização</button> -->
-
-<!-- <mat-menu #aboveMenu="matMenu" yPosition="above">
-  <button mat-menu-item> blabla</button>
-  <button mat-menu-item>blablablablalba</button>
-</mat-menu> --> -->
-
-<!--
-  <mat-grid-list cols="5" rowHeight="100px">
-  <mat-grid-tile
-      *ngFor="let tile of tiles"
-      [colspan]="tile.cols"
-      [rowspan]="tile.rows"
-      [style.background]="tile.color">
-    {{tile.text}}
-  </mat-grid-tile>
-</mat-grid-list> -->
-<!--
-<mat-grid-list cols="5" rowHeight="100px">
-
-
-  <mat-grid-tile
-      [colspan]='1'
-      [rowspan]='2'
-      [style.background]='color'>
+<body>
+	<header class="tm-header" id="tm-header">
+        <div class="tm-header-wrapper">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="tm-site-header">
+                <div class="mb-3 mx-auto ">
+                  <img src="../../../assets/img/logomarcaInstitutoCoelho.png" alt="Image" class="img-fluid">
+                </div>
+                <h4 class="text-center">Emagrecimento e Performance Humana</h4>
+            </div>
+            <nav class="tm-nav" id="tm-nav">
+                <ul>
+                    <li class="tm-nav-item active"><a href="index.html" class="tm-nav-link">
+                        <i class="fas fa-home"></i>
+                        Tela Inicial
+                    </a></li>
+                    <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+                        <i class="fas fa-pen"></i>
+                        Agenda
+                    </a></li>
+                    <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+                        <i class="fas fa-calculator"></i>
+                        Financeiro
+                    </a></li>
+                    <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+                        <i class="far fa-comments"></i>
+                        Outro botão
+                    </a></li>
+                </ul>
+            </nav>
 
 
+        </div>
+    </header>
+    <div class="container-fluid">
+        <main class="tm-main">
+            <!-- Search form -->
+            <div class="row tm-row">
+                <div class="col-12">
+                    <form method="GET" class="form-inline tm-mb-80 tm-search-form">
+                        <input class="form-control tm-search-input" name="query" type="text" placeholder="Procurar..." aria-label="Search">
+                        <button class="tm-search-button" type="submit">
+                            <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="row tm-row">
+                <article class="col-12 col-md-6 tm-post">
+                    <hr class="tm-hr-primary">
+                    <a href="index.html" class="effect-lily tm-post-link tm-pt-60">
+                          <div class="tm-post-link-inner">
+                              <img src="../../../assets/img/img-08.png" alt="Image" class="img-fluid">
+                          </div>
+                        <span class="position-absolute tm-new-badge">+</span>
+                    </a>
 
 
-<button mat-button [matMenuTriggerFor]="afterMenu">teste para um menu lateral</button>
-<mat-menu #afterMenu="matMenu" xPosition="after">
-  <button mat-menu-item>hahaha</button>
-  <button mat-menu-item>jajaja</button>
-</mat-menu> -->
+                </article>
+                <article class="col-12 col-md-6 tm-post">
+                    <hr class="tm-hr-primary">
+                    <a href="index.html" class="effect-lily tm-post-link tm-pt-60">
+                        <div class=" tm-post-link-inner">
+                            <img src="../../../assets/img/img-07.png" alt="Image" class="img-fluid">
+                        </div>
+                        <span class="position-absolute tm-new-badge">+</span>
+                    </a>
+
+                </article>
+                <article class="col-12 col-md-6 tm-post">
+                  <hr class="tm-hr-primary">
+                  <a href="index.html" class="effect-lily tm-post-link tm-pt-60">
+                        <div class="tm-post-link-inner">
+                            <img src="../../../assets/img/img-08.png" alt="Image" class="img-fluid">
+                        </div>
+                      <span class="position-absolute tm-new-badge">+</span>
+                  </a>
 
 
+              </article>
+              <article class="col-12 col-md-6 tm-post">
+                  <hr class="tm-hr-primary">
+                  <a href="index.html" class="effect-lily tm-post-link tm-pt-60">
+                      <div class=" tm-post-link-inner">
+                          <img src="../../../assets/img/img-07.png" alt="Image" class="img-fluid">
+                      </div>
+                      <span class="position-absolute tm-new-badge">+</span>
+                  </a>
+
+              </article>
+
+            </div>
 
 
-<!-- <mat-menu #afterMenu="matMenu" xPosition="after">
-  <button mat-menu-item>Item 1</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu> -->
-<!-- </mat-grid-tile> -->
+            <app-footer></app-footer>
 
-<!--
-
-</mat-grid-list> -->
-<!--
-<div class="example-label">FAB</div>
-<div class="example-button-row">
-  <div class="example-flex-container">
-    <div class="example-button-container">
-      <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
-        <mat-icon>delete</mat-icon>
-      </button>
+        </main>
     </div>
-    <div class="example-button-container">
-      <button mat-fab color="accent" aria-label="Example icon button with a bookmark icon">
-        <mat-icon>bookmark</mat-icon>
-      </button>
-    </div>
-    <div class="example-button-container">
-      <button mat-fab color="warn" aria-label="Example icon button with a home icon">
-        <mat-icon>home</mat-icon>
-      </button>
-    </div>
-    <div class="example-button-container">
-      <button mat-fab disabled aria-label="Example icon button with a heart icon">
-        <mat-icon>favorite</mat-icon>
-      </button>
-    </div>
-  </div>
-</div> -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/templatemo-script.js"></script>
+</body>
