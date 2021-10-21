@@ -44,7 +44,5 @@ export class LoginComponent implements OnInit {
       } catch (err) {
         this.loginInvalid = true;
       }
-    const login = this.login;
-    const password = this.password;
   }
 }
