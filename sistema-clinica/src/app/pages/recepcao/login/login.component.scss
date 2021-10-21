@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
 
-.form-login{
-  transform: translateY(50%)
-}
-
 .header{
   display: flex;
   justify-content: center;
@@ -17,27 +13,29 @@
   font-family: 'Crimson Text', serif;
 }
 
-mat-card {
-  max-width: 300px;
-  margin: 2em auto;
-  text-align: center;
-  border-radius: 40px;
-  background-color: #bdb39b;
-}
-
 mat-card-content{
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-// mat-form-field{
-//   margin-right: 30%;
-//   margin-left: auto;
-// }
+.form-login {
+  max-width: 300px;
+  height: 220px;
+  margin: 2em auto;
+  text-align: center;
+  border-radius: 40px;
+  background-color: #bdb39b;
+}
+
+.login-content{
+  transform: translateY(20%);
+}
 
 .input-group{
   margin: 20px 30% 30px auto;
+  width: 280px;
+  padding-left: 20px;
 }
 
 .inpt{
