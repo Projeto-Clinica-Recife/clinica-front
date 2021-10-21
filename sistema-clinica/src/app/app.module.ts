@@ -25,6 +25,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HomeModule } from './pages/home/home.module';
+import { PatientModule } from './pages/patient/patient.module';
 
 @NgModule({
   declarations: [
@@ -34,26 +35,12 @@ import { HomeModule } from './pages/home/home.module';
     BrowserModule,
     SharedModule,
     BrowserAnimationsModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatGridListModule,
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    MatTableModule,
-    MatDividerModule,
-    MatSlideToggleModule,
-    MatSelectModule,
-    MatOptionModule,
-    MatProgressSpinnerModule,
     AppRoutingModule,
-    MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    MatInputModule,
-    HomeModule
+    HomeModule,
+    PatientModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
