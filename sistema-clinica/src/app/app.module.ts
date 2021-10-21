@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './pages/login/login.component';
+import { LoginComponent } from './pages/recepcao/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -25,8 +25,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { HomeModule } from './pages/home/home.module';
-import { PatientModule } from './pages/patient/patient.module';
+import { HomeModule } from './pages/recepcao/home/home.module';
+import { PatientModule } from './pages/recepcao/patient/patient.module';
 
 @NgModule({
   declarations: [
