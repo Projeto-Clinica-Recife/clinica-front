@@ -24,8 +24,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { HomeModule } from './pages/home/home.module';
-import { PatientModule } from './pages/patient/patient.module';
+import { HomeModule } from './pages/recepcao/home/home.module';
+import { PatientModule } from './pages/recepcao/patient/patient.module';
 
 @NgModule({
   declarations: [

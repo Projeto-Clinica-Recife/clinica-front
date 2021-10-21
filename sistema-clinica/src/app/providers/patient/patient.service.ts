@@ -13,4 +13,8 @@ export class PatientService {
     private http: HttpClient
     ) { }
 
+    post(patient: any): Observable<any> {
+      const url = `${this.URL}/store`;
+      return this.http.post(url,patient);
+    }
 }
