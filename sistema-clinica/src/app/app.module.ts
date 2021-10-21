@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { HeaderModule } from './shared/header/header.module';
-import { FooterModule } from './shared/footer/footer.module';
-import { AuthService } from './auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './providers/auth.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -32,8 +31,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   ],
   imports: [
     BrowserModule,
-    HeaderModule,
-    FooterModule,
     SharedModule,
     BrowserAnimationsModule,
     MatSidenavModule,
@@ -41,7 +38,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatMenuModule,
     MatGridListModule,
     MatButtonModule,
-    MatInputModule,
     MatCardModule,
     MatIconModule,
     MatTableModule,
@@ -50,6 +46,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatSelectModule,
     MatOptionModule,
     MatProgressSpinnerModule,
+    AppRoutingModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    MatInputModule,
+
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
