@@ -3,7 +3,7 @@ import { CanActivate } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Credentials, Login } from './auth.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../models/user';
+import { User } from '../../models/user';
 
 
 @Injectable({
