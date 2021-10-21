@@ -1,40 +1,5 @@
 
 <body>
-	<header class="tm-header" id="tm-header">
-        <div class="tm-header-wrapper">
-            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="tm-site-header">
-                <div class="mb-3 mx-auto ">
-                  <img src="../../../assets/img/logomarcaInstitutoCoelho.png" alt="Image" class="img-fluid">
-                </div>
-                <h4 class="text-center">Emagrecimento e Performance Humana</h4>
-            </div>
-            <nav class="tm-nav" id="tm-nav">
-                <ul>
-                    <li class="tm-nav-item active"><a href="index.html" class="tm-nav-link">
-                        <i class="fas fa-home"></i>
-                        Tela Inicial
-                    </a></li>
-                    <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
-                        <i class="fas fa-pen"></i>
-                        Agenda
-                    </a></li>
-                    <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
-                        <i class="fas fa-calculator"></i>
-                        Financeiro
-                    </a></li>
-                    <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
-                        <i class="far fa-comments"></i>
-                        Outro botão
-                    </a></li>
-                </ul>
-            </nav>
-
-
-        </div>
-    </header>
     <div class="container-fluid">
         <main class="tm-main">
             <!-- Search form -->
@@ -51,9 +16,10 @@
             <div class="row tm-row">
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
-                    <a href="index.html" class="effect-lily tm-post-link tm-pt-60">
-                          <div class="tm-post-link-inner">
-                              <img src="../../../assets/img/img-08.png" alt="Image" class="img-fluid">
+                    <a routerLink="/paciente/cadastrar" class="effect-lily tm-post-link tm-pt-60">
+                          <div class="tm-post-link-inner botao-grid">
+                              <!-- <img src="../../../assets/img/img-08.png" alt="Image" class="img-fluid"> -->
+                              <h2>CADASTRAR PACIENTE</h2>
                           </div>
                         <span class="position-absolute tm-new-badge">+</span>
                     </a>
@@ -62,35 +28,17 @@
                 </article>
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
-                    <a href="index.html" class="effect-lily tm-post-link tm-pt-60">
-                        <div class=" tm-post-link-inner">
-                            <img src="../../../assets/img/img-07.png" alt="Image" class="img-fluid">
-                        </div>
+                    <a routerLink="/paciente/cadastrar" class="effect-lily tm-post-link tm-pt-60">
+                          <div class="tm-post-link-inner botao-grid">
+                              <!-- <img src="../../../assets/img/img-08.png" alt="Image" class="img-fluid"> -->
+                              <h2>CONSULTAR PACIENTE</h2>
+                          </div>
                         <span class="position-absolute tm-new-badge">+</span>
                     </a>
 
+
                 </article>
-                <article class="col-12 col-md-6 tm-post">
-                  <hr class="tm-hr-primary">
-                  <a href="index.html" class="effect-lily tm-post-link tm-pt-60">
-                        <div class="tm-post-link-inner">
-                            <img src="../../../assets/img/img-08.png" alt="Image" class="img-fluid">
-                        </div>
-                      <span class="position-absolute tm-new-badge">+</span>
-                  </a>
-
-
-              </article>
-              <article class="col-12 col-md-6 tm-post">
-                  <hr class="tm-hr-primary">
-                  <a href="index.html" class="effect-lily tm-post-link tm-pt-60">
-                      <div class=" tm-post-link-inner">
-                          <img src="../../../assets/img/img-07.png" alt="Image" class="img-fluid">
-                      </div>
-                      <span class="position-absolute tm-new-badge">+</span>
-                  </a>
-
-              </article>
+                
 
             </div>
 
@@ -99,6 +47,4 @@
 
         </main>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/templatemo-script.js"></script>
 </body>
