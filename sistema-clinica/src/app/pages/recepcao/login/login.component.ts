@@ -37,12 +37,9 @@ export class LoginComponent implements OnInit {
   async onSubmit() {
     this.loginInvalid = false;
     this.formSubmitAttempt = false;
-      try {
-        const login = this.login;
-        const password = this.password;
-        await this.authService.login({login, password});
-      } catch (err) {
-        this.loginInvalid = true;
-      }
+
+    const login = this.login;
+    const password = this.password;
+    await this.authService.login({login, password});
   }
 }

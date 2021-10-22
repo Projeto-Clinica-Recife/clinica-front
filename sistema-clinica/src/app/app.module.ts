@@ -9,6 +9,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './providers/auth/auth.service';
+import { TokenManager } from './providers/token-manager/token-manager.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
@@ -44,7 +45,10 @@ import { PatientModule } from './pages/recepcao/patient/patient.module';
     HomeModule,
     PatientModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    TokenManager,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
