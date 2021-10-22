@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from '../../../providers/patient/patient.service';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-patient',
@@ -11,7 +12,8 @@ export class PatientComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private patientService: PatientService
+    private patientService: PatientService,
+    private router: Router
   ) { }
   
   formRecp!: FormGroup;
@@ -41,7 +43,9 @@ export class PatientComponent implements OnInit {
     console.log(formValue);
     this.patientService.post(formValue).subscribe(
       async (result) => {
-        console.log(result);
+        alert('Paciente cadastro com sucesso')
+        console.log(result);  
+        this.router.navigateByUrl('/home');
       },
       async ({ error }) => {
         console.log(error);

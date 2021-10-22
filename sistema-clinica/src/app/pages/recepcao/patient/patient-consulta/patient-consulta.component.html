@@ -1,0 +1,41 @@
+<body>
+  <div class="container-fluid">
+    <main class="tm-main">
+      <!-- Search form -->
+      <div class="row tm-row titulo-header">
+        <div class="col-12">
+          <h2>CONSULTA DE PACIENTE</h2>
+        </div>
+      </div>
+      <div class="row tm-row" style="margin-bottom: 30px;">
+
+        <form action="" class="col-12">
+          <div class="row">
+          <div class="col-10">
+            <input type="text" name="search" id="" class="form-control" placeholder="Buscar por nome ou CPF" [(ngModel)]="search">
+          </div>
+          <div class="col-2">
+            <button type="button" class="btn btn-info btn-block" (click)="searchPatient()" >Pesquisar</button>
+          </div>
+        </div>
+        </form>
+      </div>
+      <div class="row tm-row">
+        <table class="table col-12">
+          <tbody *ngIf="patients !== 0">
+            <tr *ngFor="let patient of patients">
+              <th>{{patient.nome}}</th>
+              <td>Ações</td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="patients == 0" class="alert alert-danger col-12" role="alert">
+          Paciente não encontrado
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+</body>
