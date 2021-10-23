@@ -4,20 +4,18 @@ import { HomeComponent } from './home/home.component';
 import { PatientComponent } from './patient/patient.component';
 
 export const routes: Routes = [{
-  path: '',
- // canActivateChild: [AuthGuard],
+  path: 'home',
+  component: HomeComponent,
+
+  // canActivateChild: [AuthGuard],
   children: [
     {
-      path: 'home',
-      children: [
-        { path: 'home', component: HomeComponent },
-        { path: 'home/paciente', component: PatientComponent },
+      path: 'cadastrar',
+         component: PatientComponent
+        },
       ],
-      data: {
-        rota: '/home'
-      },
-    }]
-}];
+    }
+  ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
