@@ -1,18 +1,20 @@
  <div class="container">
-   <div class="card-login">
-    <div class="header">
-      <h1>Instituto Coelho</h1>
-    </div>
-    <div class="form-login">
-      <div class="login-content">
-        <div class="form-group input-group">
-          <input [(ngModel)]="login" type="email" name="email" id="email" class="form-control inpt" placeholder="Login">
+   <div class="content">
+    <div class="card-login">
+      <div class="header">
+        <img src="../../../../assets/img/logomarcaInstitutoCoelho.png" alt="" srcset="">
+      </div>
+      <div class="form-login">
+        <div class="login-content">
+          <div class="form-group input-group">
+            <input [(ngModel)]="login" type="email" name="email" id="email" class="form-control inpt" placeholder="Login">
+          </div>
+          <div class=" form-group input-group">
+            <input type="password" [(ngModel)]="password" name="password" id="password" class="form-control inpt" placeholder="Senha">
+          </div>
+          <button type="submit" (click)="onSubmit()" class="btn btn-light">Entrar</button>
         </div>
-        <div class=" form-group input-group">
-          <input type="password" [(ngModel)]="password" name="password" id="password" class="form-control inpt" placeholder="Senha">
-        </div>
-        <button type="submit" (click)="onSubmit()" class="btn btn-light">Entrar</button>
       </div>
     </div>
-   </div>
+  </div>
  </div>

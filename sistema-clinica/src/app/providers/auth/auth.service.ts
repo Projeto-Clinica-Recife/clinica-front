@@ -3,8 +3,8 @@ import { CanActivate } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Credentials, Login } from './auth.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../models/user';
-
+import { TokenManager } from '../token-manager/token-manager.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,8 @@ export class AuthService implements CanActivate {
 
   constructor(
     private http: HttpClient,
+    private tokenManager: TokenManager,
+    private router: Router,
   ) { }
   private isAuthenticated: boolean = true; //por enquanto true para exibir a tela
 
@@ -22,7 +24,6 @@ export class AuthService implements CanActivate {
   }
 
   async login(credentials: Credentials) {
-    console.log(credentials);
     const url = `${this.URL}/api/login`;
 
     const headers = new HttpHeaders({
@@ -41,11 +42,15 @@ export class AuthService implements CanActivate {
       // scope: '',
     };
 
-    return this.http.post(url, data).subscribe( data => console.log(data));
-
-    // return this.http.post<Login[]>(url, data, {headers: headers})
-    // .subscribe( data => {
-    //   console.log(data)
-    // });
+    return this.http.post(url, data)
+    .subscribe( data => {
+      this.tokenManager.store(data);
+      this.router.navigate(['/home']);
+    }, error => {
+      console.log(error);
+        if(error.status === 404) {
+        }
+      }
+    );
   }
 }

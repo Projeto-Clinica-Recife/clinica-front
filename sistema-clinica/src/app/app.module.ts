@@ -8,7 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from './providers/auth.service';
+import { AuthService } from './providers/auth/auth.service';
+import { TokenManager } from './providers/token-manager/token-manager.service';
 import { HomeModule } from './pages/recepcao/home/home.module';
 import { PatientModule } from './pages/recepcao/patient/patient.module';
 
@@ -28,7 +29,10 @@ import { PatientModule } from './pages/recepcao/patient/patient.module';
     HomeModule,
     PatientModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    TokenManager,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
