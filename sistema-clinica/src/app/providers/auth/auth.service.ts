@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService implements CanActivate {
-  private URL = environment.api_url;
+  // private URL = environment.api_url;
+  private URL = 'http://localhost:8000';
 
   constructor(
     private http: HttpClient,
