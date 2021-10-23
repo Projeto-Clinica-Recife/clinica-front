@@ -24,8 +24,8 @@
         <table class="table col-12">
           <tbody *ngIf="patients !== 0">
             <tr *ngFor="let patient of patients">
-              <th>{{patient.nome}}</th>
-              <td>Ações</td>
+              <td>{{patient.nome}}</td>
+              <td><button class="btn btn-secondary">Ver detalhes</button></td>
             </tr>
           </tbody>
         </table>
