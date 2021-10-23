@@ -12,7 +12,14 @@
         border-color: rgb(110, 96, 70);
         box-shadow: 0px 0px 5px rgb(110, 96, 70);
     }
-    .btn-primary{
+
+    .alert-danger{
+        background-color: rgb(110, 96, 70) !important;
+        color: white;
+        border: none;
+        text-align: center;
+    }
+    .btn-info{
         background-color:rgb(110, 96, 70) !important;
         border: none;
     }

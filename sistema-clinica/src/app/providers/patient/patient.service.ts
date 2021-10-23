@@ -17,4 +17,9 @@ export class PatientService {
       const url = `${this.URL}/store`;
       return this.http.post(url,patient);
     }
+
+    getPatient(search: any): Observable<any> {
+      const url = `${this.URL}/${search}`;
+      return this.http.get(url);
+    }
 }
