@@ -6,6 +6,10 @@ import { UserDetailComponent } from './pages/recepcao/user-detail/user-detail.co
 import{PatientComponent} from './pages/recepcao/patient/patient.component';
 import{PatientConsultaComponent} from './pages/recepcao/patient/patient-consulta/patient-consulta.component'
 
+import { RecepcaoRoutingModule } from './pages/recepcao/recepcao-routing.module';
+
+import { RecepcaoModule } from './pages/recepcao/recepcao.module';
+
 const routes: Routes = [
   {
     path: '',
@@ -13,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    loadChildren: () => import('./pages/recepcao/recepcao.module').then(m => m.RecepcaoModule)
   },
   {
     path: 'user-detail',
