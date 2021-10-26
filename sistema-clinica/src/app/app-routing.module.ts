@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/recepcao/home/home.component';
 import { LoginComponent } from './pages/recepcao/login/login.component';
 import { UserDetailComponent } from './pages/recepcao/user-detail/user-detail.component';
-import{ PatientComponent } from './pages/recepcao/patient/patient.component';
+import{PatientComponent} from './pages/recepcao/patient/patient.component';
+import{PatientConsultaComponent} from './pages/recepcao/patient/patient-consulta/patient-consulta.component'
 
 const routes: Routes = [
   {
@@ -20,18 +21,21 @@ const routes: Routes = [
   },
   {
     path:'paciente',
-    component: PatientComponent,
     children: [
       {
         path: 'cadastrar',
         component: PatientComponent
+      },
+      {
+        path: 'consulta',
+        component: PatientConsultaComponent
       }
     ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
