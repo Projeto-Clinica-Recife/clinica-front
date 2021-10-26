@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { Credentials, Login } from './auth.model';
+import { Credentials } from './auth.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TokenManager } from '../token-manager/token-manager.service';
 import { Router } from '@angular/router';
@@ -44,7 +44,9 @@ export class AuthService implements CanActivate {
 
     return this.http.post(url, data)
     .subscribe( data => {
-      this.tokenManager.store(data);
+      const JWT = data.toString().replace(/['"]+/g, '');
+      this.tokenManager.store(JWT);
+      
       this.router.navigate(['/home']);
     }, error => {
       console.log(error);
