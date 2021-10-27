@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/providers/auth/auth.service';
+import { UsersService } from 'src/app/providers/users/users.service';
+
 
 @Component({
   selector: 'app-login',
@@ -23,6 +25,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
+    private usersService: UsersService,
   ) {
    }
   
@@ -40,6 +43,9 @@ export class LoginComponent implements OnInit {
 
     const login = this.login;
     const password = this.password;
-    await this.authService.login({login, password});
+    const resultLogin = await this.authService.login({login, password});
+    // if (resultLogin){
+    //   this.usersService.get_user();
+    // }
   }
 }
