@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/models/user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class UsersService {
   
   constructor(
     private http: HttpClient,
+    private router: Router,
   ) { }
 
   get_user(){
@@ -22,6 +24,15 @@ export class UsersService {
     return this.http.get<User>(url, {headers: headers})
     .subscribe(data => {
       console.log(data);
+    });
+  }
+
+  cadUser(form: any){
+    const url = `${this.URL}/api/register`;
+    return this.http.post(url, form).subscribe(data => {
+      this.router.navigate(['/admin/home']);
+    }, error => {
+        console.log(error.status);
     });
   }
 }

@@ -28,7 +28,6 @@ export class TokenManager {
         .set('Authorization', `Bearer ${JWT}`,);
         console.log(headers);
         
-        // console.log(headers.get('Authorization'));
         localStorage.removeItem(this.TOKEN);
         this.router.navigate(['/']);
         
