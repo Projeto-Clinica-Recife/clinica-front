@@ -31,4 +31,8 @@ export class PatientConsultaComponent implements OnInit {
     );
   }
 
+  viewPatient(id: any){
+    return this.router.navigate(['/paciente/ver-paciente'], {queryParams: {id: id}});
+  }
+
 }
