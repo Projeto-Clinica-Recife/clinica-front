@@ -22,24 +22,21 @@ export class TokenManager {
     public remove(){
         const url = `${this.URL}/api/logout`;
         const token = localStorage.getItem('token');
-        const JWT = token?.replace(/['"]+/g, '');
         
         const headers = new HttpHeaders()
-        .set('Authorization', `Bearer ${JWT}`,);
+        .set('Authorization', 'Bearer ' + token,);
         console.log(headers);
         
         // console.log(headers.get('Authorization'));
-        localStorage.removeItem(this.TOKEN);
-        this.router.navigate(['/']);
         
-        // return this.http.post(url,{headers:headers})
-        // .subscribe( result => {
-        //     console.log(result);
-        //     // localStorage.removeItem(this.TOKEN);
-        //     // this.router.navigate(['/']);
-        // }, error => {
-        //     console.log(error);
-        //     }
-        // );
+        return this.http.post(url, undefined, {headers: headers})
+        .subscribe( result => {
+            localStorage.removeItem(this.TOKEN);
+            localStorage.removeItem('profile');
+            this.router.navigate(['/']);
+        }, error => {
+            console.log(error);
+            }
+        );
     }
 }

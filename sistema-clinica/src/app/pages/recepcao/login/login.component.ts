@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/providers/auth/auth.service';
 import { UsersService } from 'src/app/providers/users/users.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -43,9 +42,7 @@ export class LoginComponent implements OnInit {
 
     const login = this.login;
     const password = this.password;
-    const resultLogin = await this.authService.login({login, password});
-    // if (resultLogin){
-    //   this.usersService.get_user();
-    // }
+    await this.authService.login({login, password});
+    
   }
 }

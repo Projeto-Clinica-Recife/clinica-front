@@ -9,7 +9,7 @@ import { UsersService } from 'src/app/providers/users/users.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  private token = localStorage.getItem('token');
+  // name = this.usersService.user.name;
   constructor(
     private tokenManager: TokenManager,
     private router: Router,

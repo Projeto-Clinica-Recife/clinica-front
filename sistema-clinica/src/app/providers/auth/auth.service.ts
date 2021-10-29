@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Credentials } from './auth.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TokenManager } from '../token-manager/token-manager.service';
+import { UsersService } from 'src/app/providers/users/users.service';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -11,14 +12,14 @@ import { Router } from '@angular/router';
 })
 export class AuthService implements CanActivate {
   private URL = environment.api_url;
-
   constructor(
     private http: HttpClient,
     private tokenManager: TokenManager,
+    private usersService: UsersService,
     private router: Router,
   ) { }
   private isAuthenticated: boolean = true; //por enquanto true para exibir a tela
-
+  messageError: string = '';
   canActivate() {
     return this.isAuthenticated;
   }
@@ -43,15 +44,15 @@ export class AuthService implements CanActivate {
     };
 
     return this.http.post(url, data)
-    .subscribe( data => {
+    .subscribe( async data => {
       const JWT = data.toString().replace(/['"]+/g, '');
       this.tokenManager.store(JWT);
-      
+      await this.usersService.get_user();
       this.router.navigate(['/home']);
     }, error => {
-      console.log(error);
+        this.messageError = error.error.error;
         if(error.status === 404) {
-        }
+        }  
       }
     );
   }
