@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home/home.component';
+import { AdminHomeComponent } from './home/admin-home.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { CadUserComponent } from './user/cad-user/cad-user.component';
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    AdminHomeComponent,
+    CadUserComponent
   ],
   imports: [
     CommonModule,

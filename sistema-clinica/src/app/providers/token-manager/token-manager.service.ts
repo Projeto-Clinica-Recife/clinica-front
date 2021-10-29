@@ -27,7 +27,8 @@ export class TokenManager {
         .set('Authorization', 'Bearer ' + token,);
         console.log(headers);
         
-        // console.log(headers.get('Authorization'));
+        localStorage.removeItem(this.TOKEN);
+        this.router.navigate(['/']);
         
         return this.http.post(url, undefined, {headers: headers})
         .subscribe( result => {

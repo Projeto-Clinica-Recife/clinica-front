@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private usersService: UsersService,
   ) {
+    // this.usersService.isAuthenticated();
    }
   
 
@@ -43,6 +44,5 @@ export class LoginComponent implements OnInit {
     const login = this.login;
     const password = this.password;
     await this.authService.login({login, password});
-    
   }
 }

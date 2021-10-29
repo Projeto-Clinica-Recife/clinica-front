@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class UsersService {
   private URL = environment.api_url;
+  private TOKEN = localStorage.getItem('token');
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -19,6 +20,15 @@ export class UsersService {
   // public user = {
   //   name: this.profile.user.name,
   // }
+
+  formatToken(){
+    const token = localStorage.getItem('token');
+    let jwt: string = '';
+    if (token) {
+       jwt = token.toString().replace(/['"]+/g, '');
+    }
+    return jwt;
+  }
 
   async get_user() {
     const url = `${this.URL}/api/user`;
@@ -37,7 +47,9 @@ export class UsersService {
 
   public isAuthenticated(){
     const url = `${this.URL}/api/user`;
-    const token = localStorage.getItem('token');
+    const token = this.formatToken()
+    console.log(token);
+    
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token,);
 
     return this.http.get(url, {headers: headers})
@@ -49,5 +61,14 @@ export class UsersService {
       console.log(error);
       this.router.navigate(['/']);
     })
+  }
+
+  cadUser(form: any){
+    const url = `${this.URL}/api/register`;
+    return this.http.post(url, form).subscribe(data => {
+      this.router.navigate(['/admin/home']);
+    }, error => {
+        console.log(error.status);
+    });
   }
 }

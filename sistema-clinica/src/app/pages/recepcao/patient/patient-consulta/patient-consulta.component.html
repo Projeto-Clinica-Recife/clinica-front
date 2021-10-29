@@ -11,21 +11,21 @@
 
         <form action="" class="col-12">
           <div class="row">
-          <div class="col-10">
+          <div class="col-sm-10">
             <input type="text" name="search" id="" class="form-control" placeholder="Buscar por nome ou CPF" [(ngModel)]="search">
           </div>
-          <div class="col-2">
+          <div class="col-sm-2 mt-1">
             <button type="button" class="btn btn-info btn-block" (click)="searchPatient()" >Pesquisar</button>
           </div>
         </div>
         </form>
       </div>
       <div class="row tm-row">
-        <table class="table col-12">
+        <table class="table tab col-12" >
           <tbody *ngIf="patients !== 0">
             <tr *ngFor="let patient of patients">
-              <td>{{patient.nome}}</td>
-              <td><button class="btn btn-secondary">Ver detalhes</button></td>
+              <td style="width: 75%;">{{patient.nome}}</td>
+              <td class="text-right"><button class="btn btn-secondary" (click)="viewPatient(patient.id)">Ver detalhes</button></td>
             </tr>
           </tbody>
         </table>

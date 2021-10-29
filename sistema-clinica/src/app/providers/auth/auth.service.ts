@@ -47,12 +47,9 @@ export class AuthService implements CanActivate {
     .subscribe( async data => {
       const JWT = data.toString().replace(/['"]+/g, '');
       this.tokenManager.store(JWT);
-      await this.usersService.get_user();
       this.router.navigate(['/home']);
     }, error => {
-        this.messageError = error.error.error;
-        if(error.status === 404) {
-        }  
+        console.log(error); 
       }
     );
   }
