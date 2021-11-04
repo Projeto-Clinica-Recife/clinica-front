@@ -48,7 +48,7 @@ export class CadUserComponent implements OnInit {
     const formValue ={
       ...this.formUser.value,
     }
-    this.usersService.cadUser(formValue);
+    this.usersService.cad_user(formValue);
     
     console.log(formValue);
   }

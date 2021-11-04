@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Credentials } from './auth.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TokenManager } from '../token-manager/token-manager.service';
 import { UsersService } from 'src/app/providers/users/users.service';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
+
+export const messageError = '';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements CanActivate {
+export class AuthService {
   private URL = environment.api_url;
   constructor(
     private http: HttpClient,
@@ -18,11 +21,7 @@ export class AuthService implements CanActivate {
     private usersService: UsersService,
     private router: Router,
   ) { }
-  private isAuthenticated: boolean = true; //por enquanto true para exibir a tela
-  messageError: string = '';
-  canActivate() {
-    return this.isAuthenticated;
-  }
+   messageError: string = '';
 
   async login(credentials: Credentials) {
     const url = `${this.URL}/api/login`;
@@ -43,14 +42,49 @@ export class AuthService implements CanActivate {
       // scope: '',
     };
 
-    return this.http.post(url, data)
-    .subscribe( async data => {
-      const JWT = data.toString().replace(/['"]+/g, '');
-      this.tokenManager.store(JWT);
+    try{
+      await this.http.post<any>(url, data)
+      .toPromise()
+      .then( res => {
+        const token = res.token;
+        const user = res.user;
+        this.tokenManager.store(token);
+        localStorage.setItem('profile', JSON.stringify(user));
+        console.log(user);
+        switch(user.type_user) {
+          case 'admin':
+            this.router.navigate(['/admin/home']);
+            break;
+          case 'doctor':
+            this.router.navigate(['/home']);
+            break;
+          case 'reception':
+            this.router.navigate(['/home']);
+            break;
+        }
+        
+      })
+    } catch (error: any) {
+      console.log(error);
+      return error;
+    }
+  }
+
+  public isAuthenticated(){
+    const url = `${this.URL}/api/user`;
+    const token = this.tokenManager.getTokenStorage();
+    console.log(token);
+    
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token,);
+
+    return this.http.get(url, {headers: headers})
+    .subscribe(res => {
       this.router.navigate(['/home']);
+      console.log('Autorizado!');
+      
     }, error => {
-        console.log(error); 
-      }
-    );
+      console.log(error);
+      this.router.navigate(['/']);
+    })
   }
 }

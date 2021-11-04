@@ -9,7 +9,7 @@ import { UsersService } from 'src/app/providers/users/users.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  // name = this.usersService.user.name;
+  profile = this.usersService.get_profile();
   constructor(
     private tokenManager: TokenManager,
     private router: Router,
@@ -21,7 +21,6 @@ export class HeaderComponent implements OnInit {
 
   logout(){
     this.tokenManager.remove();
-    // this.usersService.get_user();
   }
 
 }

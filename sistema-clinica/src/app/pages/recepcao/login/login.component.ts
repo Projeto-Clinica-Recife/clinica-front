@@ -15,9 +15,6 @@ export class LoginComponent implements OnInit {
     login: ['', Validators.email],
     password: ['', Validators.required]
   });
-  public loginInvalid = false;
-  private formSubmitAttempt = false;
-  //private returnUrl: string;
 
   constructor(
     private fb: FormBuilder,
@@ -29,20 +26,33 @@ export class LoginComponent implements OnInit {
     // this.usersService.isAuthenticated();
    }
   
-
   login: string = '';
   password: string = '';
+
+  error = {
+    hasError: false,
+    messageError:  null,
+  }
+  
 
   ngOnInit(): void {
 
   }
 
   async onSubmit() {
-    this.loginInvalid = false;
-    this.formSubmitAttempt = false;
 
     const login = this.login;
     const password = this.password;
-    await this.authService.login({login, password});
+    const auth = await this.authService.login({login, password})
+    .then( result => {
+      if (result) {
+        if (result.status != 200) {
+          this.error.messageError = result.error.error;
+          this.error.hasError = true;
+          setTimeout(() => { this.error.hasError = false},2000);
+        }
+      }
+    });
+    
   }
 }

@@ -9,7 +9,7 @@
             </div>
             <h4 class="text-center">Emagrecimento e Performance Humana</h4>
             <div class="logout">
-                <!-- <p>{{name}}</p> -->
+                <p *ngIf="profile">Bem vindo(a), {{profile.name}}</p>
                 <a href="" (click)="logout()" class="link">Sair</a>
             </div>
         </div>

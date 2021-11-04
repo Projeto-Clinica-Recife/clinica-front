@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { UsersService } from 'src/app/providers/users/users.service';
+import { AuthService } from 'src/app/providers/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    private usersService: UsersService,
+    private authService: AuthService,
   ) { 
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd){
@@ -25,6 +25,6 @@ export class AppComponent {
       }
     });
 
-    // this.usersService.isAuthenticated();
+    // this.authService.isAuthenticated();
   }
 }

@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
+import { TokenManager } from '../token-manager/token-manager.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,62 +14,37 @@ export class UsersService {
   constructor(
     private http: HttpClient,
     private router: Router,
+    private tokenManager: TokenManager,
   ) { }
   
-  // getUser = localStorage.getItem('profile'); 
-  // profile = JSON.parse(this.getUser!.toString());
-  // public user = {
-  //   name: this.profile.user.name,
-  // }
-
-  formatToken(){
-    const token = localStorage.getItem('token');
-    let jwt: string = '';
-    if (token) {
-       jwt = token.toString().replace(/['"]+/g, '');
-    }
-    return jwt;
+  
+  get_profile(){
+    const user = JSON.parse(localStorage.getItem('profile')!);
+    return user;
   }
 
   async get_user() {
     const url = `${this.URL}/api/user`;
-    let token = localStorage.getItem('token');
+    let token = this.tokenManager.getTokenStorage();
+    console.log(token);
+    
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token,);
   
     return this.http.get<User>(url, {headers: headers})
     .subscribe(data => {
-      localStorage.setItem('profile', JSON.stringify(data));
-      
+        console.log(data); 
     }, error => {
         console.log(error);
       }
     );
   }
 
-  public isAuthenticated(){
-    const url = `${this.URL}/api/user`;
-    const token = this.formatToken()
-    console.log(token);
-    
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token,);
-
-    return this.http.get(url, {headers: headers})
-    .subscribe(res => {
-      this.router.navigate(['/home']);
-      console.log('Autorizado!');
-      
-    }, error => {
-      console.log(error);
-      this.router.navigate(['/']);
-    })
-  }
-
-  cadUser(form: any){
+  cad_user(form: any){
     const url = `${this.URL}/api/register`;
     return this.http.post(url, form).subscribe(data => {
       this.router.navigate(['/admin/home']);
     }, error => {
-        console.log(error.status);
+        console.log(error);
     });
   }
 }

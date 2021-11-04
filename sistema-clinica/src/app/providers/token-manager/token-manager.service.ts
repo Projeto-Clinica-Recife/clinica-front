@@ -21,23 +21,28 @@ export class TokenManager {
 
     public remove(){
         const url = `${this.URL}/api/logout`;
-        const token = localStorage.getItem('token');
+        const token = this.getTokenStorage();
         
         const headers = new HttpHeaders()
         .set('Authorization', 'Bearer ' + token,);
-        console.log(headers);
-        
+    
         localStorage.removeItem(this.TOKEN);
-        this.router.navigate(['/']);
-        
+        localStorage.removeItem('profile');
         return this.http.post(url, undefined, {headers: headers})
-        .subscribe( result => {
-            localStorage.removeItem(this.TOKEN);
-            localStorage.removeItem('profile');
+        .subscribe( () => {
             this.router.navigate(['/']);
         }, error => {
             console.log(error);
             }
         );
     }
+
+    getTokenStorage(){
+        const token = localStorage.getItem('token');
+        let jwt: string = '';
+        if (token) {
+           jwt = token.toString().replace(/['"]+/g, '');
+        }
+        return jwt;
+      }
 }
