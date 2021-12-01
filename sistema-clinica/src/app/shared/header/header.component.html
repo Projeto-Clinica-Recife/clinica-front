@@ -5,9 +5,13 @@
         </button>
         <div class="tm-site-header">
             <div class="mb-3 mx-auto ">
-              <img src="../../../assets/img/logomarcaInstitutoCoelho.png" alt="Image" class="img-fluid">
+              <img src="../../../assets/img/logomarcaInstitutoCoelhoBranca.png" alt="Image" class="img-fluid">
             </div>
             <h4 class="text-center">Emagrecimento e Performance Humana</h4>
+            <div class="logout">
+                <p *ngIf="profile">Bem vindo(a), {{profile.name}}</p>
+                <a href="" (click)="logout()" class="link">Sair</a>
+            </div>
         </div>
         <nav class="tm-nav" id="tm-nav">
             <ul>

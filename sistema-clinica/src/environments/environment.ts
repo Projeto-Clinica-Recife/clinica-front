@@ -4,8 +4,9 @@
 
 const link = 'http://localhost:8000';
 export const environment = {
-  production: true,
-  api_url:  link,
+  production: false,
+  // api_url: 'http://localhost:8000'
+  api_url: 'http://clinica.mopservicos.xyz/'
 };
 
 /*

@@ -13,6 +13,7 @@ import { TokenManager } from './providers/token-manager/token-manager.service';
 
 import { HomeModule } from './pages/recepcao/home/home.module';
 import { PatientModule } from './pages/recepcao/patient/patient.module';
+import { AdminModule } from './pages/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PatientModule } from './pages/recepcao/patient/patient.module';
     FormsModule,
     HttpClientModule,
     HomeModule,
-    PatientModule
+    PatientModule,
+    AdminModule,
   ],
   providers: [
     AuthService,

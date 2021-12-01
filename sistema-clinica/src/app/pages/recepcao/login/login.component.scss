@@ -1,7 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
 
 .content{
-  transform: translateY(30%);
+  transform: translateY(20%);
+}
+
+.alert{
+  width: 30%;
+  height: 50px;
+  padding: 5px 0 0 0;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.alert p{
+  color: #000;
+  margin-top: -20px;
 }
 
 .header{
@@ -42,7 +59,6 @@ mat-card-content{
 
 .input-group{
   margin: 20px 30% 30px auto;
-  // width: 330px;
   padding-left: 5%;
   padding-right: 5%;
   display:flex;
@@ -67,12 +83,23 @@ mat-card-content{
     width: 230px;
   }
 
-  .input-group{
-    
-  }
-
   .inpt{
     padding: 0 0 0 10px;
     transform: translateX(0px);
+  }
+
+  .alert{
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 800px){
+
+  .content{
+    transform: translateY(15%);
+  }
+
+  .alert{
+    width: 90%;
   }
 }

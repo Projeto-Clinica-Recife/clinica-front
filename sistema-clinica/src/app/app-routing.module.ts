@@ -6,6 +6,9 @@ import { UserDetailComponent } from './pages/recepcao/user-detail/user-detail.co
 import { PatientComponent } from './pages/recepcao/patient/patient.component';
 import { PatientConsultaComponent } from './pages/recepcao/patient/patient-consulta/patient-consulta.component';
 import { RecepcaoModule } from "./pages/recepcao/recepcao.module";
+import { AdminHomeComponent } from './pages/admin/home/admin-home.component';
+import { CadUserComponent } from './pages/admin/user/cad-user/cad-user.component';
+import { PatientViewComponent } from './pages/recepcao/patient/patient-view/patient-view.component';
 
 const routes: Routes = [
   {
@@ -30,6 +33,23 @@ const routes: Routes = [
       {
         path: 'consulta',
         component: PatientConsultaComponent
+      },
+      {
+        path: 'ver-paciente',
+        component: PatientViewComponent
+      }
+    ]
+  },
+  {
+    path:'admin',
+    children: [
+      {
+        path: 'home',
+        component: AdminHomeComponent,
+      },
+      {
+        path: 'cadastrar',
+        component: CadUserComponent,
       }
     ]
   }
