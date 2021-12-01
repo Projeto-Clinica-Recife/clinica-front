@@ -32,7 +32,7 @@ export class AuthService {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': 'true'
     });
-      
+
     const data = {
       email: credentials.login,
       password: credentials.password,
@@ -62,7 +62,7 @@ export class AuthService {
             this.router.navigate(['/home']);
             break;
         }
-        
+
       })
     } catch (error: any) {
       console.log(error);
@@ -74,14 +74,14 @@ export class AuthService {
     const url = `${this.URL}/api/user`;
     const token = this.tokenManager.getTokenStorage();
     console.log(token);
-    
+
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token,);
 
     return this.http.get(url, {headers: headers})
     .subscribe(res => {
       this.router.navigate(['/home']);
       console.log('Autorizado!');
-      
+
     }, error => {
       console.log(error);
       this.router.navigate(['/']);
