@@ -19,16 +19,18 @@ export class HeaderComponent implements OnInit {
   public rota: string = '/home';
 
   ngOnInit(): void {
-    switch (this.profile.type_user){
-      case 'admin':
-        this.rota = 'admin/home';
-        break;
-      case 'reception':
-        this.rota = '/home';
-        break;
-      case 'doctor':
-        this.rota = 'doctor/home';
-        break;
+    if (this.profile) { 
+      switch (this.profile.type_user){
+        case 'admin':
+          this.rota = 'admin/home';
+          break;
+        case 'reception':
+          this.rota = '/home';
+          break;
+        case 'doctor':
+          this.rota = 'doctor/home';
+          break;
+      }
     }
   }
 

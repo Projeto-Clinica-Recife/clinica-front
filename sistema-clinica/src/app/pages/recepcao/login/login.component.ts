@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private usersService: UsersService,
   ) {}
   // form:FormGroup = this.fb.group({
   //   login: ['', Validators.email],
@@ -38,19 +37,21 @@ export class LoginComponent implements OnInit {
   async onSubmit() {
 
     const login = this.login;
-    const password = this.password;
-    console.log(login, password);
-    
+    const password = this.password
     const auth = await this.authService.login({login, password})
     .then( result => {
       if (result) {
         if (result.status != 200) {
           this.error.messageError = result.error.error;
           this.error.hasError = true;
-          setTimeout(() => { this.error.hasError = false},2000);
         }
       }
     });
-    
+  }
+
+  closeAlert() {
+    var elem = document.querySelector('.alert');
+    elem!.parentNode!.removeChild(elem!);
+    this.error.hasError = false;
   }
 }

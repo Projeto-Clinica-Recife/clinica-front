@@ -61,7 +61,6 @@ export class AuthService {
             this.router.navigate(['/home']);
             break;
         }
-
         return res;
       })
     } catch (error: any) {

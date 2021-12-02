@@ -14,7 +14,7 @@ export class CadUserComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private usersService: UsersService,
-  ) { }
+  ) {}
 
   formUser!: FormGroup;
   isDoctor: boolean = false;
@@ -23,17 +23,9 @@ export class CadUserComponent implements OnInit {
     hasError: false,
     messageError:  '',
   }
+  messageSuccess: string = ''
 
   ngOnInit(): void {
-    // this.formUser = this.formBuilder.group({
-    //   name: [null, Validators.compose([Validators.required])],
-    //   cpf: [null, Validators.compose([Validators.required])],
-    //   crm: [null],
-    //   email: [null, Validators.compose([Validators.required])],
-    //   type_user: [null, Validators.compose([Validators.required])],
-    //   telephone: [null, Validators.compose([Validators.required])],
-    // });
-
     this.formUser = new FormGroup({
       name: new FormControl(null, [
         Validators.required,
@@ -42,13 +34,13 @@ export class CadUserComponent implements OnInit {
         Validators.required,
       ]),
       cpf: new FormControl(null, [
-        Validators.required,
+        Validators.required, Validators.minLength(11), Validators.maxLength(11),
       ]),
       type_user: new FormControl(null, [
         Validators.required,
       ]),
       telephone: new FormControl(null, [
-        Validators.required,
+        Validators.required, Validators.minLength(10), Validators.maxLength(11)
       ]),
       crm: new FormControl(null),
     });
@@ -66,33 +58,24 @@ export class CadUserComponent implements OnInit {
     }
   }
 
-  validadForm(){
-    const formValue = {
-      ...this.formUser.value,
-    }
-    console.log(this.formUser);
-    
-  }
-
-  cadUser(){
+  async cadUser(){
     const formValue ={
       ...this.formUser.value,
     }
-    this.validadForm();
-    this.usersService.cad_user(formValue)
+    await this.usersService.cad_user(formValue)
     .then(result => {
       if(result.status != 200){
         this.error.messageError = result.error.error;
         this.error.hasError = true;  
-        setTimeout(() => { this.error.hasError = false},2000);
+      }else{
+        this.messageSuccess = 'Cadastro realizado com sucesso!';
       }
     });
-    console.log(formValue);
   }
 
   closeAlert() {
-    console.log('Teste');
     var elem = document.querySelector('.alert');
     elem!.parentNode!.removeChild(elem!);
+    this.error.hasError = false;
   }
 }
