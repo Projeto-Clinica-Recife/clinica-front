@@ -39,12 +39,17 @@ export class UsersService {
     );
   }
 
-  cad_user(form: any){
+  async cad_user(form: any){
     const url = `${this.URL}/api/register`;
-    return this.http.post(url, form).subscribe(data => {
-      this.router.navigate(['/admin/home']);
-    }, error => {
-        console.log(error);
-    });
+    try{ 
+      await this.http.post<any>(url, form).toPromise()
+      .then(res => {
+        this.router.navigate(['/admin/home']);
+        return res.json();
+      });
+    } catch (error: any){
+      console.log(error);
+      return error;
+    }
   }
 }

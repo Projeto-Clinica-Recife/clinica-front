@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/providers/users/users.service';
 
@@ -18,16 +18,39 @@ export class CadUserComponent implements OnInit {
 
   formUser!: FormGroup;
   isDoctor: boolean = false;
+  
+  error = {
+    hasError: false,
+    messageError:  '',
+  }
 
   ngOnInit(): void {
-    this.formUser = this.formBuilder.group({
-      name: [null],
-      cpf: [null],
-      crm: [null],
-      email: [null],
-      type_user: [null],
-      telephone: [null],
-      password: [null],
+    // this.formUser = this.formBuilder.group({
+    //   name: [null, Validators.compose([Validators.required])],
+    //   cpf: [null, Validators.compose([Validators.required])],
+    //   crm: [null],
+    //   email: [null, Validators.compose([Validators.required])],
+    //   type_user: [null, Validators.compose([Validators.required])],
+    //   telephone: [null, Validators.compose([Validators.required])],
+    // });
+
+    this.formUser = new FormGroup({
+      name: new FormControl(null, [
+        Validators.required,
+      ]),
+      email: new FormControl(null, [
+        Validators.required,
+      ]),
+      cpf: new FormControl(null, [
+        Validators.required,
+      ]),
+      type_user: new FormControl(null, [
+        Validators.required,
+      ]),
+      telephone: new FormControl(null, [
+        Validators.required,
+      ]),
+      crm: new FormControl(null),
     });
   }
 
@@ -41,15 +64,29 @@ export class CadUserComponent implements OnInit {
     }else{
       this.isDoctor = false;
     }
-    console.log(this.isDoctor);
+  }
+
+  validadForm(){
+    const formValue = {
+      ...this.formUser.value,
+    }
+    console.log(this.formUser);
     
   }
+
   cadUser(){
     const formValue ={
       ...this.formUser.value,
     }
-    this.usersService.cad_user(formValue);
-    
+    this.validadForm();
+    this.usersService.cad_user(formValue)
+    .then(result => {
+      if(result.status != 200){
+        this.error.messageError = result.error.error;
+        this.error.hasError = true;  
+        setTimeout(() => { this.error.hasError = false},2000);
+      }
+    });
     console.log(formValue);
   }
 
