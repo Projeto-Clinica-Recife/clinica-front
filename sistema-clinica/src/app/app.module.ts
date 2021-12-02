@@ -31,7 +31,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HomeModule,
     PatientModule,
     AdminModule,
-    FontAwesomeModule,
+    FontAwesomeModule
   ],
   providers: [
     AuthService,

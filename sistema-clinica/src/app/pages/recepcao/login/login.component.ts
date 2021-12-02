@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/providers/auth/auth.service';
 import { UsersService } from 'src/app/providers/users/users.service';
 
@@ -11,20 +11,16 @@ import { UsersService } from 'src/app/providers/users/users.service';
 })
 export class LoginComponent implements OnInit {
   
-  form : FormGroup = this.fb.group({
-    login: ['', Validators.email],
-    password: ['', Validators.required]
-  });
-
   constructor(
     private fb: FormBuilder,
-    private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
     private usersService: UsersService,
-  ) {
-    // this.usersService.isAuthenticated();
-   }
+  ) {}
+  form:FormGroup = this.fb.group({
+    login: ['', Validators.email],
+    password: ['', Validators.required]
+  });
   
   login: string = '';
   password: string = '';
@@ -43,6 +39,8 @@ export class LoginComponent implements OnInit {
 
     const login = this.login;
     const password = this.password;
+    console.log(login, password);
+    
     const auth = await this.authService.login({login, password})
     .then( result => {
       if (result) {
