@@ -17,10 +17,10 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private usersService: UsersService,
   ) {}
-  form:FormGroup = this.fb.group({
-    login: ['', Validators.email],
-    password: ['', Validators.required]
-  });
+  // form:FormGroup = this.fb.group({
+  //   login: ['', Validators.email],
+  //   password: ['', Validators.required]
+  // });
   
   login: string = '';
   password: string = '';
