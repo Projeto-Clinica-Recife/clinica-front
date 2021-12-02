@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate  } from '@angular/router';
 import { HomeComponent } from './pages/recepcao/home/home.component';
 import { LoginComponent } from './pages/recepcao/login/login.component';
 import { UserDetailComponent } from './pages/recepcao/user-detail/user-detail.component';
@@ -8,6 +8,7 @@ import{PatientConsultaComponent} from './pages/recepcao/patient/patient-consulta
 import { AdminHomeComponent } from './pages/admin/home/admin-home.component';
 import { CadUserComponent } from './pages/admin/user/cad-user/cad-user.component';
 import { PatientViewComponent } from './pages/recepcao/patient/patient-view/patient-view.component';
+import { AuthGuard } from 'src/app/providers/guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -16,7 +17,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'user-detail',
@@ -45,6 +47,7 @@ const routes: Routes = [
       {
         path: 'home',
         component: AdminHomeComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'cadastrar',

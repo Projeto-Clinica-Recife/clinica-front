@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
 import { Credentials } from './auth.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TokenManager } from '../token-manager/token-manager.service';
 import { UsersService } from 'src/app/providers/users/users.service';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/user';
 
 export const messageError = '';
 
@@ -62,7 +61,7 @@ export class AuthService {
             this.router.navigate(['/home']);
             break;
         }
-        
+        return res;
       })
     } catch (error: any) {
       console.log(error);
@@ -70,21 +69,10 @@ export class AuthService {
     }
   }
 
-  public isAuthenticated(){
+  public isAuthenticated(): boolean {
     const url = `${this.URL}/api/user`;
     const token = this.tokenManager.getTokenStorage();
-    console.log(token);
-    
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token,);
 
-    return this.http.get(url, {headers: headers})
-    .subscribe(res => {
-      this.router.navigate(['/home']);
-      console.log('Autorizado!');
-      
-    }, error => {
-      console.log(error);
-      this.router.navigate(['/']);
-    })
+    return !token ? false : true;
   }
 }
