@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { DoctorService } from 'src/app/providers/doctor/doctor.service';
@@ -21,6 +21,7 @@ export class PatientViewComponent implements OnInit {
     private protocolService: ProtocolService,
     private agenderService: AgenderService,
     private formBuilder: FormBuilder,
+    private element: ElementRef
   ) { }
   formAgender!: FormGroup;
   public agenderPatients: any;
@@ -30,7 +31,6 @@ export class PatientViewComponent implements OnInit {
   public patientId: any;
   public patient: any;
   public dateCurrent = new Date().toISOString().slice(0, 10);
-
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
@@ -50,6 +50,8 @@ export class PatientViewComponent implements OnInit {
     this.allProtocols();
     this.getAgender();
 
+
+   
   }
 
   showPatient() {

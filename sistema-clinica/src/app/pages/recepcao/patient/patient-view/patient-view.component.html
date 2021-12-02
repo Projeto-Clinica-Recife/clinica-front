@@ -51,20 +51,21 @@
               <tr *ngFor="let agenderPatient of agenderPatients">
                 <td>{{agenderPatient.date}}</td>
                 <td>{{agenderPatient.hour}}</td>
-                <td>{{agenderPatient.doctor_id}}</td>
+                <td>{{agenderPatient.doctor.name}}</td>
                 <td>{{agenderPatient.protocols_id}}</td>
               </tr>
             </tbody>
           </table>
           
         </div>
+        
   
       </main>
   
     </div>
 
     <!-- Modals -->
-    <div class="modal fade" id="agendar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div  class="modal fade" id="agendar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
