@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="row tm-row" style="margin-bottom: 30px;">
-            <div class="col-sm-4">
+            <div class="col-sm-12">
                 <h3> <strong>PACIENTE: </strong>{{patient.nome}}</h3>
             </div>
             <div class="col-sm-4">
@@ -20,32 +20,63 @@
             <div class="col-sm-6">            
                 <form action="" class="form-inline">  
                   <strong class="mr-2">Data: </strong>
-                  <input type="date" name="dateCurrent" class="form-control-sm" id="" [(ngModel)]="dateCurrent">
+                  <input type="date" name="dateCurrent" class="form-control-sm" id="" [(ngModel)]="dateCurrent" (change)="getAgender();">
                 </form>
             </div>
             <div class="col-sm-6 text-right">            
-                <button class="btn btn-info">Editar</button>
+                <button class="btn btn-info mr-1">Editar</button>
+                <button class="btn btn-info mr-1" data-toggle="modal" data-target="#agendar">Novo agendamento</button>
             </div>
          
         </div>
         <div class="row tm-row" style="margin-bottom: 30px;">
           <h2>Agendamentos</h2>
-          <div class="col-sm-12">
+          <div *ngIf="agenderPatients.length === 0" class="col-sm-12">
             <div class="alert alert-brow" role="alert">
               Paciente não possui agendamentos <br>
               <button class="btn btn-light" data-toggle="modal" data-target="#agendar">Agendar</button>   
 
             </div>
           </div>
+          <table class="table tab col-12" >
+            <thead *ngIf="agenderPatients.length > 0">
+              <tr>
+                <th>Data</th>
+                <th>Hora</th>
+                <th>Médico</th>
+                <th>Protocolos</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let agenderPatient of agenderPatients">
+                <td>{{agenderPatient.date | date:"dd/MM/yyyy"}}</td>
+                <td>{{agenderPatient.hour.slice(0,5)}}</td>
+                <td>{{agenderPatient.doctor}}</td>
+                <td>{{agenderPatient.protocolo}}</td>
+                <td></td>
+                <td>                 
+                  <button class="btn btn-sm btn-secondary mr-1" title="Editar Protocolo">
+                    <fa-icon [icon]="icons.faEdit"></fa-icon>
+                  </button>
+                  <button class="btn btn-sm btn-danger mr-1" title="Cancelar Protocolo">
+                    <fa-icon [icon]="icons.faCalendarTimes"></fa-icon>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
           
         </div>
+
+        <canvas  #signature id="signature-pad" class="signature-pad" width=400 height=200></canvas>
   
       </main>
   
     </div>
 
     <!-- Modals -->
-    <div class="modal fade" id="agendar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div  class="modal fade" id="agendar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -55,48 +86,41 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="" class="">
+            <form [formGroup]="formAgender" action="" class="">
                <div class="form-group">
                 <label >Data</label>
-                <input type="date" name="dateCurrent" class="form-control" id="" [(ngModel)]="dateCurrent">
+                <input type="date" name="dateCurrent" class="form-control" id="" formControlName="date" [value]="dateCurrent">
               </div>
               <div class="form-group ">
                 <label >Médico</label>
-               <select name="" id="" class="form-control">
-                 <option value="">-----------</option>
+               <select formControlName="doctor_id"  name="" id="" class="form-control">
+                 <option *ngFor="let doctor of doctors" value="{{doctor.id}}">{{doctor.name}}</option>
                </select>
               </div>
             
               <div class="form-group">
                 <label >Horario</label>
-               <select name="" id="" class="form-control">
-                 <option value="">-----------</option>
-               </select>
+              <input formControlName="hour" type="time" name="" id="" class="form-control">
+              </div>
+              <div class="form-group">
+                <label >Protocolos</label>
+                <select formControlName="protocols_id" class="js-example-basic-multiple"  id="" class="form-control" multiple>
+                  <option *ngFor="let protocol of protocols" value="{{protocol.id}}">{{protocol.descricao}}</option>
+                </select>
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-info">Agendar</button>
+            <button (click)="cadAgender()" type="button" class="btn btn-info" data-dismiss="modal">Agendar</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
-      <div id="toast" class="toast" style="position: absolute; top: 0; right: 0;">
-        <div class="toast-header">
-          <img src="..." class="rounded mr-2" alt="...">
-          <strong class="mr-auto">Bootstrap</strong>
-          <small>11 mins ago</small>
-          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="toast-body">
-          Hello, world! This is a toast message.
-        </div>
-      </div>
-    </div>
+    
   
   </body>
+
+
+  

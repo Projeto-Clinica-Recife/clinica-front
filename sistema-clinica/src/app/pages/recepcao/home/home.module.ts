@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HomeComponent } from './home.component';
 import { AuthService } from 'src/app/providers/auth/auth.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { AuthService } from 'src/app/providers/auth/auth.service';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    FontAwesomeModule
   ],
   providers: [AuthService],
   bootstrap: []

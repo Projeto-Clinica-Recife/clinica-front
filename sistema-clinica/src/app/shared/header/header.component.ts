@@ -15,8 +15,23 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private usersService: UsersService,
   ) { }
+  
+  public rota: string = '/home';
 
   ngOnInit(): void {
+    if (this.profile) { 
+      switch (this.profile.type_user){
+        case 'admin':
+          this.rota = 'admin/home';
+          break;
+        case 'reception':
+          this.rota = '/home';
+          break;
+        case 'doctor':
+          this.rota = 'doctor/home';
+          break;
+      }
+    }
   }
 
   logout(){

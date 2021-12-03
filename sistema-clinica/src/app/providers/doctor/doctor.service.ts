@@ -7,7 +7,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class DoctorService {
-  private URL = `http://localhost:8000/doctor`;
+
+  private URL = `${environment.api_url}/doctor`;
 
   constructor(
     private http: HttpClient
@@ -18,8 +19,11 @@ export class DoctorService {
       return this.http.post(url,doctor);
     }
 
-    getDoctor(search: any): Observable<any> {
-      const url = `${this.URL}/${search}`;
+    // getDoctor(search: any): Observable<any> {
+    //   const url = `${this.URL}/${search}`;
+
+    getDoctors(): Observable<any> {
+      const url = `${this.URL}/doctors`;
       return this.http.get(url);
     }
 }

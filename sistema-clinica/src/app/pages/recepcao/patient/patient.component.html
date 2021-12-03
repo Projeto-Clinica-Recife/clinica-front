@@ -20,7 +20,7 @@
                     </div>
                     <div class="form-group">
                       <label>CPF</label>
-                      <input type="number" class="form-control" formControlName="cpf">
+                      <input type="text" class="form-control" formControlName="cpf">
                     </div>
                     <div class="form-group">
                       <label>RG</label>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group">
                       <label>CEP</label>
-                      <input type="number" class="form-control" formControlName="cep">
+                      <input type="number" class="form-control" formControlName="cep" (keyup)="viaCep()">
                     </div>
                     <div class="form-group">
                       <label>Rua</label>

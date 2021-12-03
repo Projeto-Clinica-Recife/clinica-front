@@ -1,17 +1,19 @@
 import { HomeDoctorComponent } from './pages/doctors/home-doctor/home-doctor.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate  } from '@angular/router';
 import { HomeComponent } from './pages/recepcao/home/home.component';
 import { LoginComponent } from './pages/recepcao/login/login.component';
-import { UserDetailComponent } from './pages/recepcao/user-detail/user-detail.component';
-import { PatientComponent } from './pages/recepcao/patient/patient.component';
-import { PatientConsultaComponent } from './pages/recepcao/patient/patient-consulta/patient-consulta.component';
 import { RecepcaoModule } from "./pages/recepcao/recepcao.module";
 import { AdminHomeComponent } from './pages/admin/home/admin-home.component';
 import { CadUserComponent } from './pages/admin/user/cad-user/cad-user.component';
 import { PatientViewComponent } from './pages/recepcao/patient/patient-view/patient-view.component';
 import { DoctorConsultaComponent } from './pages/doctors/doctor/doctor-consulta/doctor-consulta.component';
 import { DoctorViewComponent } from './pages/doctors/doctor/doctor-view/doctor-view.component';
+import{PatientComponent} from './pages/recepcao/patient/patient.component';
+import{PatientConsultaComponent} from './pages/recepcao/patient/patient-consulta/patient-consulta.component';
+import { AuthGuard } from 'src/app/providers/guard/auth.guard';
+import { CadPatientComponent } from './pages/recepcao/cad-patient/cad-patient.component';
+
 
 const routes: Routes = [
   {
@@ -20,11 +22,12 @@ const routes: Routes = [
   },
   {
     path: 'home',
-   component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard],
   },
   {
-    path: 'user-detail',
-    component: UserDetailComponent
+    path: 'cadastro-paciente',
+    component: CadPatientComponent
   },
   {
     path:'paciente',
@@ -49,10 +52,12 @@ const routes: Routes = [
       {
         path: 'home',
         component: AdminHomeComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'cadastrar',
         component: CadUserComponent,
+        canActivate: [AuthGuard],
       }
     ]
   },

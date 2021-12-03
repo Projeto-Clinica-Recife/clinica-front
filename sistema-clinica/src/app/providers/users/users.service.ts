@@ -16,8 +16,7 @@ export class UsersService {
     private router: Router,
     private tokenManager: TokenManager,
   ) { }
-  
-  
+
   get_profile(){
     const user = JSON.parse(localStorage.getItem('profile')!);
     return user;
@@ -39,12 +38,9 @@ export class UsersService {
     );
   }
 
-  cad_user(form: any){
+  async cad_user(form: any){
     const url = `${this.URL}/api/register`;
-    return this.http.post(url, form).subscribe(data => {
-      this.router.navigate(['/admin/home']);
-    }, error => {
-        console.log(error);
-    });
+    return this.http.post<any>(url, form);
   }
+
 }
