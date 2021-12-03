@@ -45,6 +45,7 @@
                 <th>Hora</th>
                 <th>Médico</th>
                 <th>Protocolos</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
@@ -53,12 +54,22 @@
                 <td>{{agenderPatient.hour.slice(0,5)}}</td>
                 <td>{{agenderPatient.doctor}}</td>
                 <td>{{agenderPatient.protocolo}}</td>
+                <td></td>
+                <td>                 
+                  <button class="btn btn-sm btn-secondary mr-1" title="Editar Protocolo">
+                    <fa-icon [icon]="icons.faEdit"></fa-icon>
+                  </button>
+                  <button class="btn btn-sm btn-danger mr-1" title="Cancelar Protocolo">
+                    <fa-icon [icon]="icons.faCalendarTimes"></fa-icon>
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>
           
         </div>
-        
+
+        <canvas  #signature id="signature-pad" class="signature-pad" width=400 height=200></canvas>
   
       </main>
   
@@ -110,5 +121,6 @@
     
   
   </body>
+
 
   

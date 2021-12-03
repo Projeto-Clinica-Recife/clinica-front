@@ -1,10 +1,12 @@
-import { Component, ElementRef, OnInit, OnDestroy } from '@angular/core';
+import { Component, ElementRef, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { DoctorService } from 'src/app/providers/doctor/doctor.service';
 import { PatientService } from 'src/app/providers/patient/patient.service';
 import { ProtocolService } from 'src/app/providers/protocol/protocol.service';
 import { AgenderService } from 'src/app/providers/agender/agender.service';
+import SignaturePad from 'signature_pad';
+import { faCalendarTimes, faEdit} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-patient-view',
@@ -23,6 +25,10 @@ export class PatientViewComponent implements OnInit {
     private formBuilder: FormBuilder,
     private element: ElementRef
   ) { }
+  icons ={
+    faCalendarTimes,
+    faEdit
+  } 
   formAgender!: FormGroup;
   public agenderPatients: any;
   public doctors: any;
@@ -31,11 +37,10 @@ export class PatientViewComponent implements OnInit {
   public patientId: any;
   public patient: any;
   public interval: any;
-  public dateCurrent = new Date().toISOString().slice(0, 10);
+  public dateCurrent = new Date().toLocaleString("pt-BR", {timeZone: "America/Recife"}).substr(0, 10).split('/').reverse().join('-');
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
-      console.log(params.id);
       this.patientId = params.id;
     });
     this.formAgender = this.formBuilder.group({
@@ -60,6 +65,16 @@ export class PatientViewComponent implements OnInit {
       clearInterval(this.interval);
     }
   }
+
+  // @ViewChild('signature',{static: false}) canvas!: ElementRef;
+
+  // ngAfterViewInit() {
+  //    let el = this.canvas.nativeElement;
+  //    el.style.color = 'white';
+  //   el.style.background = 'red';
+  //   const signaturePad = new SignaturePad(el);
+
+  // }
 
   showPatient() {
     this.patientService.getPatient(this.patientId).subscribe(

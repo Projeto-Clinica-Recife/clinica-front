@@ -5,11 +5,11 @@ import { Router } from '@angular/router'
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-patient',
-  templateUrl: './patient.component.html',
-  styleUrls: ['./patient.component.scss']
+  selector: 'app-cad-patient',
+  templateUrl: './cad-patient.component.html',
+  styleUrls: ['./cad-patient.component.scss']
 })
-export class PatientComponent implements OnInit {
+export class CadPatientComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
@@ -19,10 +19,10 @@ export class PatientComponent implements OnInit {
   ) { }
   
   public end: any;
-  formRecp!: FormGroup;
+  formPatient!: FormGroup;
 
   ngOnInit(): void {
-    this.formRecp = this.formBuilder.group({
+    this.formPatient = this.formBuilder.group({
       nome: [null],
       data_nascimento: [null],
       cpf: [null],
@@ -42,7 +42,7 @@ export class PatientComponent implements OnInit {
 
   cadPatient(): void {
     const formValue = {
-      ...this.formRecp.value,
+      ...this.formPatient.value,
     };
     console.log(formValue);
     this.patientService.post(formValue).subscribe(
@@ -58,10 +58,10 @@ export class PatientComponent implements OnInit {
   }
 
   async viaCep() {
-    this.http.get(`https://viacep.com.br/ws/${this.formRecp.value.cep}/json`).subscribe(resultado => {
+    this.http.get(`https://viacep.com.br/ws/${this.formPatient.value.cep}/json`).subscribe(resultado => {
       this.end = resultado;
       console.log(this.end);
-      this.formRecp.patchValue({
+      this.formPatient.patchValue({
         rua: this.end.logradouro,
         bairro: this.end.bairro,
         cidade: this.end.localidade,
@@ -70,5 +70,4 @@ export class PatientComponent implements OnInit {
     });
 
   }
-
 }

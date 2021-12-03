@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, CanActivate  } from '@angular/router';
 import { HomeComponent } from './pages/recepcao/home/home.component';
 import { LoginComponent } from './pages/recepcao/login/login.component';
-import { UserDetailComponent } from './pages/recepcao/user-detail/user-detail.component';
+
 import{PatientComponent} from './pages/recepcao/patient/patient.component';
 import{PatientConsultaComponent} from './pages/recepcao/patient/patient-consulta/patient-consulta.component';
 import { AdminHomeComponent } from './pages/admin/home/admin-home.component';
 import { CadUserComponent } from './pages/admin/user/cad-user/cad-user.component';
 import { PatientViewComponent } from './pages/recepcao/patient/patient-view/patient-view.component';
 import { AuthGuard } from 'src/app/providers/guard/auth.guard';
+import { CadPatientComponent } from './pages/recepcao/cad-patient/cad-patient.component';
+
 
 const routes: Routes = [
   {
@@ -21,8 +23,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'user-detail',
-    component: UserDetailComponent
+    path: 'cadastro-paciente',
+    component: CadPatientComponent
   },
   {
     path:'paciente',
