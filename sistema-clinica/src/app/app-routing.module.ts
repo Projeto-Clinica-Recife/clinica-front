@@ -52,6 +52,7 @@ const routes: Routes = [
       {
         path: 'cadastrar',
         component: CadUserComponent,
+        canActivate: [AuthGuard],
       }
     ]
   }

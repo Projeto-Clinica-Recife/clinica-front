@@ -19,11 +19,14 @@ export class CadUserComponent implements OnInit {
   formUser!: FormGroup;
   isDoctor: boolean = false;
   
-  error = {
-    hasError: false,
-    messageError:  '',
+  success = {
+    messageSuccess: '',
+    isSuccess: false,
   }
-  messageSuccess: string = ''
+  error = {
+    messageError: '',
+    hasError: false,
+  }
 
   ngOnInit(): void {
     this.formUser = new FormGroup({
@@ -34,13 +37,13 @@ export class CadUserComponent implements OnInit {
         Validators.required,
       ]),
       cpf: new FormControl(null, [
-        Validators.required, Validators.minLength(11), Validators.maxLength(11),
+        // Validators.required, Validators.minLength(11), Validators.maxLength(11),
       ]),
       type_user: new FormControl(null, [
         Validators.required,
       ]),
       telephone: new FormControl(null, [
-        Validators.required, Validators.minLength(10), Validators.maxLength(11)
+        // Validators.required, Validators.minLength(10), Validators.maxLength(11),
       ]),
       crm: new FormControl(null),
     });
@@ -62,20 +65,30 @@ export class CadUserComponent implements OnInit {
     const formValue ={
       ...this.formUser.value,
     }
-    await this.usersService.cad_user(formValue)
-    .then(result => {
-      if(result.status != 200){
-        this.error.messageError = result.error.error;
-        this.error.hasError = true;  
-      }else{
-        this.messageSuccess = 'Cadastro realizado com sucesso!';
+    await (await this.usersService.cad_user(formValue)).subscribe(
+      async ({ statusCode }) => {
+        if (statusCode === 200) {
+          this.success.isSuccess = true;
+          this.success.messageSuccess = 'Cadastro realizado com sucesso!';
+          this.formUser.reset();
+          setTimeout(() => {this.router.navigate(['/admin/home']);}, 2000);
+        }
+      }, async ({ error }) => {
+        console.log(error);
+        if(error.statusCode === 422){
+          this.error.messageError = 'Por favor, verifique se todos os campos estão preenchidos!';
+        }else{   
+          this.error.messageError = error.error;
+        }
+        this.error.hasError = true;
       }
-    });
+    )
   }
 
   closeAlert() {
     var elem = document.querySelector('.alert');
     elem!.parentNode!.removeChild(elem!);
     this.error.hasError = false;
+    this.success.isSuccess = false;
   }
 }
