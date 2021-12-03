@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { HomeMedicoComponent } from './home-medico/home-medico.component';
+import { HomeDoctorComponent } from './home-doctor/home-doctor.component';
 
 
 
 @NgModule({
   declarations: [
-    HomeMedicoComponent
+    HomeDoctorComponent
   ],
   imports: [
     CommonModule,

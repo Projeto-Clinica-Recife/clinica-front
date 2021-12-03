@@ -1,3 +1,4 @@
+import { HomeDoctorComponent } from './pages/doctors/home-doctor/home-doctor.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/recepcao/home/home.component';
@@ -9,6 +10,8 @@ import { RecepcaoModule } from "./pages/recepcao/recepcao.module";
 import { AdminHomeComponent } from './pages/admin/home/admin-home.component';
 import { CadUserComponent } from './pages/admin/user/cad-user/cad-user.component';
 import { PatientViewComponent } from './pages/recepcao/patient/patient-view/patient-view.component';
+import { DoctorConsultaComponent } from './pages/doctors/doctor/doctor-consulta/doctor-consulta.component';
+import { DoctorViewComponent } from './pages/doctors/doctor/doctor-view/doctor-view.component';
 
 const routes: Routes = [
   {
@@ -50,6 +53,23 @@ const routes: Routes = [
       {
         path: 'cadastrar',
         component: CadUserComponent,
+      }
+    ]
+  },
+  {
+    path:'medico',
+    children: [
+      {
+        path: 'home-medico',
+        component: HomeDoctorComponent,
+      },
+      {
+        path: 'consulta',
+        component: DoctorConsultaComponent
+      },
+      {
+        path: 'ver-doctor',
+        component: DoctorViewComponent
       }
     ]
   }
