@@ -49,10 +49,10 @@
             </thead>
             <tbody>
               <tr *ngFor="let agenderPatient of agenderPatients">
-                <td>{{agenderPatient.date}}</td>
-                <td>{{agenderPatient.hour}}</td>
-                <td>{{agenderPatient.doctor.name}}</td>
-                <td>{{agenderPatient.protocols_id}}</td>
+                <td>{{agenderPatient.date | date:"dd/MM/yyyy"}}</td>
+                <td>{{agenderPatient.hour.slice(0,5)}}</td>
+                <td>{{agenderPatient.doctor}}</td>
+                <td>{{agenderPatient.protocolo}}</td>
               </tr>
             </tbody>
           </table>
@@ -101,7 +101,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button (click)="cadAgender()" type="button" class="btn btn-info">Agendar</button>
+            <button (click)="cadAgender()" type="button" class="btn btn-info" data-dismiss="modal">Agendar</button>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { DoctorService } from 'src/app/providers/doctor/doctor.service';
@@ -30,6 +30,7 @@ export class PatientViewComponent implements OnInit {
   public checkProtocols: any;
   public patientId: any;
   public patient: any;
+  public interval: any;
   public dateCurrent = new Date().toISOString().slice(0, 10);
 
   ngOnInit(): void {
@@ -45,13 +46,19 @@ export class PatientViewComponent implements OnInit {
       patient_id: [this.patientId]
 
     });
+    this.getAgender();
+    // this.interval = setInterval(() => {
+    //   this.getAgender();
+    // }, 1500);
     this.showPatient();
     this.allDoctors();
     this.allProtocols();
-    this.getAgender();
+  }
 
-
-   
+  ngOnDestroy(): void {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
   }
 
   showPatient() {
@@ -82,19 +89,23 @@ export class PatientViewComponent implements OnInit {
     );
   }
 
-  cadAgender(){
+  cadAgender() {
     const formValue = {
       ...this.formAgender.value,
     };
     this.agenderService.postAgender(formValue).subscribe(
       async (result) => {
         console.log(result);
+        
+        this.formAgender.reset({
+          date: this.dateCurrent,
+        });
       }
     );
 
   }
 
-  getAgender( ){
+  getAgender() {
     this.agenderService.getAgender(this.patientId, this.dateCurrent).subscribe(
       async (result) => {
         console.log(result);
@@ -102,5 +113,8 @@ export class PatientViewComponent implements OnInit {
       }
     );
   }
+
+ 
+
 
 }
