@@ -31,10 +31,6 @@ const routes: Routes = [
     component: CadPatientComponent
   },
   {
-    path: 'homeusuario',
-    component: HomeUserComponent
-  },
-  {
     path: 'paciente',
     children: [
       {
@@ -83,7 +79,25 @@ const routes: Routes = [
         component: SettingsComponent
       }
     ]
-  }
+  },
+  {
+    path: 'usuario',
+    children: [
+      {
+        path: 'home-paciente',
+        component: HomeUserComponent
+      }
+      // {
+      //   path: 'cadastrar',
+      //   component:
+      // },
+      // {
+      //   path: 'assinar',
+      //   component:
+      // }
+    ]
+  },
+
 ];
 
 @NgModule({
