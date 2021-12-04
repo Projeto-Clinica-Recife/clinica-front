@@ -23,4 +23,9 @@ export class AgenderService {
       const url = `${this.URL}/${id}/${date}`;
       return this.http.get(url);
     }
+  
+  cancelAgenderProtocol(id: number){
+      const url = `${this.URL}/cancel-agender/${id}`;
+      return this.http.put(url,id);
+    }
 }

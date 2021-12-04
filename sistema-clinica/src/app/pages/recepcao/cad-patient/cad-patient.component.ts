@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { PatientService } from '../../../providers/patient/patient.service';
+import { Component, ElementRef, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { Router } from '@angular/router'
+import { PatientService } from 'src/app/providers/patient/patient.service';
+import SignaturePad from 'signature_pad';
 import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-cad-patient',
   templateUrl: './cad-patient.component.html',
   styleUrls: ['./cad-patient.component.scss']
 })
+
 export class CadPatientComponent implements OnInit {
 
   constructor(
@@ -17,9 +20,10 @@ export class CadPatientComponent implements OnInit {
     private router: Router,
     private http: HttpClient
   ) { }
-  
+
   public end: any;
   formPatient!: FormGroup;
+  signaturePad: any;
 
   ngOnInit(): void {
     this.formPatient = this.formBuilder.group({
@@ -36,25 +40,54 @@ export class CadPatientComponent implements OnInit {
       estado: [null],
       complemento: [null],
       ponto_referencia: [null],
-      signature:['Assinatura não coletada. Cadastro feito na recepção']
+      signature: [null]
     });
   }
 
+  @ViewChild('signature', { static: false }) canvas!: ElementRef;
+
+  ngAfterViewInit() {
+    let el = this.canvas.nativeElement;
+    el.style.color = 'white';
+    this.signaturePad = new SignaturePad(el);
+
+  }
+
+  clearSignature() {
+    this.signaturePad.clear();
+  }
+
+  dataSignature() {
+    const data = this.signaturePad.toDataURL()
+    return data;
+  }
+
+  verifySignature() {
+    return this.signaturePad.isEmpty();
+  }
+
   cadPatient(): void {
-    const formValue = {
-      ...this.formPatient.value,
-    };
-    console.log(formValue);
-    this.patientService.post(formValue).subscribe(
-      async (result) => {
-        alert('Paciente cadastro com sucesso')
-        console.log(result);  
-        this.router.navigateByUrl('/home');
-      },
-      async ({ error }) => {
-        console.log(error);
-      },
-    );
+    if (this.verifySignature()) {
+      alert('Campo de assinatura vazio');
+    } else {
+      this.formPatient.patchValue({
+        signature: this.dataSignature()
+      });
+      const formValue = {
+        ...this.formPatient.value,
+      };
+      console.log(formValue);
+      this.patientService.post(formValue).subscribe(
+        async (result) => {
+          alert('Paciente cadastro com sucesso')
+          console.log(result);
+          this.formPatient.reset();
+        },
+        async ({ error }) => {
+          console.log(error);
+        },
+      );
+    }
   }
 
   async viaCep() {
