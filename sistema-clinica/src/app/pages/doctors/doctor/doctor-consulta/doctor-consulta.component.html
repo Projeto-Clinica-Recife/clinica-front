@@ -1,0 +1,50 @@
+<body>
+  <div class="container-fluid">
+    <main class="tm-main">
+      <div class="row tm-row titulo-header">
+        <div class="col-12">
+          <h2>Consultar Horários</h2>
+        </div>
+      </div>
+      <div class="row tm-row" style="margin-bottom: 30px;">
+        <div class="col-sm-6">
+          <form action="" class="form-inline">
+            <strong class="mr-2">Data: </strong>
+            <input type="date" name="dateCurrent" class="form-control-sm" id="" [(ngModel)]="dateCurrent"
+              (change)="getAgenda();">
+          </form>
+        </div>
+      </div>
+      <div class="row tm-row" style="margin-bottom: 30px;">
+        <h2>Agendamentos:</h2>
+        <div *ngIf="agendamentoDoctor.length === 0" class="col-sm-12">
+          <div class="alert alert-brow" role="alert">
+            Médico não possui consultas agendadas para esta data!<br>
+          </div>
+        </div>
+        <table class="table tab col-12">
+          <thead *ngIf="agendamentoDoctor.length > 0">
+            <a>
+              <tr>
+                <!-- <th>Data</th> -->
+                <th>Hora</th>
+                <th>Paciente</th>
+                <th>Status</th>
+              </tr>
+            </a>
+          </thead>
+          <tbody>
+            <tr *ngFor="let agendamentoDoctor of agendamentoDoctor">
+              <a [routerLink]="['../consulta', agendamentoDoctor.patient_id]">
+                <!-- <td>{{agenderPatient.date | date:"dd/MM/yyyy"}}</td> -->
+                <td class="colunas">{{agendamentoDoctor.hour.slice(0,5)}}</td>
+                <td class="colunas">{{agendamentoDoctor.patient}}</td>
+                <td class="colunas">{{translateStatus(agendamentoDoctor.status)}}</td>
+              </a>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</body>

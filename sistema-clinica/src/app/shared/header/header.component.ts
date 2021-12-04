@@ -1,3 +1,4 @@
+import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenManager } from 'src/app/providers/token-manager/token-manager.service';
@@ -9,17 +10,29 @@ import { UsersService } from 'src/app/providers/users/users.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  profile = this.usersService.get_profile();
+
+  profile!:any;
+
   constructor(
     private tokenManager: TokenManager,
     private router: Router,
     private usersService: UsersService,
-  ) { }
-  
+  ) {
+    this.profile = this.usersService.get_profile();
+   }
+
   public rota: string = '/home';
+  public rotaConsulta: string = '/medico/consulta';
+  public rotaEditarPerfil: string = '/medico/editar-medico';
+
+  activeInicial = 'active';
+  activeAgenda = '';
+  activeEditar = '';
+
+
 
   ngOnInit(): void {
-    if (this.profile) { 
+    if (this.profile) {
       switch (this.profile.type_user){
         case 'admin':
           this.rota = 'admin/home';
@@ -28,7 +41,7 @@ export class HeaderComponent implements OnInit {
           this.rota = '/home';
           break;
         case 'doctor':
-          this.rota = 'doctor/home';
+          this.rota = 'medico/home-medico';
           break;
       }
     }
@@ -37,5 +50,7 @@ export class HeaderComponent implements OnInit {
   logout(){
     this.tokenManager.remove();
   }
+
+
 
 }

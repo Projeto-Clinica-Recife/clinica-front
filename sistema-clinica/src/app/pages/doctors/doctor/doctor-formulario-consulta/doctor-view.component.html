@@ -1,0 +1,87 @@
+<body>
+  <div class="container-fluid">
+    <main class="tm-main">
+      <div class="row tm-row titulo-header">
+        <div class="col-12">
+          <h2>Consultar Horários</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label>Nome Completo: {{ patient.nome }}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <label>Idade: {{ idade }} anos</label>
+        </div>
+        <div class="col-4">
+          <label>CPF: {{ patient.cpf }} </label>
+        </div>
+        <div class="col-4">
+          <label>Data: {{ dateCurrent | date:"dd/MM/yyyy" }} </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <form [formGroup]="formQueryPacient">
+            <div class="form-group">
+              <label>Principais queixas do paciente:</label>
+              <textarea class="form-control consulta-size" formControlName="plaint"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Protocolos indicados: </label>
+              <textarea class="form-control consulta-size" formControlName="protocols"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Observações:</label>
+              <textarea type="text" class="form-control consulta-size" formControlName="observation"></textarea>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class='col-6'>
+          <button type="button" (click)="saveFormQuery()" class="btn btn-block btn-primary mb-5">Salvar
+            Consulta</button>
+        </div>
+        <div class='col-6'>
+          <button class="btn btn-block btn-primary mb-5" data-toggle="modal" data-target="#receita">Gerar
+            Receita</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+
+  <!-- Modal Receita -->
+  <div class="modal fade" id="receita" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLongTitle">Receituário</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formReceita" action="" class="">
+            <div class="form-group">
+              <label>Prescição</label><br>
+              <textarea placeholder="Descreva a prescrição do seu receituário" name="dateCurrent"
+                class="form-control receita-size" id="" formControlName="date" [value]="dateCurrent"></textarea>
+            </div>
+            <div>
+
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button (click)="gerarReceita()" type="button" class="btn btn-info" data-dismiss="modal">Gerar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

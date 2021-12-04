@@ -1,0 +1,100 @@
+:host{
+
+  .botao-grid{
+      color: white;
+      text-align: center;
+      padding-top: 30px;
+      padding-bottom: 10px;
+      background-color:  rgb(146, 133, 109);
+  }
+  .botao-grid h2{
+      position: relative;
+      left: -15px;
+      transition: 0.7s;
+  }
+
+  .botao-grid:hover h2{
+  transition: 0.7s;
+  left: 30px;
+  }
+
+  }
+
+  table {
+    width: 100%;
+  }
+
+  .container{
+    padding: 20px 20px;
+  }
+
+
+  tr.example-detail-row {
+    height: 0;
+  }
+
+  tr.example-element-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+  }
+
+  tr.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+  }
+
+  .example-element-row td {
+    border-bottom-width: 0;
+  }
+
+  .example-element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+
+  .example-element-diagram {
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+  }
+
+  .example-element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+  }
+
+  .example-element-description {
+    padding: 16px;
+  }
+
+  .example-element-description-attribution {
+    opacity: 0.5;
+  }
+
+  .mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  .mat-row:hover .mat-cell {
+    border-color: currentColor;
+  }
+
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }
+
+  .larguraColuna {
+    margin-right: 2% !important;
+  }
+
+  .header {
+    margin-top: 2%;
+    color:  rgb(140, 124, 94);
+  }
+
+
+

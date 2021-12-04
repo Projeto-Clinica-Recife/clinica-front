@@ -1,0 +1,46 @@
+<body>
+  <div class="container-fluid">
+    <main class="tm-main">
+      <div class="row tm-row titulo-header">
+        <div class="col-12">
+          <h2>Editar perfil</h2>
+        </div>
+      </div>
+
+
+      <div class="">
+          <form [formGroup]="formEditDoctor"  class="col-12" >
+            <div class="form-group">
+              <label >Nome Completo</label>
+              <input type="text" class="form-control" formControlName="name">
+            </div>
+            <div class="form-group">
+              <label>CPF</label>
+              <input type="text" class="form-control" formControlName="cpf">
+            </div>
+            <div class="form-group">
+              <label>E-mail</label>
+              <input type="email" class="form-control" formControlName="email">
+            </div>
+            <div class="form-group">
+              <label>Telefone</label>
+              <input type="telephone" class="form-control" formControlName="telephone">
+            </div>
+            <div class="form-group">
+              <label>CRM</label>
+              <input type="number" class="form-control" formControlName="crm">
+            </div>
+            <div class="form-group">
+              <label>UF</label>
+              <input type="text" class="form-control" formControlName="crm_state">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" [routerLink]="'/medico/home-medico'">Cancelar</button>
+          <button (click)="updateDoctor(doctor.id)" type="button" class="btn btn-save" data-dismiss="modal">Editar</button>
+        </div>
+
+    </main>
+  </div>
+</body>

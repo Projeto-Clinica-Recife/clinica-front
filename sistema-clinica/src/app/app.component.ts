@@ -14,10 +14,10 @@ export class AppComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
-  ) { 
+  ) {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd){
-        if(event.url === '/' || event.url ==='/cadastro-paciente'){
+        if(event.url === '/' || event.url ==='/cadastro-paciente' || event.url ==='/usuario/home-paciente'){
           this.showHeader = false;
         } else{
           this.showHeader = true;
