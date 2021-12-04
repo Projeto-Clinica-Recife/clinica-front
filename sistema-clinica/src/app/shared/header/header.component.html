@@ -1,40 +1,50 @@
 <header class="tm-header" id="tm-header">
-    <div class="tm-header-wrapper">
-        <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="tm-site-header">
-            <div class="mb-3 mx-auto ">
-              <img src="../../../assets/img/logomarcaInstitutoCoelhoBranca.png" alt="Image" class="img-fluid">
-            </div>
-            <h4 class="text-center">Emagrecimento e Performance Humana</h4>
-            <div class="logout">
-                <p *ngIf="profile">Bem vindo(a), {{profile.name}}</p>
-                <a href="" (click)="logout()" class="link">Sair</a>
-            </div>
-        </div>
-        <nav class="tm-nav" id="tm-nav">
-            <ul>
-                <li class="tm-nav-item active"><a routerLink="{{ rota }}" class="tm-nav-link">
-                    <i class="fas fa-home"></i>
-                    Tela Inicial
-                </a></li>
-                <li *ngIf="profile.type_user != 'doctor'" class="tm-nav-item"><a href="index.html" class="tm-nav-link">
-                    <i class="fas fa-pen"></i>
-                    Agenda
-                </a></li>
-                <li *ngIf="profile.type_user != 'doctor'" class="tm-nav-item"><a href="index.html" class="tm-nav-link">
-                    <i class="fas fa-calculator"></i>
-                    Financeiro
-                </a></li>
-
-              <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item"><a routerLink="{{ rotaEditarPerfil }}" class="tm-nav-link">
-                <i class="far fa-comments"></i>
-                Editar Perfil
-            </a></li>
-            </ul>
-        </nav>
-
-
+  <div class="tm-header-wrapper">
+    <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="tm-site-header">
+      <div class="mb-3 mx-auto ">
+        <img src="../../../assets/img/logomarcaInstitutoCoelhoBranca.png" alt="Image" class="img-fluid">
+      </div>
+      <h4 class="text-center">Emagrecimento e Performance Humana</h4>
+      <div class="logout">
+        <p *ngIf="profile">Bem vindo(a), {{profile.name}}</p>
+        <a href="" (click)="logout()" class="link">Sair</a>
+      </div>
     </div>
+    <nav class="tm-nav" id="tm-nav">
+      <ul>
+        <li class="tm-nav-item active"><a routerLink="{{ rota }}" class="tm-nav-link">
+            <i class="fas fa-home"></i>
+            Tela Inicial
+          </a></li>
+        <li *ngIf="profile.type_user != 'doctor'" class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+            <i class="fas fa-pen"></i>
+            Agenda
+          </a></li>
+        <li *ngIf="profile.type_user != 'doctor'" class="tm-nav-item"><a routerLink="{{ rota }}"
+          class="tm-nav-link">
+            <i class="fas fa-calculator"></i>
+            Financeiro
+          </a></li>
+
+        <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item"><a routerLink="{{ rotaEditarPerfil }}"
+            class="tm-nav-link">
+            <i class="far fa-comments"></i>
+            Editar Perfil
+          </a></li>
+
+        <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item"><a routerLink="{{ rota }}"
+            class="tm-nav-link">
+            <i class="far fa-comments"></i>
+            Relatórios
+          </a></li>
+
+
+      </ul>
+    </nav>
+
+
+  </div>
 </header>

@@ -12,9 +12,9 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-3">
+        <!-- <div class="col-3">
           <label>Idade: {{ idade }} anos</label>
-        </div>
+        </div> -->
         <div class="col-4">
           <label>CPF: {{ patient.cpf }} </label>
         </div>
@@ -42,13 +42,14 @@
       </div>
       <div class="row">
         <div class='col-6'>
-          <button type="button" (click)="saveFormQuery()" class="btn btn-block btn-primary mb-5">Salvar
-            Consulta</button>
-        </div>
-        <div class='col-6'>
           <button class="btn btn-block btn-primary mb-5" data-toggle="modal" data-target="#receita">Gerar
             Receita</button>
         </div>
+        <div class='col-6'>
+          <button type="button" (click)="saveFormQuery()" class="btn btn-block btn-primary mb-5">Salvar
+            Consulta</button>
+        </div>
+
       </div>
     </main>
   </div>
@@ -66,14 +67,13 @@
           </button>
         </div>
         <div class="modal-body">
-          <form [formGroup]="formReceita" action="" class="">
+          <form [formGroup]="formReceita">
             <div class="form-group">
               <label>Prescição</label><br>
-              <textarea placeholder="Descreva a prescrição do seu receituário" name="dateCurrent"
-                class="form-control receita-size" id="" formControlName="date" [value]="dateCurrent"></textarea>
+              <textarea placeholder="Descreva a prescrição do seu receituário" nome="prescription"
+                class="form-control receita-size" id="prescription" formControlName="prescription"></textarea>
             </div>
             <div>
-
             </div>
           </form>
         </div>

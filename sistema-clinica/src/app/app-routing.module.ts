@@ -71,7 +71,7 @@ const routes: Routes = [
         ,
       },
       {
-        path: 'consulta/:patient_id',
+        path: 'consulta/:patient_id/:item_id',
         component: DoctorViewComponent
       },
       {
@@ -82,6 +82,7 @@ const routes: Routes = [
   },
   {
     path: 'usuario',
+    component: HomeUserComponent,
     children: [
       {
         path: 'home-paciente',
