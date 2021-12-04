@@ -5,6 +5,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { PatientComponent } from './patient/patient.component';
 import { CadPatientComponent } from './cad-patient/cad-patient.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [{
   path: '',
@@ -21,12 +22,14 @@ const routes: Routes = [{
 
 @NgModule({
   declarations: [
-    CadPatientComponent
+    CadPatientComponent,
+
   ],
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forChild(routes)
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class RecepcaoModule {

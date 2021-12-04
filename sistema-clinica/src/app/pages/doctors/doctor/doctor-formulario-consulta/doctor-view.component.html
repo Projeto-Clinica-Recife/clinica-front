@@ -1,0 +1,42 @@
+<body>
+  <div class="container-fluid">
+    <main class="tm-main">
+      <div class="row tm-row titulo-header">
+        <div class="col-12">
+          <h2>Consultar Horários</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label>Nome Completo: {{ paciente.nome }}</label>
+        </div>
+        <div class="col-2">
+          <label>Idade: {{ paciente.idade }} anos</label>
+        </div>
+        <div class="col-3">
+          <label>CPF {{ paciente.cpf }} </label>
+        </div>
+        <div class="col-3">
+          <label>Data: {{ dateCurrent }} </label>
+        </div>
+      </div>
+      <div class="row">
+        <form [formGroup]="formConsultaPacient">
+          <div class="form-group">
+            <label>Principais queixas do paciente:</label>
+            <input type="text" class="form-control" formControlName="queixas">
+          </div>
+          <div class="form-group">
+            <label>Protocolos indicados: </label>
+            <input type="text" class="form-control" formControlName="protocolos">
+          </div>
+          <div class="form-group">
+            <label>Observações:</label>
+            <input type="text" class="form-control" formControlName="observacoes">
+          </div>
+          <button type="button" (click)="salvarConsulta()" class="btn btn-block btn-primary mb-5">Salvar Consulta</button>
+        </form>
+      </div>
+    </main>
+  </div>
+</body>

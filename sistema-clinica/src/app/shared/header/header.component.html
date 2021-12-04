@@ -28,11 +28,6 @@
                     Financeiro
                 </a></li>
 
-                <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item"><a routerLink="{{ rotaConsulta }}" class="tm-nav-link">
-                  <i class="fas fa-pen"></i>
-                  Agenda
-                </a></li>
-
               <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item"><a routerLink="{{ rotaEditarPerfil }}" class="tm-nav-link">
                 <i class="far fa-comments"></i>
                 Editar Perfil

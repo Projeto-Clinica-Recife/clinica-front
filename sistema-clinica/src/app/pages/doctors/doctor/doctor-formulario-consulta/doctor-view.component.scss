@@ -1,5 +1,5 @@
 :host{
-  h2, h3, strong{
+  h2{
       color: rgb(110, 96, 70);
   }
   .titulo-header{
@@ -12,24 +12,19 @@
       border-color: rgb(110, 96, 70);
       box-shadow: 0px 0px 5px rgb(110, 96, 70);
   }
-
-  .alert-brow{
-      background-color: rgb(110, 96, 70) !important;
-      color: white;
-      border: none;
-      text-align: center;
-  }
-  .btn-info{
+  .btn-primary{
       background-color:rgb(110, 96, 70) !important;
       border: none;
   }
 
-  table{
-      font-size:14px;
-  }
+  .header img{
+      width: 300px;
+    }
 
-  .colunas {
-    margin: 0 15px 0 15px !important;
-  }
+  .signature-pad{
+        border: 1px solid rgb(170, 169, 169);
+        border-radius: 10px;
+        background-color: rgb(226, 226, 226);
+    }
 
 }

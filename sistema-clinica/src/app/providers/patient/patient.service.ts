@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class PatientService {
-  private URL = `http://localhost:8000/patient`;
+  private URL = `${environment.api_url}/patient`;
 
   constructor(
     private http: HttpClient
