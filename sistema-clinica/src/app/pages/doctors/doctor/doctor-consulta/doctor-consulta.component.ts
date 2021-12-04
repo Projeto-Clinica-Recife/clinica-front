@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { DoctorService } from '../../../../providers/doctor/doctor.service';
 import { Router } from '@angular/router'
+import { NgbDateStruct, NgbCalendar, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-doctor-consulta',
@@ -11,6 +12,10 @@ export class DoctorConsultaComponent implements OnInit {
   public search: any;
   public doctors:any;
 
+  model!: NgbDateStruct;
+  date!: { year: number, month: number };
+  @ViewChild('dp') dp!: NgbDatepicker;
+
   constructor(
     private doctorService: DoctorService,
     private router: Router
@@ -19,8 +24,8 @@ export class DoctorConsultaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  searchDoctor(): void {
-    this.doctorService.getDoctor(this.search).subscribe(
+  searchPatient(): void {
+    this.doctorService.getDoctors().subscribe(
       async (result) => {
         console.log(result);
         this.doctors = result;
@@ -35,4 +40,7 @@ export class DoctorConsultaComponent implements OnInit {
     return this.router.navigate(['/paciente/ver-paciente'], {queryParams: {id: id}});
   }
 
+  navigateEvent(event:any) {
+    this.date = event.next;
+  }
 }

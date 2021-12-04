@@ -73,7 +73,7 @@ const routes: Routes = [
         component: DoctorConsultaComponent
       },
       {
-        path: 'ver-doctor',
+        path: 'editar-medico',
         component: DoctorViewComponent
       }
     ]

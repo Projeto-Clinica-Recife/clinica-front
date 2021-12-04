@@ -9,39 +9,39 @@
         </div>
         <div class="row tm-row" style="margin-bottom: 30px;">
             <div class="col-sm-4">
-                <h3> <strong>PACIENTE: </strong>{{patient.nome}}</h3>
+                <h3> <strong>PACIENTE: </strong>{{doctor.nome}}</h3>
             </div>
             <div class="col-sm-4">
-                <h3> <strong>CPF: </strong>{{patient.cpf}}</h3>
+                <h3> <strong>CPF: </strong>{{doctor.cpf}}</h3>
             </div>
             <div class="col-sm-4">
-                <h3> <strong>Telefone: </strong>{{patient.cpf}}</h3>
+                <h3> <strong>Telefone: </strong>{{doctor.cpf}}</h3>
             </div>
-            <div class="col-sm-6">            
-                <form action="" class="form-inline">  
+            <div class="col-sm-6">
+                <form action="" class="form-inline">
                   <strong class="mr-2">Data: </strong>
-                  <input type="date" name="dateCurrent" class="form-control-sm" id="" [(ngModel)]="dateCurrent">
+                  <!-- <input type="date" name="dateCurrent" class="form-control-sm" id="" [(ngModel)]="dateCurrent"> -->
                 </form>
             </div>
-            <div class="col-sm-6 text-right">            
+            <div class="col-sm-6 text-right">
                 <button class="btn btn-info">Editar</button>
             </div>
-         
+
         </div>
         <div class="row tm-row" style="margin-bottom: 30px;">
           <h2>Agendamentos</h2>
           <div class="col-sm-12">
             <div class="alert alert-brow" role="alert">
               Paciente não possui agendamentos <br>
-              <button class="btn btn-light" data-toggle="modal" data-target="#agendar">Agendar</button>   
+              <button class="btn btn-light" data-toggle="modal" data-target="#agendar">Agendar</button>
 
             </div>
           </div>
-          
+
         </div>
-  
+
       </main>
-  
+
     </div>
 
     <!-- Modals -->
@@ -58,7 +58,7 @@
             <form action="" class="">
                <div class="form-group">
                 <label >Data</label>
-                <input type="date" name="dateCurrent" class="form-control" id="" [(ngModel)]="dateCurrent">
+                <!-- <input type="date" name="dateCurrent" class="form-control" id="" [(ngModel)]="dateCurrent"> -->
               </div>
               <div class="form-group ">
                 <label >Médico</label>
@@ -66,7 +66,7 @@
                  <option value="">-----------</option>
                </select>
               </div>
-            
+
               <div class="form-group">
                 <label >Horario</label>
                <select name="" id="" class="form-control">
@@ -98,5 +98,5 @@
         </div>
       </div>
     </div>
-  
+
   </body>

@@ -15,6 +15,8 @@ import { HomeModule } from './pages/recepcao/home/home.module';
 import { PatientModule } from './pages/recepcao/patient/patient.module';
 import { AdminModule } from './pages/admin/admin.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DoctorModule } from './pages/doctors/doctors.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HomeModule,
     PatientModule,
     AdminModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    DoctorModule,
+    NgbModule
   ],
   providers: [
     AuthService,

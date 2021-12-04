@@ -4,12 +4,12 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { FooterComponent } from "./footer/footer.component";
 import { HeaderComponent } from "./header/header.component";
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
 
 const components = [
   FooterComponent,
-  HeaderComponent
+  HeaderComponent,
 ];
 
 const imports = [
@@ -17,7 +17,8 @@ const imports = [
   RouterModule,
   FormsModule,
   ReactiveFormsModule,
-  BrowserAnimationsModule
+  BrowserAnimationsModule,
+  MatTableModule
 ];
 
 @NgModule({

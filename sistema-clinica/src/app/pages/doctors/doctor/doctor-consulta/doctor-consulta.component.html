@@ -1,41 +1,8 @@
 <body>
   <div class="container-fluid">
     <main class="tm-main">
-      <!-- Search form -->
-      <div class="row tm-row titulo-header">
-        <div class="col-12">
-          <h2>CONSULTA DE PACIENTE</h2>
-        </div>
-      </div>
-      <div class="row tm-row" style="margin-bottom: 30px;">
-
-        <form action="" class="col-12">
-          <div class="row">
-          <div class="col-sm-10">
-            <input type="text" name="search" id="" class="form-control" placeholder="Buscar por nome ou CPF" [(ngModel)]="search">
-          </div>
-          <div class="col-sm-2 mt-1">
-            <button type="button" class="btn btn-info btn-block" (click)="searchDoctor()" >Pesquisar</button>
-          </div>
-        </div>
-        </form>
-      </div>
-      <div class="row tm-row">
-        <table class="table tab col-12" >
-          <tbody *ngIf="doctors !== 0">
-            <tr *ngFor="let doctor of doctors">
-              <td style="width: 75%;">{{doctor.nome}}</td>
-              <td class="text-right"><button class="btn btn-secondary" (click)="viewDoctor(doctor.id)">Ver detalhes</button></td>
-            </tr>
-          </tbody>
-        </table>
-        <div *ngIf="doctors == 0" class="alert alert-danger col-12" role="alert">
-          Paciente não encontrado
-        </div>
-      </div>
-
+      <ngb-datepicker #dp [(ngModel)]="model" (navigate)="navigateEvent($event)"></ngb-datepicker>
     </main>
-
   </div>
-
+  <app-footer></app-footer>
 </body>

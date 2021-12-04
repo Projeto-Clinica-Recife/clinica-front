@@ -31,7 +31,7 @@ export class DoctorViewComponent implements OnInit {
   }
 
   showDoctor(){
-    this.doctorService.getDoctor(this.doctorId).subscribe(
+    this.doctorService.getDoctors().subscribe(
       async (result) =>{
         this.doctor = result;
         console.log(result);

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeDoctorComponent } from './home-doctor/home-doctor.component';
 import { DoctorComponent } from './doctor/doctor.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 export const routes: Routes = [{
   path: '',

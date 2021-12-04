@@ -15,22 +15,28 @@
         </div>
         <nav class="tm-nav" id="tm-nav">
             <ul>
-                <li class="tm-nav-item active"><a routerLink="{{rota}}" class="tm-nav-link">
+                <li class="tm-nav-item active"><a routerLink="{{ rota }}" class="tm-nav-link">
                     <i class="fas fa-home"></i>
                     Tela Inicial
                 </a></li>
-                <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+                <li *ngIf="profile.type_user != 'doctor'" class="tm-nav-item"><a href="index.html" class="tm-nav-link">
                     <i class="fas fa-pen"></i>
                     Agenda
                 </a></li>
-                <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+                <li *ngIf="profile.type_user != 'doctor'" class="tm-nav-item"><a href="index.html" class="tm-nav-link">
                     <i class="fas fa-calculator"></i>
                     Financeiro
                 </a></li>
-                <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
-                    <i class="far fa-comments"></i>
-                    Outro botão
+
+                <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item"><a routerLink="{{ rotaConsulta }}" class="tm-nav-link">
+                  <i class="fas fa-pen"></i>
+                  Agenda
                 </a></li>
+
+              <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item"><a routerLink="{{ rotaEditarPerfil }}" class="tm-nav-link">
+                <i class="far fa-comments"></i>
+                Editar Perfil
+            </a></li>
             </ul>
         </nav>
 

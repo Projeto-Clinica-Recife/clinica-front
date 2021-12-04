@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="row tm-row">
-                <form [formGroup]="formRecp"  class="col-12" >
+                <!-- <form [formGroup]="formRecp"  class="col-12" > -->
                     <div class="form-group">
                       <label >Nome Completo</label>
                       <input type="text" class="form-control" formControlName="nome">
@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group">
                       <label>RG</label>
-                      <input type="number" class="form-control" formControlName="rg"> 
+                      <input type="number" class="form-control" formControlName="rg">
                     </div>
                     <div class="form-group">
                       <label>E-mail</label>
@@ -62,13 +62,13 @@
                       <label>Ponto de Referência</label>
                       <input type="text" class="form-control" formControlName="ponto_referencia">
                     </div>
-                    <button type="button" (click)="cadPatient()" class="btn btn-block btn-primary">Cadastrar</button>
-                  </form>
+                    <button type="button" (click)="cadDoctor()" class="btn btn-block btn-primary">Cadastrar</button>
+                  <!-- </form> -->
             </div>
-            
+
         </main>
-        
+
         </div>
-        
+
 </body>
 
