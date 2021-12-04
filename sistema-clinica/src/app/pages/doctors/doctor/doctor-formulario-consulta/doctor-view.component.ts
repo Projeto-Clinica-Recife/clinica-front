@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
-import {Router, ActivatedRoute, Params} from '@angular/router'
+import { Router, ActivatedRoute, Params } from '@angular/router'
 import { DoctorService } from 'src/app/providers/doctor/doctor.service';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import SignaturePad from 'signature_pad';
@@ -36,6 +36,8 @@ export class DoctorViewComponent implements OnInit {
   public dateCurrent = new Date().toISOString().slice(0, 10);
   public end: any;
   formConsultaPacient!: FormGroup;
+  formReceita!: FormGroup;
+
 
   signaturePad: any;
   paciente: any;
@@ -44,13 +46,22 @@ export class DoctorViewComponent implements OnInit {
 
     this.formConsultaPacient = this.formBuilder.group({
       queixas: [null],
-      protocolos:[null],
+      protocolos: [null],
       observacoes: [null]
+    });
+
+
+    this.formReceita = this.formBuilder.group({
+      date: [this.dateCurrent],
+      doctor_id: [null],
+      hour: [null],
+      protocols_id: [null],
+      patient_id: [this.patientId]
     });
 
   }
 
-  getConsulta(){
+  getConsulta() {
     //falta o back
     this.patientId = '';
   }
@@ -67,8 +78,11 @@ export class DoctorViewComponent implements OnInit {
     );
   }
 
+  gerarReceita() {
 
-  salvarConsulta(){
+  }
+
+  salvarConsulta() {
 
   }
 

@@ -1,3 +1,4 @@
+import { HomeUserComponent } from './pages/users/home-user/home-user.component';
 import { SettingsComponent } from './pages/doctors/settings/settings.component';
 import { HomeDoctorComponent } from './pages/doctors/home-doctor/home-doctor.component';
 import { NgModule } from '@angular/core';
@@ -14,7 +15,6 @@ import { PatientComponent } from './pages/recepcao/patient/patient.component';
 import { PatientConsultaComponent } from './pages/recepcao/patient/patient-consulta/patient-consulta.component';
 import { AuthGuard } from 'src/app/providers/guard/auth.guard';
 import { CadPatientComponent } from './pages/recepcao/cad-patient/cad-patient.component';
-
 
 const routes: Routes = [
   {
@@ -79,7 +79,25 @@ const routes: Routes = [
         component: SettingsComponent
       }
     ]
-  }
+  },
+  {
+    path: 'usuario',
+    children: [
+      {
+        path: 'home-paciente',
+        component: HomeUserComponent
+      }
+      // {
+      //   path: 'cadastrar',
+      //   component:
+      // },
+      // {
+      //   path: 'assinar',
+      //   component:
+      // }
+    ]
+  },
+
 ];
 
 @NgModule({

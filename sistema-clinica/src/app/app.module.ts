@@ -17,6 +17,7 @@ import { AdminModule } from './pages/admin/admin.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DoctorModule } from './pages/doctors/doctors.module';
 import { RecepcaoModule } from './pages/recepcao/recepcao.module';
+import { UsersModule } from './pages/users/users.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { RecepcaoModule } from './pages/recepcao/recepcao.module';
     AdminModule,
     FontAwesomeModule,
     DoctorModule,
-    RecepcaoModule
+    RecepcaoModule,
+    UsersModule
   ],
   providers: [
     AuthService,

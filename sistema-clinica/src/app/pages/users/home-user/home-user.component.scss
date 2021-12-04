@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+
+.content{
+  transform: translateY(20%);
+}
+
+.alert{
+  width: 30%;
+  height: 50px;
+  padding: 5px 0 0 0;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.alert p{
+  color: #000;
+  margin-top: -20px;
+}
+
+.header{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 7%;
+}
+
+.header img{
+  width: 300px;
+}
+
+.header h1{
+  font-size: 35px;
+  padding-top: 10px;
+  color: #7f6255;
+  text-align: center;
+  font-family: 'Crimson Text', serif;
+}
+
+mat-card-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-login {
+  max-width: 350px;
+  height: 240px;
+  margin: 2em auto;
+  text-align: center;
+  border-radius: 40px;
+  background-color: #bdb39b;
+}
+
+.login-content{
+  transform: translateY(20%);
+}
+
+.input-group{
+  margin: 20px 30% 30px auto;
+  padding-left: 5%;
+  padding-right: 5%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inpt{
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  padding: 0 0 0 10px;
+  transform: translateX(0px);
+}
+
+@media only screen and (max-width: 400px){
+  .content{
+    transform: translateY(20%);
+  }
+
+  .header img{
+    width: 230px;
+  }
+
+  .inpt{
+    padding: 0 0 0 10px;
+    transform: translateX(0px);
+  }
+
+  .alert{
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 800px){
+
+  .content{
+    transform: translateY(15%);
+  }
+
+  .alert{
+    width: 90%;
+  }
+
+}
+
+
+.titulo-header{
+  padding: 30px 5px 0px 0px;
+  margin-bottom: 15px;
+  border-bottom: 5px solid  rgb(146, 133, 109);
+}
+
+
+//---------
+
+  .botao-grid{
+      color: white;
+      text-align: center;
+      padding-top: 30px;
+      padding-bottom: 10px;
+      background-color:  rgb(146, 133, 109);
+  }
+  .botao-grid h2{
+      position: relative;
+      left: -15px;
+      transition: 0.7s;
+  }
+
+  .botao-grid:hover h2{
+  transition: 0.7s;
+  left: 30px;
+  }

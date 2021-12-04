@@ -21,22 +21,64 @@
         </div>
       </div>
       <div class="row">
-        <form [formGroup]="formConsultaPacient">
-          <div class="form-group">
-            <label>Principais queixas do paciente:</label>
-            <input type="text" class="form-control" formControlName="queixas">
-          </div>
-          <div class="form-group">
-            <label>Protocolos indicados: </label>
-            <input type="text" class="form-control" formControlName="protocolos">
-          </div>
-          <div class="form-group">
-            <label>Observações:</label>
-            <input type="text" class="form-control" formControlName="observacoes">
-          </div>
-          <button type="button" (click)="salvarConsulta()" class="btn btn-block btn-primary mb-5">Salvar Consulta</button>
-        </form>
+        <div class="col">
+          <form [formGroup]="formConsultaPacient">
+            <div class="form-group">
+              <label>Principais queixas do paciente:</label>
+              <input type="text" class="form-control" formControlName="queixas">
+            </div>
+            <div class="form-group">
+              <label>Protocolos indicados: </label>
+              <input type="text" class="form-control" formControlName="protocolos">
+            </div>
+            <div class="form-group">
+              <label>Observações:</label>
+              <input type="text" class="form-control" formControlName="observacoes">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class='col-6'>
+          <button type="button" (click)="salvarConsulta()" class="btn btn-block btn-primary mb-5">Salvar
+            Consulta</button>
+        </div>
+        <div class='col-6'>
+            <button class="btn btn-block btn-primary mb-5" data-toggle="modal" data-target="#receita">Gerar Receita</button>
+        </div>
       </div>
     </main>
+  </div>
+
+
+  <!-- Modal Receita -->
+  <div class="modal fade" id="receita" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLongTitle">Receituário</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formReceita" action="" class="">
+            <div class="form-group">
+              <label>Prescição</label><br>
+              <textarea placeholder="Descreva a prescrição do seu receituário" name="dateCurrent" class="form-control receita-size" id="" formControlName="date"
+                [value]="dateCurrent"></textarea>
+            </div>
+            <div>
+
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button (click)="gerarReceita()" type="button" class="btn btn-info" data-dismiss="modal">Gerar</button>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
