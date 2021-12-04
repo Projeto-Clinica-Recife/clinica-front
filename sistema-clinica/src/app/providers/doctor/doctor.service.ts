@@ -19,14 +19,24 @@ export class DoctorService {
     return this.http.post(url, doctor);
   }
 
+  saveFormQuery(form: any): Observable<any> {
+    const url = `${this.URL}/query-patient`;
+    return this.http.post(url, form);
+  }
+
   getDoctors(): Observable<any> {
     const url = `${this.URL}/doctors`;
     return this.http.get(url);
   }
 
-
   getAgendaDoctor(id_doctor: any, dateCurrent: any): Observable<any> {
     const url = `${this.URL}/agender/${id_doctor}/${dateCurrent}`;
     return this.http.get(url);
   }
+
+  updateDoctor(formValue: any, doctorId: any): Observable<any> {
+    const url = `${environment.api_url}/user/update/${doctorId}`;
+    return this.http.put(url,formValue);
+  }
+
 }

@@ -1,11 +1,16 @@
-:host{
-  h2{
-      color: rgb(110, 96, 70);
+:host {
+  h2 {
+    color: rgb(110, 96, 70);
   }
-  .titulo-header{
-      padding: 30px 5px 0px 0px;
-      margin-bottom: 15px;
-      border-bottom: 5px solid  rgb(146, 133, 109);
+  .titulo-header {
+    padding: 30px 5px 0px 0px;
+    margin-bottom: 15px;
+    border-bottom: 5px solid rgb(146, 133, 109);
   }
 
+  .btn-save {
+    background-color: rgb(163, 163, 147) !important;
+    border: none !important;
+    color: rgb(255, 255, 255);
+  }
 }

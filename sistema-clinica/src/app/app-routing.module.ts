@@ -71,7 +71,7 @@ const routes: Routes = [
         ,
       },
       {
-        path: 'consulta/:agender_id',
+        path: 'consulta/:patient_id',
         component: DoctorViewComponent
       },
       {
