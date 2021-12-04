@@ -51,7 +51,7 @@ export class DoctorConsultaComponent implements OnInit {
       hour: [null],
       status: [null],
       patient: [null],
-      agender_id: [null]
+      patient_id: [null]
     });
 
     this.getAgenda();
@@ -88,7 +88,4 @@ export class DoctorConsultaComponent implements OnInit {
     return state;
   }
 
-  recebeID(row:any){
-
-  }
 }

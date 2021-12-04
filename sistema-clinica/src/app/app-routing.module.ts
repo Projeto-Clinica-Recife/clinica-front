@@ -1,3 +1,4 @@
+import { HomeUserComponent } from './pages/users/home-user/home-user.component';
 import { SettingsComponent } from './pages/doctors/settings/settings.component';
 import { HomeDoctorComponent } from './pages/doctors/home-doctor/home-doctor.component';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,6 @@ import { PatientConsultaComponent } from './pages/recepcao/patient/patient-consu
 import { AuthGuard } from 'src/app/providers/guard/auth.guard';
 import { CadPatientComponent } from './pages/recepcao/cad-patient/cad-patient.component';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -29,6 +29,10 @@ const routes: Routes = [
   {
     path: 'cadastro-paciente',
     component: CadPatientComponent
+  },
+  {
+    path: 'homeusuario',
+    component: HomeUserComponent
   },
   {
     path: 'paciente',
