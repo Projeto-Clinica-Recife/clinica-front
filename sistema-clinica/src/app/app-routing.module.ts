@@ -40,6 +40,7 @@ const routes: Routes = [
         path: 'consulta',
         component: PatientConsultaComponent
       },
+  
       {
         path: 'ver-paciente',
         component: PatientViewComponent
