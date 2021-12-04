@@ -75,9 +75,9 @@ export class PatientViewComponent implements OnInit {
       signature:['Assinatura não coletada. Cadastro feito na recepção']
     });
     this.getAgender();
-    // this.interval = setInterval(() => {
-    //   this.getAgender();
-    // }, 1500);
+    this.interval = setInterval(() => {
+      this.getAgender();
+    }, 1500);
     this.showPatient();
     this.allDoctors();
     this.allProtocols();

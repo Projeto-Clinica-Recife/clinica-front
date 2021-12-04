@@ -27,10 +27,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'cadastro-paciente',
-    component: CadPatientComponent
-  },
-  {
     path: 'paciente',
     children: [
       {
@@ -86,7 +82,11 @@ const routes: Routes = [
       {
         path: 'home-paciente',
         component: HomeUserComponent
-      }
+      },
+      {
+        path: 'cadastro-paciente',
+        component: CadPatientComponent
+      },
       // {
       //   path: 'cadastrar',
       //   component:
