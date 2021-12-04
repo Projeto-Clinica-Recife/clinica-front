@@ -31,6 +31,7 @@ export class CadPatientComponent implements OnInit {
       data_nascimento: [null],
       cpf: [null],
       rg: [null],
+      dispatcher: [null],
       email: [null],
       cep: [null],
       rua: [null],
@@ -40,6 +41,10 @@ export class CadPatientComponent implements OnInit {
       estado: [null],
       complemento: [null],
       ponto_referencia: [null],
+      nationality: [null],
+      profession: [null],
+      marital_status: [null],
+      contracted_plan: [null],
       signature: [null]
     });
   }

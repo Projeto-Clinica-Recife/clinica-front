@@ -21,10 +21,7 @@ const routes: Routes = [{
   ];
 
 @NgModule({
-  declarations: [
-    CadPatientComponent,
-
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     SharedModule,

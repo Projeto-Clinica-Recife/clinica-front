@@ -14,6 +14,9 @@ import { DoctorViewComponent } from './pages/doctors/doctor/doctor-formulario-co
 import { PatientComponent } from './pages/recepcao/patient/patient.component';
 import { PatientConsultaComponent } from './pages/recepcao/patient/patient-consulta/patient-consulta.component';
 import { AuthGuard } from 'src/app/providers/guard/auth.guard';
+import { AuthAdminGuard } from 'src/app/providers/guard/auth_admin.guard';
+import { AuthReceptionGuard } from 'src/app/providers/guard/auth_reception.guard';
+import { AuthDoctorGuard } from 'src/app/providers/guard/auth_doctor.guard';
 import { CadPatientComponent } from './pages/recepcao/cad-patient/cad-patient.component';
 
 const routes: Routes = [
@@ -24,11 +27,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'cadastro-paciente',
-    component: CadPatientComponent
+    canActivate: [AuthGuard, AuthReceptionGuard],
   },
   {
     path: 'paciente',
@@ -53,7 +52,7 @@ const routes: Routes = [
       {
         path: 'home',
         component: AdminHomeComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard, AuthAdminGuard],
       },
       {
         path: 'cadastrar',
@@ -87,7 +86,11 @@ const routes: Routes = [
       {
         path: 'home-paciente',
         component: HomeUserComponent
-      }
+      },
+      {
+        path: 'cadastro-paciente',
+        component: CadPatientComponent
+      },
       // {
       //   path: 'cadastrar',
       //   component:
