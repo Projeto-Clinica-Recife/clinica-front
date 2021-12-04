@@ -9,6 +9,9 @@ import { AdminHomeComponent } from './pages/admin/home/admin-home.component';
 import { CadUserComponent } from './pages/admin/user/cad-user/cad-user.component';
 import { PatientViewComponent } from './pages/recepcao/patient/patient-view/patient-view.component';
 import { AuthGuard } from 'src/app/providers/guard/auth.guard';
+import { AuthAdminGuard } from 'src/app/providers/guard/auth_admin.guard';
+import { AuthReceptionGuard } from 'src/app/providers/guard/auth_reception.guard';
+import { AuthDoctorGuard } from 'src/app/providers/guard/auth_doctor.guard';
 
 const routes: Routes = [
   {
@@ -18,7 +21,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, AuthReceptionGuard],
   },
   {
     path: 'user-detail',
@@ -47,7 +50,7 @@ const routes: Routes = [
       {
         path: 'home',
         component: AdminHomeComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard, AuthAdminGuard],
       },
       {
         path: 'cadastrar',

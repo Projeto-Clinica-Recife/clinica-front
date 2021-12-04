@@ -37,13 +37,13 @@ export class CadUserComponent implements OnInit {
         Validators.required,
       ]),
       cpf: new FormControl(null, [
-        // Validators.required, Validators.minLength(11), Validators.maxLength(11),
+        Validators.required, Validators.minLength(11), Validators.maxLength(11),
       ]),
       type_user: new FormControl(null, [
         Validators.required,
       ]),
       telephone: new FormControl(null, [
-        // Validators.required, Validators.minLength(10), Validators.maxLength(11),
+        Validators.required, Validators.minLength(10), Validators.maxLength(11),
       ]),
       crm: new FormControl(null),
     });
