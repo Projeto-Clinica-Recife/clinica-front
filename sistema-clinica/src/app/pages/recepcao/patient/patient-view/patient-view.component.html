@@ -41,7 +41,7 @@
           <table class="table tab col-12" >
             <thead *ngIf="agenderPatients.length > 0">
               <tr>
-                <th>Data</th>
+                <!-- <th>Data</th> -->
                 <th>Hora</th>
                 <th>Médico</th>
                 <th>Protocolos</th>
@@ -50,16 +50,16 @@
             </thead>
             <tbody>
               <tr *ngFor="let agenderPatient of agenderPatients">
-                <td>{{agenderPatient.date | date:"dd/MM/yyyy"}}</td>
+                <!-- <td>{{agenderPatient.date | date:"dd/MM/yyyy"}}</td> -->
                 <td>{{agenderPatient.hour.slice(0,5)}}</td>
                 <td>{{agenderPatient.doctor}}</td>
-                <td>{{agenderPatient.protocolo}}</td>
-                <td></td>
+                <td>{{agenderPatient.protocol}}</td>
+                <td>{{translateStatus(agenderPatient.status)}}</td>
                 <td>                 
-                  <button class="btn btn-sm btn-secondary mr-1" title="Editar Protocolo">
+                  <!-- <button class="btn btn-sm btn-secondary mr-1" title="Editar Protocolo">
                     <fa-icon [icon]="icons.faEdit"></fa-icon>
-                  </button>
-                  <button class="btn btn-sm btn-danger mr-1" title="Cancelar Protocolo">
+                  </button> -->
+                  <button *ngIf="agenderPatient.status != 'canceled'" class="btn btn-sm btn-danger mr-1" title="Cancelar Protocolo" (click)="cancelProtocol(agenderPatient.id);">
                     <fa-icon [icon]="icons.faCalendarTimes"></fa-icon>
                   </button>
                 </td>
@@ -69,7 +69,7 @@
           
         </div>
 
-        <canvas  #signature id="signature-pad" class="signature-pad" width=400 height=200></canvas>
+
   
       </main>
   

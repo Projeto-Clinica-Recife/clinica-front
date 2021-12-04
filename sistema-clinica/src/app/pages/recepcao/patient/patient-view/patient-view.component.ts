@@ -52,9 +52,9 @@ export class PatientViewComponent implements OnInit {
 
     });
     this.getAgender();
-    // this.interval = setInterval(() => {
-    //   this.getAgender();
-    // }, 1500);
+    this.interval = setInterval(() => {
+      this.getAgender();
+    }, 1500);
     this.showPatient();
     this.allDoctors();
     this.allProtocols();
@@ -127,6 +127,27 @@ export class PatientViewComponent implements OnInit {
         this.agenderPatients = result;
       }
     );
+  }
+
+  cancelProtocol(id:number) {
+    this.agenderService.cancelAgenderProtocol(id).subscribe(
+      async (result) =>{
+        alert('Protocolo cancelado')
+      }
+    );
+  }
+
+  translateStatus(status: string) {
+    let state;
+    switch (status) {
+      case 'waiting':
+        state = 'Aguardando';
+      break;
+      case 'canceled':
+        state = 'Cancelado';
+      break;
+    }
+    return state;
   }
 
  
