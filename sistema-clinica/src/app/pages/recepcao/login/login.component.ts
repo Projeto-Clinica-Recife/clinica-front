@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/providers/auth/auth.service';
 import { UsersService } from 'src/app/providers/users/users.service';
 
@@ -11,20 +11,15 @@ import { UsersService } from 'src/app/providers/users/users.service';
 })
 export class LoginComponent implements OnInit {
   
-  form : FormGroup = this.fb.group({
-    login: ['', Validators.email],
-    password: ['', Validators.required]
-  });
-
   constructor(
     private fb: FormBuilder,
-    private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private usersService: UsersService,
-  ) {
-    // this.usersService.isAuthenticated();
-   }
+  ) {}
+  // form:FormGroup = this.fb.group({
+  //   login: ['', Validators.email],
+  //   password: ['', Validators.required]
+  // });
   
   login: string = '';
   password: string = '';
@@ -42,17 +37,21 @@ export class LoginComponent implements OnInit {
   async onSubmit() {
 
     const login = this.login;
-    const password = this.password;
+    const password = this.password
     const auth = await this.authService.login({login, password})
     .then( result => {
       if (result) {
         if (result.status != 200) {
           this.error.messageError = result.error.error;
           this.error.hasError = true;
-          setTimeout(() => { this.error.hasError = false},2000);
         }
       }
     });
-    
+  }
+
+  closeAlert() {
+    var elem = document.querySelector('.alert');
+    elem!.parentNode!.removeChild(elem!);
+    this.error.hasError = false;
   }
 }

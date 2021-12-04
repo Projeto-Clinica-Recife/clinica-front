@@ -1,13 +1,17 @@
+import { SettingsComponent } from './pages/doctors/settings/settings.component';
+import { HomeDoctorComponent } from './pages/doctors/home-doctor/home-doctor.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, CanActivate  } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { HomeComponent } from './pages/recepcao/home/home.component';
 import { LoginComponent } from './pages/recepcao/login/login.component';
-
-import{PatientComponent} from './pages/recepcao/patient/patient.component';
-import{PatientConsultaComponent} from './pages/recepcao/patient/patient-consulta/patient-consulta.component';
+import { RecepcaoModule } from "./pages/recepcao/recepcao.module";
 import { AdminHomeComponent } from './pages/admin/home/admin-home.component';
 import { CadUserComponent } from './pages/admin/user/cad-user/cad-user.component';
 import { PatientViewComponent } from './pages/recepcao/patient/patient-view/patient-view.component';
+import { DoctorConsultaComponent } from './pages/doctors/doctor/doctor-consulta/doctor-consulta.component';
+import { DoctorViewComponent } from './pages/doctors/doctor/doctor-formulario-consulta/doctor-view.component';
+import { PatientComponent } from './pages/recepcao/patient/patient.component';
+import { PatientConsultaComponent } from './pages/recepcao/patient/patient-consulta/patient-consulta.component';
 import { AuthGuard } from 'src/app/providers/guard/auth.guard';
 import { CadPatientComponent } from './pages/recepcao/cad-patient/cad-patient.component';
 
@@ -27,7 +31,7 @@ const routes: Routes = [
     component: CadPatientComponent
   },
   {
-    path:'paciente',
+    path: 'paciente',
     children: [
       {
         path: 'cadastrar',
@@ -44,7 +48,7 @@ const routes: Routes = [
     ]
   },
   {
-    path:'admin',
+    path: 'admin',
     children: [
       {
         path: 'home',
@@ -54,13 +58,32 @@ const routes: Routes = [
       {
         path: 'cadastrar',
         component: CadUserComponent,
+        canActivate: [AuthGuard],
+      }
+    ]
+  },
+  {
+    path: 'medico',
+    children: [
+      {
+        path: 'home-medico',
+        component: DoctorConsultaComponent
+        ,
+      },
+      {
+        path: 'consulta/:agender_id',
+        component: DoctorViewComponent
+      },
+      {
+        path: 'editar-medico',
+        component: SettingsComponent
       }
     ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{useHash: true})],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

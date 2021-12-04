@@ -7,9 +7,16 @@
         </div>
       </div>
       <div class="alert alert-danger alert-dismissible fade show mt-3 text-black" *ngIf="error.hasError" role="alert">
-        <h4>Ops! Houve algum erro</h4>
+        <h4>Ops! Houve algum erro!</h4>
         <h4>{{error.messageError}}</h4>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <button type="button" class="close" (click)="closeAlert()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="alert alert-success alert-dismissible fade show mt-3 text-black" *ngIf="success.isSuccess" role="alert">
+        <h4>Sucesso!</h4>
+        <h4>{{success.messageSuccess}}</h4>
+        <button type="button" class="close" (click)="closeAlert()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -43,11 +50,7 @@
             <label>Tefefone</label>
             <input type="text" class="form-control" formControlName="telephone">
           </div>
-          <div class="form-group">
-            <label>Senha</label>
-            <input type="password" class="form-control" formControlName="password">
-          </div>
-          <button type="button" (click)="cadUser()" class="btn btn-block btn-primary">Cadastrar</button>
+          <button [disabled]="!formUser.valid" type="button" (click)="cadUser()" class="btn btn-block btn-primary">Cadastrar</button>
         </form>
       </div>
       </main>
