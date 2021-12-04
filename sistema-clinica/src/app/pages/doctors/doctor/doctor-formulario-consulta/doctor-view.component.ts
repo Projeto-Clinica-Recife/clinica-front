@@ -1,3 +1,4 @@
+import { UsersService } from 'src/app/providers/users/users.service';
 import { Component, ElementRef, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router'
 import { DoctorService } from 'src/app/providers/doctor/doctor.service';
@@ -14,6 +15,9 @@ import { PatientService } from 'src/app/providers/patient/patient.service';
 })
 export class DoctorViewComponent implements OnInit {
 
+  public patientId: any;
+  public idade:any = 20;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -21,35 +25,36 @@ export class DoctorViewComponent implements OnInit {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private patientService: PatientService,
+    private userService: UsersService,
+
 
   ) {
     this.activatedRoute.params.subscribe(
-      (res) => (this.agender_id = res.agender_id)
+      (res) => (this.patientId = res.patient_id)
     );
+    this.getPatient();
+    this.doctor = this.userService.get_profile();
   }
 
   public agender_id: any;
-  public doctorId: any;
   public doctor: any;
-  public patientId: any;
   public patient: any;
   public dateCurrent = new Date().toISOString().slice(0, 10);
   public end: any;
-  formConsultaPacient!: FormGroup;
+  formQueryPacient!: FormGroup;
   formReceita!: FormGroup;
-
-
   signaturePad: any;
   paciente: any;
 
   ngOnInit(): void {
 
-    this.formConsultaPacient = this.formBuilder.group({
-      queixas: [null],
-      protocolos: [null],
-      observacoes: [null]
+    this.formQueryPacient = this.formBuilder.group({
+      doctor_id: this.doctor.id,
+      patient_id: this.patientId,
+      plaint: [null],
+      protocols: [null],
+      observation: [null]
     });
-
 
     this.formReceita = this.formBuilder.group({
       date: [this.dateCurrent],
@@ -61,13 +66,8 @@ export class DoctorViewComponent implements OnInit {
 
   }
 
-  getConsulta() {
-    //falta o back
-    this.patientId = '';
-  }
-
-  showPatient() {
-    this.patientService.getPatient(this.patientId).subscribe(
+  getPatient() {
+    this.patientService.getPatientById(this.patientId).subscribe(
       async (result) => {
         this.patient = result;
         console.log(result);
@@ -82,8 +82,21 @@ export class DoctorViewComponent implements OnInit {
 
   }
 
-  salvarConsulta() {
-
+  saveFormQuery() {
+    const formValue = {
+      ...this.formQueryPacient.value,
+    };
+    this.doctorService.saveFormQuery(formValue).subscribe(
+      async (result) => {
+        if (result.statusCode === '200') {
+          alert('Perfil atualizado!');
+          this.router.navigate(['/medico/home-medico']);
+        } else {
+          alert('Algum erro ocorreu! Tente novamente em alguns minutos');
+          this.router.navigate(['/medico/home-medico']);
+        }
+      }
+    );
   }
 
 }

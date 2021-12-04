@@ -46,6 +46,10 @@
             <label>CRM</label>
             <input type="text" class="form-control" formControlName="crm">
           </div>
+          <div class="form-group" *ngIf="isDoctor">
+            <label>UF do CRM</label>
+            <input type="text" class="form-control" formControlName="crm_state">
+          </div>
           <div class="form-group">
             <label>Tefefone</label>
             <input type="text" class="form-control" formControlName="telephone">
