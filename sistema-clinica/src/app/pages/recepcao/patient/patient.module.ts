@@ -4,6 +4,7 @@ import { PatientComponent } from './patient.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PatientConsultaComponent } from './patient-consulta/patient-consulta.component';
 import { PatientViewComponent } from './patient-view/patient-view.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -17,6 +18,7 @@ import { PatientViewComponent } from './patient-view/patient-view.component';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    FontAwesomeModule
   ]
 })
 export class PatientModule { }

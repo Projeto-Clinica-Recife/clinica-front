@@ -41,30 +41,42 @@
           <table class="table tab col-12" >
             <thead *ngIf="agenderPatients.length > 0">
               <tr>
-                <th>Data</th>
+                <!-- <th>Data</th> -->
                 <th>Hora</th>
                 <th>Médico</th>
                 <th>Protocolos</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let agenderPatient of agenderPatients">
-                <td>{{agenderPatient.date}}</td>
-                <td>{{agenderPatient.hour}}</td>
-                <td>{{agenderPatient.doctor_id}}</td>
-                <td>{{agenderPatient.protocols_id}}</td>
+                <!-- <td>{{agenderPatient.date | date:"dd/MM/yyyy"}}</td> -->
+                <td>{{agenderPatient.hour.slice(0,5)}}</td>
+                <td>{{agenderPatient.doctor}}</td>
+                <td>{{agenderPatient.protocol}}</td>
+                <td>{{translateStatus(agenderPatient.status)}}</td>
+                <td>                 
+                  <!-- <button class="btn btn-sm btn-secondary mr-1" title="Editar Protocolo">
+                    <fa-icon [icon]="icons.faEdit"></fa-icon>
+                  </button> -->
+                  <button *ngIf="agenderPatient.status != 'canceled'" class="btn btn-sm btn-danger mr-1" title="Cancelar Protocolo" (click)="cancelProtocol(agenderPatient.id);">
+                    <fa-icon [icon]="icons.faCalendarTimes"></fa-icon>
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>
           
         </div>
+
+
   
       </main>
   
     </div>
 
     <!-- Modals -->
-    <div class="modal fade" id="agendar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div  class="modal fade" id="agendar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -100,7 +112,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button (click)="cadAgender()" type="button" class="btn btn-info">Agendar</button>
+            <button (click)="cadAgender()" type="button" class="btn btn-info" data-dismiss="modal">Agendar</button>
           </div>
         </div>
       </div>
@@ -109,5 +121,6 @@
     
   
   </body>
+
 
   

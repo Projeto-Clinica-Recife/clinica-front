@@ -17,7 +17,7 @@ export class AppComponent {
   ) { 
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd){
-        if(event.url === '/'){
+        if(event.url === '/' || event.url ==='/cadastro-paciente'){
           this.showHeader = false;
         } else{
           this.showHeader = true;
