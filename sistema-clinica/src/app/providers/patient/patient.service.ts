@@ -22,4 +22,9 @@ export class PatientService {
       const url = `${this.URL}/${search}`;
       return this.http.get(url);
     }
+
+    updatePatient(formValue: any, patient: any): Observable<any> {
+      const url = `${this.URL}/${patient}`;
+      return this.http.put(url,formValue);
+    }
 }
