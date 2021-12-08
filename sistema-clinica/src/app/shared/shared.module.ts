@@ -18,7 +18,7 @@ const imports = [
   FormsModule,
   ReactiveFormsModule,
   BrowserAnimationsModule,
-  MatTableModule
+  MatTableModule,
 ];
 
 @NgModule({

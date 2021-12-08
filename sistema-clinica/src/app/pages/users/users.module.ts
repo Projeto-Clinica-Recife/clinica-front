@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { HomeUserComponent } from './home-user/home-user.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CadPatientComponent } from '../recepcao/cad-patient/cad-patient.component';
-
+import { RedefinePasswordComponent } from '../users/redefine-password/redefine-password.component';
 
 @NgModule({
   declarations: [
     HomeUserComponent,
-    CadPatientComponent
+    CadPatientComponent,
   ],
   imports: [
     CommonModule,

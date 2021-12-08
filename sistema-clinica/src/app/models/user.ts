@@ -6,4 +6,5 @@ export interface User {
     email: string,
     cpf: string,
     type_user: TypeUser,
+    first_access: boolean,
 }

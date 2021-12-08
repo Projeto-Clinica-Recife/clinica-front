@@ -8,11 +8,11 @@ import { CadUserComponent } from './user/cad-user/cad-user.component';
 @NgModule({
   declarations: [
     AdminHomeComponent,
-    CadUserComponent
+    CadUserComponent,
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class AdminModule { }

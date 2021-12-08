@@ -4,13 +4,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/recepcao/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './providers/auth/auth.service';
 import { TokenManager } from './providers/token-manager/token-manager.service';
-
+import { RedefinePasswordComponent } from 'src/app/pages/users/redefine-password/redefine-password.component';
 import { HomeModule } from './pages/recepcao/home/home.module';
 import { PatientModule } from './pages/recepcao/patient/patient.module';
 import { AdminModule } from './pages/admin/admin.module';
@@ -23,6 +22,7 @@ import { UsersModule } from './pages/users/users.module';
   declarations: [
     AppComponent,
     LoginComponent,
+    RedefinePasswordComponent,
   ],
   imports: [
     BrowserModule,

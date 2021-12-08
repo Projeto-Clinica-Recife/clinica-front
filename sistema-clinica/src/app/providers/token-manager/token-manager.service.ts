@@ -19,13 +19,12 @@ export class TokenManager {
         localStorage.setItem(this.TOKEN, JSON.stringify(token));
     }
 
-    public remove(){
+    public async remove(){
         const url = `${this.URL}/api/logout`;
         const token = this.getTokenStorage();
         
         const headers = new HttpHeaders()
         .set('Authorization', 'Bearer ' + token,);
-    
         localStorage.removeItem(this.TOKEN);
         localStorage.removeItem('profile');
         return this.http.post(url, undefined, {headers: headers})

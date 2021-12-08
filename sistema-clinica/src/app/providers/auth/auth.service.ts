@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { tap } from "rxjs/operators";
 import { environment } from 'src/environments/environment';
 import { Credentials } from './auth.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -41,32 +41,14 @@ export class AuthService {
       // scope: '',
     };
 
-    try{
-      await this.http.post<any>(url, data)
-      .toPromise()
-      .then( res => {
+    return this.http.post<any>(url, data).pipe(
+      tap((res) => {
         const token = res.token;
         const user = res.user;
         this.tokenManager.store(token);
         localStorage.setItem('profile', JSON.stringify(user));
-        console.log(user);
-        switch(user.type_user) {
-          case 'admin':
-            this.router.navigate(['/admin/home']);
-            break;
-          case 'doctor':
-            this.router.navigate(['medico/home-medico']);
-            break;
-          case 'reception':
-            this.router.navigate(['/home']);
-            break;
-        }
-        return res;
-      })
-    } catch (error: any) {
-      console.log(error);
-      return error;
-    }
+      }),
+      )
   }
 
   public isAuthenticated(): boolean {

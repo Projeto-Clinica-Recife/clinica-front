@@ -12,7 +12,6 @@ import { UsersService } from 'src/app/providers/users/users.service';
 export class HeaderComponent implements OnInit {
 
   profile!:any;
-
   constructor(
     private tokenManager: TokenManager,
     private router: Router,
@@ -28,8 +27,6 @@ export class HeaderComponent implements OnInit {
   activeInicial = 'active';
   activeAgenda = '';
   activeEditar = '';
-
-
 
   ngOnInit(): void {
     if (this.profile) {
@@ -47,10 +44,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  logout(){
+  async logout(){
     this.tokenManager.remove();
   }
-
-
-
 }
