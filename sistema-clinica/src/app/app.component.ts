@@ -21,7 +21,10 @@ export class AppComponent {
   ) {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd){
-        if(event.url === '/' || event.url ==='/usuario/cadastro-paciente' || event.url ==='/usuario/home-paciente'){
+        if(event.url === '/' ||
+         event.url ==='/cadastro-paciente' ||
+         event.url ==='/usuario/home-paciente' ||
+         event.url ==='/usuario'){
           this.showHeader = false;
         } else{
           this.showHeader = true;

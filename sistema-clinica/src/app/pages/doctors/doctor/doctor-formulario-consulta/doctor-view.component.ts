@@ -16,7 +16,13 @@ import { PatientService } from 'src/app/providers/patient/patient.service';
 export class DoctorViewComponent implements OnInit {
 
   public patientId: any;
-  public idade:any = 20;
+  public item_id: any;
+  public idade: any = 20;
+
+  public agender_id: any;
+  public doctor: any;
+  public patient: any;
+  public dateCurrent = new Date().toLocaleString("pt-BR", { timeZone: "America/Recife" }).substr(0, 10).split('/').reverse().join('-');
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -30,16 +36,16 @@ export class DoctorViewComponent implements OnInit {
 
   ) {
     this.activatedRoute.params.subscribe(
-      (res) => (this.patientId = res.patient_id)
+      (res) => (
+        this.patientId = res.patient_id,
+        this.item_id = res.item_id
+      )
     );
     this.getPatient();
     this.doctor = this.userService.get_profile();
   }
 
-  public agender_id: any;
-  public doctor: any;
-  public patient: any;
-  public dateCurrent = new Date().toISOString().slice(0, 10);
+
   public end: any;
   formQueryPacient!: FormGroup;
   formReceita!: FormGroup;
@@ -53,33 +59,48 @@ export class DoctorViewComponent implements OnInit {
       patient_id: this.patientId,
       plaint: [null],
       protocols: [null],
-      observation: [null]
+      observation: [null],
+      item_id: [this.item_id]
     });
-
-    this.formReceita = this.formBuilder.group({
-      date: [this.dateCurrent],
-      doctor_id: [null],
-      hour: [null],
-      protocols_id: [null],
-      patient_id: [this.patientId]
-    });
-
   }
 
   getPatient() {
     this.patientService.getPatientById(this.patientId).subscribe(
       async (result) => {
         this.patient = result;
+        this.formReceita = this.formBuilder.group({
+          patient_name: [this.patient.nome],
+          patient_cpf: [this.patient.cpf],
+          prescription: [null],
+          doctor_name: [this.doctor.name],
+          doctor_crm: [this.doctor.user_information.crm],
+          crm_state: [this.doctor.user_information.crm_state],
+          data_current: [this.dateCurrent]
+        });
         console.log(result);
       },
       async (error) => {
         console.log(error);
       }
     );
+
   }
 
   gerarReceita() {
+    const formValue = {
+      ...this.formReceita.value
+    };
 
+    this.doctorService.getGeneratePdf(formValue).subscribe(
+      async (result) => {
+        if (result) {
+
+          this.router.navigate(['/medico/home-medico']);
+        } else {
+          alert('Algum erro ocorreu ao tentar fgerar');
+        }
+      }
+    );
   }
 
   saveFormQuery() {
@@ -88,12 +109,11 @@ export class DoctorViewComponent implements OnInit {
     };
     this.doctorService.saveFormQuery(formValue).subscribe(
       async (result) => {
-        if (result.statusCode === '200') {
-          alert('Perfil atualizado!');
+        if (result.message === "Success!") {
+          alert('Consulta salva!');
           this.router.navigate(['/medico/home-medico']);
         } else {
-          alert('Algum erro ocorreu! Tente novamente em alguns minutos');
-          this.router.navigate(['/medico/home-medico']);
+          alert('Algum erro ocorreu ao tentar salvar! Verifique se todos os campos estão preenchidos corretamente.');
         }
       }
     );

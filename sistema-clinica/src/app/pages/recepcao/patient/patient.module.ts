@@ -12,7 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   declarations: [
     PatientComponent,
     PatientConsultaComponent,
-    PatientViewComponent
+    PatientViewComponent,
   ],
   imports: [
     CommonModule,

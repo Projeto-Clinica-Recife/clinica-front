@@ -42,7 +42,7 @@ export class PatientViewComponent implements OnInit {
   icons ={
     faCalendarTimes,
     faEdit
-  } 
+  }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
@@ -117,7 +117,7 @@ export class PatientViewComponent implements OnInit {
           estado: this.patient.estado,
           complemento: this.patient.complemento,
           ponto_referencia: this.patient.ponto_referencia,
-       
+
         });
       },
       async (error) => {
@@ -161,10 +161,11 @@ export class PatientViewComponent implements OnInit {
     this.agenderService.postAgender(formValue).subscribe(
       async (result) => {
         console.log(result);
-        
+
         this.formAgender.reset({
           date: this.dateCurrent,
         });
+        this.getAgender()
       }
     );
 
@@ -216,7 +217,7 @@ export class PatientViewComponent implements OnInit {
 
 
 
- 
+
 
 
 }
