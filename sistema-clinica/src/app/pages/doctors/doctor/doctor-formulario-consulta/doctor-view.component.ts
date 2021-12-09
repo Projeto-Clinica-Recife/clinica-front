@@ -100,11 +100,11 @@ export class DoctorViewComponent implements OnInit {
         
         this.pdfService.download_pdf(base64);
         
-        // if (result) {
-        //   this.router.navigate(['/medico/home-medico']);
-        // } else {
-        //   alert('Algum erro ocorreu ao tentar gerar');
-        // }
+        if (result) {
+          this.router.navigate(['/medico/home-medico']);
+        } else {
+          alert('Algum erro ocorreu ao tentar gerar');
+        }
       }, error =>{
         console.log(error.error);
       }
@@ -115,6 +115,8 @@ export class DoctorViewComponent implements OnInit {
     const formValue = {
       ...this.formQueryPacient.value,
     };
+    console.log(formValue);
+    
     this.doctorService.saveFormQuery(formValue).subscribe(
       async (result) => {
         console.log(result);
