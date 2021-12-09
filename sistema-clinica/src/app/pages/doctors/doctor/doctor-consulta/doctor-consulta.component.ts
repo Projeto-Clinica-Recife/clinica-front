@@ -82,7 +82,10 @@ export class DoctorConsultaComponent implements OnInit {
         state = 'Aguardando';
         break;
       case 'canceled':
-        state = 'Cancelado';
+        state = 'Cancelada';
+        break;
+      case 'finished':
+        state = 'Finalizada';
         break;
     }
     return state;

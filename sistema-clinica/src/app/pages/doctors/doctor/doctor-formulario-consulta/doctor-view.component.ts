@@ -6,6 +6,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from
 import SignaturePad from 'signature_pad';
 import { HttpClient } from '@angular/common/http';
 import { PatientService } from 'src/app/providers/patient/patient.service';
+import { PdfService } from 'src/app/providers/pdf/pdf.service';
 
 
 @Component({
@@ -29,10 +30,9 @@ export class DoctorViewComponent implements OnInit {
     private router: Router,
     private doctorService: DoctorService,
     private formBuilder: FormBuilder,
-    private http: HttpClient,
+    private pdfService: PdfService,
     private patientService: PatientService,
     private userService: UsersService,
-
 
   ) {
     this.activatedRoute.params.subscribe(
@@ -62,13 +62,16 @@ export class DoctorViewComponent implements OnInit {
       observation: [null],
       item_id: [this.item_id]
     });
+    
   }
 
   getPatient() {
+    const agender_id = this.item_id;
     this.patientService.getPatientById(this.patientId).subscribe(
       async (result) => {
         this.patient = result;
         this.formReceita = this.formBuilder.group({
+          agender_id: agender_id,
           patient_name: [this.patient.nome],
           patient_cpf: [this.patient.cpf],
           prescription: [null],
@@ -93,12 +96,17 @@ export class DoctorViewComponent implements OnInit {
 
     this.doctorService.getGeneratePdf(formValue).subscribe(
       async (result) => {
-        if (result) {
-
-          this.router.navigate(['/medico/home-medico']);
-        } else {
-          alert('Algum erro ocorreu ao tentar fgerar');
-        }
+        const base64 = result;
+        
+        this.pdfService.download_pdf(base64);
+        
+        // if (result) {
+        //   this.router.navigate(['/medico/home-medico']);
+        // } else {
+        //   alert('Algum erro ocorreu ao tentar gerar');
+        // }
+      }, error =>{
+        console.log(error.error);
       }
     );
   }
@@ -109,6 +117,8 @@ export class DoctorViewComponent implements OnInit {
     };
     this.doctorService.saveFormQuery(formValue).subscribe(
       async (result) => {
+        console.log(result);
+        
         if (result.message === "Success!") {
           alert('Consulta salva!');
           this.router.navigate(['/medico/home-medico']);

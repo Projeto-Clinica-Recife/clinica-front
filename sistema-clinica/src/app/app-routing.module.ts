@@ -1,11 +1,9 @@
 import { HomeUserComponent } from './pages/users/home-user/home-user.component';
 import { SettingsComponent } from './pages/doctors/settings/settings.component';
-import { HomeDoctorComponent } from './pages/doctors/home-doctor/home-doctor.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, CanActivate } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/recepcao/home/home.component';
 import { LoginComponent } from './pages/recepcao/login/login.component';
-import { RecepcaoModule } from "./pages/recepcao/recepcao.module";
 import { AdminHomeComponent } from './pages/admin/home/admin-home.component';
 import { CadUserComponent } from './pages/admin/user/cad-user/cad-user.component';
 import { PatientViewComponent } from './pages/recepcao/patient/patient-view/patient-view.component';
@@ -18,6 +16,9 @@ import { AuthAdminGuard } from 'src/app/providers/guard/auth_admin.guard';
 import { AuthReceptionGuard } from 'src/app/providers/guard/auth_reception.guard';
 import { AuthDoctorGuard } from 'src/app/providers/guard/auth_doctor.guard';
 import { CadPatientComponent } from './pages/recepcao/cad-patient/cad-patient.component';
+import { HomePlanComponent } from './pages/admin/plan/home-plan/home-plan.component';
+import { CadPlanComponent } from './pages/admin/plan/cad-plan/cad-plan.component';
+import { ListPlansComponent } from './pages/admin/plan/list-plans/list-plans.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,21 @@ const routes: Routes = [
       {
         path: 'cadastrar',
         component: CadUserComponent,
+        canActivate: [AuthGuard, AuthAdminGuard],
+      },
+      {
+        path: 'plano',
+        component: HomePlanComponent,
+        canActivate: [AuthGuard, AuthAdminGuard],
+      },
+      {
+        path: 'cadastrar-plano',
+        component: CadPlanComponent,
+        canActivate: [AuthGuard, AuthAdminGuard],
+      },
+      {
+        path: 'listar-planos',
+        component: ListPlansComponent,
         canActivate: [AuthGuard, AuthAdminGuard],
       }
     ]

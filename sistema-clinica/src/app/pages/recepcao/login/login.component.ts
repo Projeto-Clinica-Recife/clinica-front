@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   error = {
     hasError: false,
-    messageError:  null,
+    messageError:  '',
   }
   
 
@@ -48,10 +48,15 @@ export class LoginComponent implements OnInit {
           break;
       }
     }, error => {
-      if (error.status != 200) {
+      this.error.hasError = true;
+      console.log(error);
+      
+      if (error.status === 404) {
               this.error.messageError = error.error.error;
-              this.error.hasError = true;
-          }
+        }else if (error.status === 500){
+          this.error.messageError = 'Houve algum erro no servidor!'
+        }
+        console.log(this.error.messageError);
     });
   }
 

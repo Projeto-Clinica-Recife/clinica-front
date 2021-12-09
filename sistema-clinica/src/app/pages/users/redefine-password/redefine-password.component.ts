@@ -22,10 +22,10 @@ export class RedefinePasswordComponent implements OnInit {
   ngOnInit(): void {
     this.formPassword = new FormGroup({
       password: new FormControl(null,[
-        // Validators.required, Validators.minLength(8)
+        Validators.required, Validators.minLength(8)
       ]),
       confirmPassword: new FormControl(null,[
-        // Validators.required, Validators.minLength(8)
+        Validators.required, Validators.minLength(8)
       ]),
     })
   }

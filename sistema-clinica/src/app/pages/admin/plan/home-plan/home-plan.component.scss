@@ -1,0 +1,21 @@
+:host{
+
+    .botao-grid{
+        color: white;
+        text-align: center;
+        padding-top: 30px;
+        padding-bottom: 10px;
+        background-color:  rgb(146, 133, 109);
+    }
+    .botao-grid h2{
+        position: relative;
+        left: -15px;
+        transition: 0.7s;
+    }
+    
+    .botao-grid:hover h2{
+    transition: 0.7s;
+    left: 30px;
+    }
+    
+    }

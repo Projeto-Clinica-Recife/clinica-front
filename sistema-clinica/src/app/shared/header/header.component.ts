@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenManager } from 'src/app/providers/token-manager/token-manager.service';
 import { UsersService } from 'src/app/providers/users/users.service';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,9 @@ import { UsersService } from 'src/app/providers/users/users.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  icons ={
+    faCog,
+  } 
 
   profile!:any;
   constructor(

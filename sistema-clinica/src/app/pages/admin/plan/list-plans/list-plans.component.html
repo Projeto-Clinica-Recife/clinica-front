@@ -1,0 +1,38 @@
+<body>
+    <div class="container-fluid">
+        <main class="tm-main">
+            <div class="row tm-row">
+                <div class="col-12">
+                    <form method="GET" class="form-inline tm-mb-80 tm-search-form">
+                        <input class="form-control tm-search-input" name="query" type="text" placeholder="Procurar..." aria-label="Search">
+                        <button class="tm-search-button" type="submit">
+                            <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="row tm-row">
+                <div class="list col-12">
+                    <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th class="text-center" scope="col">Descrição</th>
+                            <th class="text-center" scope="col">Período</th>
+                            <th class="text-center" scope="col">Valor</th>
+                            <th class="text-center" scope="col">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr  *ngFor="let plan of plans">
+                            <td scope="row" class="text-center">{{ plan.description }}</td>
+                            <td class="text-center">{{ plan.period }} meses</td>
+                            <td class="text-center">R$ {{ plan.value }}</td>
+                            <td class="text-center">{{ plan.status }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>

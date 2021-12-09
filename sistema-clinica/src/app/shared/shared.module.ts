@@ -6,6 +6,7 @@ import { FooterComponent } from "./footer/footer.component";
 import { HeaderComponent } from "./header/header.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const components = [
   FooterComponent,
@@ -19,6 +20,7 @@ const imports = [
   ReactiveFormsModule,
   BrowserAnimationsModule,
   MatTableModule,
+  FontAwesomeModule
 ];
 
 @NgModule({

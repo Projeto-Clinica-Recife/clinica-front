@@ -40,7 +40,6 @@ export class PatientComponent implements OnInit {
       nationality: [null],
       profession: [null],
       marital_status: [null],
-      contracted_plan: [null],
       signature:['Assinatura não coletada. Cadastro feito na recepção']
     });
   }

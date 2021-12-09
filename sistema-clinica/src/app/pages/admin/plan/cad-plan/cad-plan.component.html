@@ -1,0 +1,36 @@
+<body>
+    <div class="container-fluid">
+        <main class="tm-main">
+            <div class="row tm-row titulo-header">
+                <div class="col-12">
+                  <h2>CADASTRAR PLANO</h2>
+                </div>
+            </div>
+            <div class="alert {{message.alertColor}} alert-dismissible fade show mt-3 text-black" *ngIf="message.message" role="alert">
+                <h4>{{message.message}}</h4>
+                <button type="button" class="close" (click)="closeAlert()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="row">
+                <div class="form col-12">
+                    <form [formGroup]="formPlan" action="">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Descrição</label>
+                            <input type="text" class="form-control" id="description" aria-describedby="emailHelp" autocomplete="off" formControlName="description">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Período</label>
+                            <input type="number" class="form-control" id="period" aria-describedby="emailHelp" autocomplete="off" formControlName="period">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Valor</label>
+                            <input type="number" class="form-control" id="value" aria-describedby="emailHelp" autocomplete="off" formControlName="value">
+                        </div>
+                        <button [disabled]=!formPlan.valid type="button" (click)="cadPlan()" class="btn btn-block btn-primary">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
