@@ -98,7 +98,6 @@ const routes: Routes = [
   },
   {
     path: 'usuario',
-    component: HomeUserComponent,
     children: [
       {
         path: 'home-paciente',
