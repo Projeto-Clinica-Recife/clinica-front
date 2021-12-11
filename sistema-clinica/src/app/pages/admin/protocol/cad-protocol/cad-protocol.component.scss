@@ -1,5 +1,5 @@
 :host{
-    h2, h3, strong{
+    h2{
         color: rgb(110, 96, 70);
     }
     .titulo-header{
@@ -12,7 +12,9 @@
         border-color: rgb(110, 96, 70);
         box-shadow: 0px 0px 5px rgb(110, 96, 70);
     }
-    table{
-        font-size:14px;
+    .btn-primary{
+        background-color:rgb(110, 96, 70) !important;
+        border: none;
     }
+
 }

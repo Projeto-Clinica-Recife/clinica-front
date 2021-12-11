@@ -1,5 +1,5 @@
 :host{
-    .titulo-header h2{
+    h2{
         color: rgb(110, 96, 70);
     }
     .titulo-header{
@@ -16,26 +16,15 @@
         background-color:rgb(110, 96, 70) !important;
         border: none;
     }
+
+    .password-differ{ margin-top: -10px; margin-bottom: 10px; margin-left: 15px }
     
-    .titulo-header h2, h3, strong{
-        color: rgb(110, 96, 70);
+    .password-differ small{
+        font-size: 14px !important;
     }
-    .botao-grid{
-        color: white;
-        text-align: center;
-        padding-top: 30px;
-        padding-bottom: 10px;
-        background-color:  rgb(146, 133, 109);
+
+    .btn-primary{
+        background-color:rgb(110, 96, 70) !important;
+        border: none;
     }
-    .botao-grid h2{
-        position: relative;
-        left: -15px;
-        transition: 0.7s;
-    }
-    
-    .botao-grid:hover h2{
-    transition: 0.7s;
-    left: 30px;
-    }
-    
-    }
+}

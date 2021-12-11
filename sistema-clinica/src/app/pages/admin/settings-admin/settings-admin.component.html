@@ -1,0 +1,58 @@
+<body>
+    <div class="container-fluid">
+      <main class="tm-main">
+        <div class="row tm-row titulo-header" id="top">
+          <div class="col-12">
+            <h2>EDITAR PERFIL</h2>
+          </div>
+        </div>
+
+        <div class="alert {{message.alertColor}} alert-dismissible fade show mt-3 text-black" *ngIf="message.message" role="alert">
+            <h4>{{message.message}}</h4>
+            <button type="button" class="close" (click)="closeAlert()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+  
+        <div class="">
+            <form [formGroup]="formEditAdmin"  class="col-12" >
+              <div class="form-group">
+                <label >Nome Completo</label>
+                <input type="text" class="form-control" formControlName="name">
+              </div>
+              <div class="form-group">
+                <label>CPF</label>
+                <input type="text" class="form-control" formControlName="cpf">
+              </div>
+              <div class="form-group">
+                <label>E-mail</label>
+                <input type="email" class="form-control" formControlName="email">
+              </div>
+              <div class="form-group">
+                <label>Telefone</label>
+                <input type="telephone" class="form-control" formControlName="telephone">
+              </div>
+              <div class="row">
+                <div class="form-group col-6">
+                  <label>Senha</label>
+                  <input type="password" class="form-control" formControlName="password">
+                </div>
+                <div class="form-group col-6">
+                  <label>Confirme a senha</label>
+                  <input (keyup)="passwordCheck()" type="password" class="form-control" formControlName="confirm_password">
+                </div>
+                <div class="password-differ text-danger" *ngIf="validadePassword.differentPasswords">
+                  <small>{{ validadePassword.message }} </small>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" [routerLink]="">Cancelar</button>
+            <button (click)="updateAdmin(admin.id)" type="button" class="btn btn-save btn-primary" data-dismiss="modal">Editar</button>
+          </div>
+  
+      </main>
+    </div>
+  </body>
+  
