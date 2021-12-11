@@ -28,8 +28,10 @@ export class AppComponent {
           this.showHeader = false;
         } else{
           this.showHeader = true;
-          if(this.user.first_access){
+          if(this.user.first_access === 1){
             this.first_access = true;
+          }else{
+            this.first_access = false;
           }
           
         }

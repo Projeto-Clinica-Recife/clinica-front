@@ -21,7 +21,7 @@ export class UsersService {
     return user;
   }
 
-  async get_user() {
+  public get_user() {
     const url = `${this.URL}/api/user`;
     let token = this.tokenManager.getTokenStorage();
     
