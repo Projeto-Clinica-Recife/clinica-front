@@ -6,7 +6,6 @@
               <h2>PLANOS</h2>
             </div>
           </div>
-
           <div class="row tm-row mt-4">
               <div class="list col-12">
                 <table class="table tab col-12 table-bordered">
@@ -16,15 +15,78 @@
                         <th class="text-center" scope="col">Período</th>
                         <th class="text-center" scope="col">Valor</th>
                         <th class="text-center" scope="col">Status</th>
+                        <!-- <th class="text-center" scope="col">Ações</th> -->
                       </tr>
                     </thead>
                     <tbody>
-                      <tr  *ngFor="let plan of plans">
+                      <tr *ngFor="let plan of plans">
                         <td scope="row" class="text-center">{{ plan.description }}</td>
                         <td class="text-center">{{ plan.period }} meses</td>
                         <td class="text-center">R$ {{ plan.value }}</td>
                         <td class="text-center">{{ plan.status }}</td>
+                        <!-- <td class="text-center">
+                            <button *ngIf="plan.status === 'Ativo'"
+                            class="btn btn-sm btn-danger mr-1" title="{{plan.id}}"
+                            data-toggle="modal" data-target="#modalCanceled">
+                              <fa-icon [icon]="icons.faCalendarTimes"></fa-icon>
+                            </button>
+                            <button type="button" *ngIf="plan.status === 'Cancelado'"
+                            class="btn btn-sm btn-success mr-1" title="{{plan.id}}" 
+                            data-toggle="modal" data-target="#modalReactivete"
+                            (click)="reactivatePlan(plan.id)">
+                              <fa-icon [icon]="icons.faRecycle"></fa-icon>
+                            </button>
+                        </td> -->
+
+                        <!-- modals -->
+  
+                       <!-- <div class="modal fade" id="modalCanceled" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                         <div class="modal-dialog" role="document">
+                           <div class="modal-content">
+                             <div class="modal-header">
+                               <h2 class="modal-title" id="exampleModalLongTitle">
+                                 Cancelar Plano?
+                               </h2>
+                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                               </button>
+                             </div>
+                             <div class="modal-footer">
+                               <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
+                               <button type="button" class="btn btn-success" 
+                               (click)="cancelPlan(plan.id)">
+                                 Sim
+                               </button>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+  
+                       <div class="modal fade" id="modalReactivete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                         <div class="modal-dialog" role="document">
+                           <div class="modal-content">
+                             <div class="modal-header">
+                               <h2 class="modal-title" id="exampleModalLongTitle">
+                                 Reativar Plano?
+                               </h2>
+                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                               </button>
+                             </div>
+                             <div class="modal-footer">
+                               <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
+                               <button type="button" class="btn btn-success" 
+                               (click)="reactivatePlan(plan.id)">
+                                 Sim
+                               </button>
+                             </div>
+                           </div>
+                         </div>
+                       </div> -->
+
                       </tr>
+
+
                     </tbody>
                   </table>
               </div>

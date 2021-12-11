@@ -23,4 +23,16 @@ export class PlansService {
 
     return this.http.get<Plan>(url);
    }
+
+   cancelPlan(planId: number){
+    const url = `${this.URL}/cancel/${planId}`;
+
+    return this.http.put<any>(url, {body: undefined});
+   }
+
+   activePlan(planId: number){
+    const url = `${this.URL}/reactivate/${planId}`;
+
+    return this.http.put<any>(url, {body: undefined});
+   }
 }
