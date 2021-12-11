@@ -6,7 +6,7 @@ import { PatientService } from 'src/app/providers/patient/patient.service';
 import { ProtocolService } from 'src/app/providers/protocol/protocol.service';
 import { AgenderService } from 'src/app/providers/agender/agender.service';
 import SignaturePad from 'signature_pad';
-import { faCalendarTimes, faEdit} from '@fortawesome/free-solid-svg-icons';
+import { faCalendarTimes, faEdit, faDollarSign} from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -41,7 +41,8 @@ export class PatientViewComponent implements OnInit {
   ) { }
   icons ={
     faCalendarTimes,
-    faEdit
+    faEdit,
+    faDollarSign
   }
 
   ngOnInit(): void {
@@ -81,6 +82,14 @@ export class PatientViewComponent implements OnInit {
     this.showPatient();
     this.allDoctors();
     this.allProtocols();
+  }
+
+  @ViewChild('mselect', { static: false }) select!: ElementRef;
+
+  ngAfterViewInit() {
+    let el = this.select.nativeElement;
+    el.style.color = 'white';
+
   }
 
   ngOnDestroy(): void {

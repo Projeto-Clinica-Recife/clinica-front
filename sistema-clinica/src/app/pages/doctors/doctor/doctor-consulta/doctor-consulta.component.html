@@ -24,23 +24,19 @@
         </div>
         <table class="table tab col-12">
           <thead *ngIf="agendamentoDoctor.length > 0">
-            <a>
-              <tr>
+             <tr>
                 <!-- <th>Data</th> -->
                 <th>Hora</th>
                 <th>Paciente</th>
                 <th>Status</th>
               </tr>
-            </a>
           </thead>
           <tbody>
-            <tr *ngFor="let agendamentoDoctor of agendamentoDoctor">
-              <a [routerLink]="['../consulta', agendamentoDoctor.patient_id, agendamentoDoctor.item_id]">
+            <tr *ngFor="let agendamentoDoctor of agendamentoDoctor" [routerLink]="['../consulta', agendamentoDoctor.patient_id, agendamentoDoctor.item_id]" style="cursor:pointer">
                 <!-- <td>{{agenderPatient.date | date:"dd/MM/yyyy"}}</td> -->
                 <td class="colunas">{{agendamentoDoctor.hour.slice(0,5)}}</td>
                 <td class="colunas">{{agendamentoDoctor.patient}}</td>
                 <td class="colunas">{{translateStatus(agendamentoDoctor.status)}}</td>
-              </a>
             </tr>
           </tbody>
         </table>

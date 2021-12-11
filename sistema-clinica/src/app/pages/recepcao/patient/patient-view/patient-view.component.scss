@@ -24,6 +24,11 @@
         border: none;
     }
 
+    .dropdown-item:active{
+        background-color:rgb(110, 96, 70) !important;
+
+    }
+
     table{
         font-size:14px;
     }
