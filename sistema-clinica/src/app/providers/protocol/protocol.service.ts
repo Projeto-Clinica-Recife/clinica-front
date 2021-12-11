@@ -20,5 +20,9 @@ export class ProtocolService {
       return this.http.get(url);
     }
 
-  
+    cadProtocol(form: any){
+      const url = `${this.URL}/`;
+      return this.http.post<any>(url, form);
+    }
+
 }

@@ -1,58 +1,52 @@
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/providers/users/users.service';
-import { DoctorService } from 'src/app/providers/doctor/doctor.service';
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  templateUrl: './settings-reception.component.html',
+  styleUrls: ['./settings-reception.component.scss']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsReceptionComponent implements OnInit {
 
-  formEditDoctor!: FormGroup;
-  public doctor: any;
+  formEditPatient!: FormGroup;
+  public patient: any;
 
   constructor(
     private formBuilder: FormBuilder,
-    private doctorService: DoctorService,
     private userService: UsersService,
     private router: Router,
-  ) { }
+   ) { }
 
-  ngOnInit(): void {
-
-    this.doctor = this.userService.get_profile();
-
-    this.formEditDoctor = this.formBuilder.group({
-      name: this.doctor.name,
-      cpf: this.doctor.cpf,
-      email: this.doctor.email,
-      telephone: this.doctor.user_information.telephone,
-      crm: this.doctor.user_information.crm,
-      crm_state: this.doctor.user_information.crm_state,
-      password: null,
-      confirm_password: null,
-    });
-
-  }
-
-  message = {
+   message = {
     message:  undefined,
     alertColor: '',
   }
 
-  validadePassword = {
+   validadePassword = {
     differentPasswords: false,
     message: '',
   }
 
-  passwordCheck(){
-    const form = {
-      ...this.formEditDoctor.value,
-    }
+  ngOnInit(): void {
+    this.patient = this.userService.get_profile();
 
+    this.formEditPatient = this.formBuilder.group({
+      name: this.patient.name,
+      cpf: this.patient.cpf,
+      email: this.patient.email,
+      telephone: this.patient.user_information.telephone,
+      password: null,
+      confirm_password: null,
+    });
+  }
+
+  passwordCheck(): boolean{
+    const form = {
+      ...this.formEditPatient.value
+    };
+    
     const check = this.userService.passwordCheck(form.password, form.confirm_password);
 
     if(!check){
@@ -65,27 +59,27 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-
-  updateDoctor(doctorID: any) {
+  updatePatient(patientId: any) {
     const formValue = {
-      ...this.formEditDoctor.value,
+      ...this.formEditPatient.value,
     };
-
+    
     if(this.passwordCheck()){
       return false;
     }
-
-    return this.userService.update_user(doctorID, formValue).subscribe(
+    
+    return this.userService.update_user(patientId, formValue).subscribe(
       async (result) => {
         
         this.message.alertColor = 'alert-success';
         this.message.message = result.message;
+
         const user = result.user;
         this.userService.refresh_profile(user);
         
         window.location.hash = '#top';
-        
-        setTimeout(() => {this.router.navigate(['/medico/home-medico'])}, 3000);
+
+      setTimeout(() => {this.router.navigate(['/home'])}, 3000);
 
       }, error => {
         console.log(error);

@@ -43,9 +43,9 @@ export class RedefinePasswordComponent implements OnInit {
       this.validadePassword.differentPasswords = true;
       return false;
     }else if(newPassword !== confirmPassword){
-      this.validadePassword.differentPasswords = true;
-        this.validadePassword.message = 'Ops! Senhas incompativeis.';
-        return false;
+            this.validadePassword.differentPasswords = true;
+            this.validadePassword.message = 'Ops! Senhas incompativeis.';
+            return false;
       }
       this.validadePassword.differentPasswords = false;
       return true;

@@ -19,6 +19,11 @@ import { CadPatientComponent } from './pages/recepcao/cad-patient/cad-patient.co
 import { HomePlanComponent } from './pages/admin/plan/home-plan/home-plan.component';
 import { CadPlanComponent } from './pages/admin/plan/cad-plan/cad-plan.component';
 import { ListPlansComponent } from './pages/admin/plan/list-plans/list-plans.component';
+import { SettingsReceptionComponent } from './pages/recepcao/settings-reception/settings-reception.component';
+import { SettingsAdminComponent } from './pages/admin/settings-admin/settings-admin.component';
+import { HomeProtocolComponent } from './pages/admin/protocol/home-protocol/home-protocol.component';
+import { CadProtocolComponent } from './pages/admin/protocol/cad-protocol/cad-protocol.component';
+import { ListProtocolsComponent } from './pages/admin/protocol/list-protocols/list-protocols.component';
 
 const routes: Routes = [
   {
@@ -29,6 +34,10 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     canActivate: [AuthGuard, AuthReceptionGuard],
+  },
+  {
+    path: 'editar-recepcao',
+    component: SettingsReceptionComponent,
   },
   {
     path: 'paciente',
@@ -50,6 +59,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    canActivate: [AuthGuard, AuthAdminGuard],
     children: [
       {
         path: 'home',
@@ -75,7 +85,31 @@ const routes: Routes = [
         path: 'listar-planos',
         component: ListPlansComponent,
         canActivate: [AuthGuard, AuthAdminGuard],
-      }
+      },
+      {
+        path: 'editar-admin',
+        component: SettingsAdminComponent,
+      },
+      {
+        path: 'protocolo',
+        component: HomeProtocolComponent,
+      },
+      {
+        path: 'listar-protocolos',
+        component: ListProtocolsComponent,
+      },
+      {
+        path: 'cadastrar-protocolo',
+        component: CadProtocolComponent,
+      },
+      {
+        path: 'cadastrar-paciente',
+        component: PatientComponent
+      },
+      {
+        path: 'consulta-paciente',
+        component: PatientConsultaComponent
+      },
     ]
   },
   {

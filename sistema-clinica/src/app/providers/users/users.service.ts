@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/models/user';
@@ -34,6 +35,12 @@ export class UsersService {
     return this.http.post<any>(url, form);
   }
 
+  update_user(userId: number, form: any): Observable<any> {
+    const url = `${this.URL}/user/update/${userId}`;
+
+    return this.http.put(url, form);
+  }
+
   async redefine_password(userId: number, password: any){
     const url = `${this.URL}/user/password/${userId}`;
 
@@ -65,6 +72,18 @@ export class UsersService {
     
     return this.http.put<any>(url, undefined)
     .subscribe();
+  }
+
+  public refresh_profile(user: any){
+    localStorage.setItem('profile', JSON.stringify(user));
+  }
+
+  passwordCheck(newPassword: any, confirmPassword: any): boolean{
+    
+    if(newPassword !== confirmPassword){
+        return false;
+      }
+      return true;
   }
 
 }

@@ -39,7 +39,6 @@ export class DoctorService {
     return this.http.put(url,formValue);
   }
 
-
   getGeneratePdf(form: any): Observable<any> {
     const url = `${environment.api_url}/prescription/generate`;
     return this.http.post(url,form);
