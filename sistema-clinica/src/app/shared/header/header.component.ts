@@ -11,26 +11,27 @@ import { UsersService } from 'src/app/providers/users/users.service';
 })
 export class HeaderComponent implements OnInit {
 
-  profile!:any;
+  profile!: any;
   constructor(
     private tokenManager: TokenManager,
     private router: Router,
     private usersService: UsersService,
   ) {
     this.profile = this.usersService.get_profile();
-   }
+  }
 
   public rota: string = '/home';
   public rotaConsulta: string = '/medico/consulta';
   public rotaEditarPerfil: string = '/medico/editar-medico';
 
   activeInicial = 'active';
+  activeFinanceiro = '';
   activeAgenda = '';
   activeEditar = '';
 
   ngOnInit(): void {
     if (this.profile) {
-      switch (this.profile.type_user){
+      switch (this.profile.type_user) {
         case 'admin':
           this.rota = 'admin/home';
           break;
@@ -43,8 +44,9 @@ export class HeaderComponent implements OnInit {
       }
     }
   }
+  
 
-  async logout(){
+  async logout() {
     this.tokenManager.remove();
   }
 }
