@@ -24,6 +24,8 @@ import { SettingsAdminComponent } from './pages/admin/settings-admin/settings-ad
 import { HomeProtocolComponent } from './pages/admin/protocol/home-protocol/home-protocol.component';
 import { CadProtocolComponent } from './pages/admin/protocol/cad-protocol/cad-protocol.component';
 import { ListProtocolsComponent } from './pages/admin/protocol/list-protocols/list-protocols.component';
+import { DoctorRecConsultaComponent } from './pages/recepcao/doctor/doctor-consulta/doctor-consulta.component';
+import { DoctorRecComponent } from './pages/recepcao/doctor/doctor.component';
 
 const routes: Routes = [
   {
@@ -38,6 +40,14 @@ const routes: Routes = [
   {
     path: 'editar-recepcao',
     component: SettingsReceptionComponent,
+  },
+  {
+    path: 'consulta-medico',
+    component: DoctorRecConsultaComponent
+  },
+  {
+    path: 'cadastrar-medico',
+    component: DoctorRecComponent
   },
   {
     path: 'paciente',

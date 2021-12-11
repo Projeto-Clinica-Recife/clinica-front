@@ -1,0 +1,56 @@
+<body>
+  <div class="container-fluid">
+    <main class="tm-main">
+      <div class="row tm-row titulo-header">
+        <div class="col-12">
+          <h2>CADASTRAR USUÁRIO</h2>
+        </div>
+      </div>
+      <div class="alert alert-danger alert-dismissible fade show mt-3 text-black" *ngIf="error.hasError" role="alert">
+        <h4>Ops! Houve algum erro!</h4>
+        <h4>{{error.messageError}}</h4>
+        <button type="button" class="close" (click)="closeAlert()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="alert alert-success alert-dismissible fade show mt-3 text-black" *ngIf="success.isSuccess" role="alert">
+        <h4>Sucesso!</h4>
+        <h4>{{success.messageSuccess}}</h4>
+        <button type="button" class="close" (click)="closeAlert()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="row tm-row">
+        <form [formGroup]="formUser" class="col-12">
+          <div class="form-group">
+            <label>Nome Completo</label>
+            <input type="text" class="form-control" formControlName="name">
+          </div>
+          <div class="form-group">
+            <label>CPF</label>
+            <input type="text" class="form-control" formControlName="cpf">
+          </div>
+          <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" class="form-control" formControlName="email">
+          </div>
+          <div class="form-group">
+            <label>CRM</label>
+            <input type="text" class="form-control" formControlName="crm">
+          </div>
+          <div class="form-group" *ngIf="isDoctor">
+            <label>UF do CRM</label>
+            <input type="text" class="form-control" formControlName="crm_state">
+          </div>
+          <div class="form-group">
+            <label>Tefefone</label>
+            <input type="text" class="form-control" formControlName="telephone">
+          </div>
+          <button [disabled]="!formUser.valid" type="button" (click)="cadUser()" class="btn btn-block btn-primary">Cadastrar</button>
+        </form>
+      </div>
+      </main>
+
+  </div>
+
+</body>

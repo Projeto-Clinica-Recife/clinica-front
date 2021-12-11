@@ -29,6 +29,11 @@ export class DoctorService {
     return this.http.get(url);
   }
 
+  SearchDoctors(search: any): Observable<any> {
+    const url = `${this.URL}/${search}`;
+    return this.http.get(url);
+  }
+
   getAgendaDoctor(id_doctor: any, dateCurrent: any): Observable<any> {
     const url = `${this.URL}/agender/${id_doctor}/${dateCurrent}`;
     return this.http.get(url);
