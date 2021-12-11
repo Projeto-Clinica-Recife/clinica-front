@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProtocolService } from 'src/app/providers/protocol/protocol.service';
+import { faCalendarTimes, faEdit} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-list-protocols',
@@ -12,6 +13,11 @@ export class ListProtocolsComponent implements OnInit {
   constructor( 
     private protocolService: ProtocolService,
    ) { }
+
+   icons = {
+    faCalendarTimes,
+    faEdit
+  }
 
   ngOnInit(): void {
     this.protocolService.getProtocols().subscribe( res =>{
