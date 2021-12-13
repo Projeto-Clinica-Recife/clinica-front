@@ -26,7 +26,12 @@ export class ListPlansComponent implements OnInit {
   message = '';
 
   ngOnInit(): void {
-    this.plansService.getPlans().subscribe(plans => { this.plans = plans; });
+    this.plansService.getPlans().subscribe(plans => 
+      { this.plans = plans; 
+      }, error => {
+        console.log(error);
+        
+      });
     
   }
 

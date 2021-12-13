@@ -99,18 +99,22 @@ const routes: Routes = [
       {
         path: 'editar-admin',
         component: SettingsAdminComponent,
+        canActivate: [AuthGuard, AuthAdminGuard],
       },
       {
         path: 'protocolo',
         component: HomeProtocolComponent,
+        canActivate: [AuthGuard, AuthAdminGuard],
       },
       {
         path: 'listar-protocolos',
         component: ListProtocolsComponent,
+        canActivate: [AuthGuard, AuthAdminGuard],
       },
       {
         path: 'cadastrar-protocolo',
         component: CadProtocolComponent,
+        canActivate: [AuthGuard, AuthAdminGuard],
       },
       {
         path: 'cadastrar-paciente',
@@ -119,6 +123,10 @@ const routes: Routes = [
       {
         path: 'consulta-paciente',
         component: PatientConsultaComponent
+      },
+      {
+        path: 'consultar-medico',
+        component: DoctorRecConsultaComponent
       },
     ]
   },

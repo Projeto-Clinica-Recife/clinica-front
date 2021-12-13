@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faUserMd,faMedkit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-admin-home',
@@ -8,6 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class AdminHomeComponent implements OnInit {
 
   constructor() { }
+
+  icons ={
+    faUserMd,
+    faMedkit
+  } 
 
   ngOnInit(): void {
   }

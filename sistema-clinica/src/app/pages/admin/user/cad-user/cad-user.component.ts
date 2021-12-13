@@ -72,6 +72,7 @@ export class CadUserComponent implements OnInit {
           this.success.isSuccess = true;
           this.success.messageSuccess = 'Cadastro realizado com sucesso!';
           this.formUser.reset();
+          window.location.hash = '#top';
           setTimeout(() => {this.router.navigate(['/admin/home']);}, 2000);
         }
       }, async ({ error }) => {
@@ -82,6 +83,7 @@ export class CadUserComponent implements OnInit {
           this.error.messageError = error.error;
         }
         this.error.hasError = true;
+        window.location.hash = '#top';
       }
     )
   }
