@@ -12,28 +12,28 @@
           <tr>
             <th>&nbsp;</th>
             <th width="16.5%">Seg <br>
-              <span *ngIf="dateCalendar[1] != ''">{{ dateCalendar[1] }}/{{monthSelected}}</span>
-              <span *ngIf="dateCalendar[1] == ''">--</span>
+              <span *ngIf="dateCalendar[1] != '' && dateCalendar[1] < 32">{{ dateCalendar[1] }}/{{monthSelected}}</span>
+              <span *ngIf="dateCalendar[1] == '' || dateCalendar[1] > 31 ">--</span>
             </th>
             <th width="16.5%">Ter <br>
-              <span *ngIf="dateCalendar[2] != ''">{{ dateCalendar[2] }}/{{monthSelected}}</span>
-              <span *ngIf="dateCalendar[2] == ''">--</span>
+              <span *ngIf="dateCalendar[2] != '' && dateCalendar[2] < 32">{{ dateCalendar[2] }}/{{monthSelected}}</span>
+              <span *ngIf="dateCalendar[2] == '' || dateCalendar[2] > 31">--</span>
             </th>
             <th width="16.5%">Qua <br>
-              <span *ngIf="dateCalendar[3] != ''">{{ dateCalendar[3] }}/{{monthSelected}}</span>
-              <span *ngIf="dateCalendar[3] == ''">--</span>
+              <span *ngIf="dateCalendar[3] != '' && dateCalendar[3] < 32">{{ dateCalendar[3] }}/{{monthSelected}}</span>
+              <span *ngIf="dateCalendar[3] == '' || dateCalendar[3] > 31">--</span>
             </th>
             <th width="16.5%">Qui <br>
-              <span *ngIf="dateCalendar[4] != ''">{{ dateCalendar[4] }}/{{monthSelected}}</span>
-              <span *ngIf="dateCalendar[4] == ''">--</span>
+              <span *ngIf="dateCalendar[4] != '' && dateCalendar[4] < 32">{{ dateCalendar[4] }}/{{monthSelected}}</span>
+              <span *ngIf="dateCalendar[4] == '' || dateCalendar[4] > 31">--</span>
             </th>
             <th width="16.5%">Sex <br>
-              <span *ngIf="dateCalendar[5] != ''">{{ dateCalendar[5] }}/{{monthSelected}}</span>
-              <span *ngIf="dateCalendar[5] == ''">--</span>
+              <span *ngIf="dateCalendar[5] != '' && dateCalendar[5] < 32">{{ dateCalendar[5] }}/{{monthSelected}}</span>
+              <span *ngIf="dateCalendar[5] == '' || dateCalendar[5] > 31">--</span>
             </th>
             <th width="16.5%">Sab <br>
-              <span *ngIf="dateCalendar[6] != ''">{{ dateCalendar[6] }}/{{monthSelected}}</span>
-              <span *ngIf="dateCalendar[6] == ''">--</span>
+              <span *ngIf="dateCalendar[6] != '' && dateCalendar[6] < 32">{{ dateCalendar[6] }}/{{monthSelected}}</span>
+              <span *ngIf="dateCalendar[6] == '' || dateCalendar[6] > 31">--</span>
             </th>
           </tr>
         </thead>
@@ -48,9 +48,9 @@
             <td class="has-events" (click)="cadAgender(hora, '6')" rowspan="1"></td>
           </tr>
           <tr>
-            <td>10:00</td>
+            <!--<td>10:00</td>
 
-            <td class="has-events" rowspan="2">
+             <td class="has-events" rowspan="2">
               <div style="width: 100%; height: 100%;">
                 <span class="title">
                   Ana ...
@@ -58,7 +58,7 @@
                 <span>
                   <a>00:00 hrs</a>
                 </span>
-                <!-- <span class="location">protocolo ou consulta</span> -->
+                <span class="location">protocolo ou consulta</span>
               </div>
             </td>
 
@@ -66,7 +66,7 @@
             <td class="has-events" rowspan="1"></td>
             <td class="has-events" rowspan="1"></td>
             <td class="has-events" rowspan="1"></td>
-            <td class="has-events" rowspan="1"></td>
+            <td class="has-events" rowspan="1"></td> -->
           </tr>
         </tbody>
       </table>
