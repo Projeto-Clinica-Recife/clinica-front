@@ -1,3 +1,6 @@
+import { RegisterComponent } from './pages/recepcao/agenda/register/register.component';
+import { AgendaComponent } from './pages/recepcao/agenda/agenda.component';
+import { PatientHistoricComponent } from './pages/recepcao/patient/patient-historic/patient-historic.component';
 import { HomeUserComponent } from './pages/users/home-user/home-user.component';
 import { SettingsComponent } from './pages/doctors/settings/settings.component';
 import { NgModule } from '@angular/core';
@@ -31,6 +34,20 @@ const routes: Routes = [
     canActivate: [AuthGuard, AuthReceptionGuard],
   },
   {
+    path: 'agenda',
+    children: [
+      {
+        path: '',
+        component: AgendaComponent,
+        canActivate: [AuthGuard, AuthReceptionGuard]
+      },
+      {
+        path: 'semana',
+        component: RegisterComponent,
+        canActivate: [AuthGuard, AuthReceptionGuard]
+      }]
+  },
+  {
     path: 'paciente',
     children: [
       {
@@ -41,10 +58,13 @@ const routes: Routes = [
         path: 'consulta',
         component: PatientConsultaComponent
       },
-  
       {
         path: 'ver-paciente',
         component: PatientViewComponent
+      },
+      {
+        path: 'ver-historico-paciente',
+        component: PatientHistoricComponent
       }
     ]
   },

@@ -1,0 +1,18 @@
+<body>
+  <div class="container-fluid">
+    <main class="tm-main">
+
+      <div class="row tm-row titulo-header">
+        <div class="col-12">
+          <h2>Calendário</h2>
+        </div>
+      </div>
+
+        <mat-card class="demo-inline-calendar-card">
+          <mat-calendar [(selected)]="selected" (selectedChange)="setDaySelected(selected)"></mat-calendar>
+        </mat-card>
+        <!-- <p>Selected date: {{selected}}</p> -->
+
+    </main>
+  </div>
+</body>

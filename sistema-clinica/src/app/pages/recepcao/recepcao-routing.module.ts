@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PatientComponent } from './patient/patient.component';
+import { PatientHistoricComponent } from './patient/patient-historic/patient-historic.component';
 
 export const routes: Routes = [{
   path: '',
@@ -10,11 +11,11 @@ export const routes: Routes = [{
   children: [
     {
       path: 'cadastrar',
-         component: PatientComponent
-        },
-      ],
-    }
-  ];
+      component: PatientComponent
+    },
+  ],
+}
+];
 
 
 // export const routes: Routes = [{

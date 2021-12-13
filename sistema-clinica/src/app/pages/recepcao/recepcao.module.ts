@@ -6,6 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { PatientComponent } from './patient/patient.component';
 import { CadPatientComponent } from './cad-patient/cad-patient.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AgendaComponent } from './agenda/agenda.component';
+import { RegisterComponent } from './agenda/register/register.component';
 
 const routes: Routes = [{
   path: '',
@@ -21,7 +23,10 @@ const routes: Routes = [{
   ];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AgendaComponent,
+    RegisterComponent
+  ],
   imports: [
     CommonModule,
     SharedModule,

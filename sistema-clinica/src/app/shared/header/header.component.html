@@ -24,7 +24,7 @@
             <i class="fas fa-home"></i>
             Tela Inicial
           </a></li>
-        <li *ngIf="profile.type_user != 'doctor'" class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+        <li *ngIf="profile.type_user != 'doctor'" class="tm-nav-item"><a routerLink="{{ rotaAgenda }}" class="tm-nav-link">
             <i class="fas fa-pen"></i>
             Agenda
           </a></li>

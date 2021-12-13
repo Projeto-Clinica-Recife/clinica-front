@@ -13,7 +13,7 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
 export class HeaderComponent implements OnInit {
   icons ={
     faCog,
-  } 
+  }
 
   profile!:any;
   constructor(
@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit {
   public rota: string = '/home';
   public rotaConsulta: string = '/medico/consulta';
   public rotaEditarPerfil: string = '/medico/editar-medico';
+  public rotaAgenda: string = '/agenda';
 
   activeInicial = 'active';
   activeAgenda = '';

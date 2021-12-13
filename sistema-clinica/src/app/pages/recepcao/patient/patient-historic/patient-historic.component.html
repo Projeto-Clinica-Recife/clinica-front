@@ -1,0 +1,32 @@
+<body>
+  <div class="container-fluid">
+    <main class="tm-main">
+
+      <div class="row tm-row titulo-header">
+        <div class="col-12">
+          <h2>Histórico do Paciente</h2>
+        </div>
+      </div>
+
+      <mat-accordion *ngFor="let consulta of consultas" >
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ consulta.hour }}
+            </mat-panel-title>
+            <mat-panel-description>
+              {{ consulta.doctor_name }}
+              <!-- {{panelOpenState ? 'open' : 'closed'}} -->
+
+            </mat-panel-description>
+          <mat-panel-description>
+            {{ consulta.plaint }}
+          </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Aqui as infos</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </main>
+  </div>
+</body>

@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PatientConsultaComponent } from './patient-consulta/patient-consulta.component';
 import { PatientViewComponent } from './patient-view/patient-view.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PatientHistoricComponent } from './patient-historic/patient-historic.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 
@@ -13,12 +15,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     PatientComponent,
     PatientConsultaComponent,
     PatientViewComponent,
+    PatientHistoricComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatExpansionModule
   ]
 })
 export class PatientModule { }
