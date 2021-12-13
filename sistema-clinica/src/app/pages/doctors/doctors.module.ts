@@ -19,7 +19,7 @@ const routes: Routes = [{
     HomeDoctorComponent,
     DoctorConsultaComponent,
     DoctorViewComponent,
-    SettingsComponent
+    SettingsComponent,
   ],
   imports: [
     CommonModule,

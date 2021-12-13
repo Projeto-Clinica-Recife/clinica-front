@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenManager } from 'src/app/providers/token-manager/token-manager.service';
 import { UsersService } from 'src/app/providers/users/users.service';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -11,18 +10,15 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  icons ={
-    faCog,
-  }
 
-  profile!:any;
+  profile!: any;
   constructor(
     private tokenManager: TokenManager,
     private router: Router,
     private usersService: UsersService,
   ) {
     this.profile = this.usersService.get_profile();
-   }
+  }
 
   public rota: string = '/home';
   public rotaConsulta: string = '/medico/consulta';
@@ -30,12 +26,13 @@ export class HeaderComponent implements OnInit {
   public rotaAgenda: string = '/agenda';
 
   activeInicial = 'active';
+  activeFinanceiro = '';
   activeAgenda = '';
   activeEditar = '';
 
   ngOnInit(): void {
     if (this.profile) {
-      switch (this.profile.type_user){
+      switch (this.profile.type_user) {
         case 'admin':
           this.rota = 'admin/home';
           break;
@@ -49,7 +46,8 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  async logout(){
+
+  async logout() {
     this.tokenManager.remove();
   }
 }

@@ -1,0 +1,29 @@
+<body>
+    <div class="container-fluid">
+        <main class="tm-main">
+            <div class="row tm-row titulo-header" id="top">
+                <div class="col-12">
+                  <h2>CADASTRAR PROTOCOLO</h2>
+                </div>
+            </div>
+            <div class="tm-row">
+                <div class="alert {{message.alertColor}} alert-dismissible fade show mt-3 text-black" *ngIf="message.message" role="alert">
+                    <h4>{{message.message}}</h4>
+                    <button type="button" class="close" (click)="closeAlert()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="row tm-row">
+                    <form [formGroup]="formProtocol" class="col-12">
+                        <div class="form-group">
+                            <label>Descrição</label>
+                            <input type="text" class="form-control" formControlName="description">
+                        </div>
+                        <button [disabled]="!formProtocol.valid" type="button" (click)="cadProtocol()" class="btn btn-block btn-primary">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>

@@ -12,15 +12,10 @@
         <p *ngIf="profile">Bem vindo(a), {{profile.name}}</p>
         <a href="" (click)="logout()" class="link">Sair</a>
       </div>
-      <!-- <div class="config">
-        <a router-link="#">
-            <fa-icon [icon]="icons.faCog"></fa-icon>
-        </a>
-      </div> -->
     </div>
     <nav class="tm-nav" id="tm-nav">
       <ul>
-        <li class="tm-nav-item active"><a routerLink="{{ rota }}" class="tm-nav-link">
+        <li class="tm-nav-item {{activeInicial}}"><a routerLink="{{ rota }}" class="tm-nav-link">
             <i class="fas fa-home"></i>
             Tela Inicial
           </a></li>
@@ -36,15 +31,32 @@
 
         <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item"><a routerLink="{{ rotaEditarPerfil }}"
             class="tm-nav-link">
-            <i class="far fa-comments"></i>
+            <i class="fas fa-user-edit"></i>
             Editar Perfil
-          </a></li>
+          </a>
+        </li>
+
+        <li *ngIf="profile.type_user == 'reception'" class="tm-nav-item"><a routerLink="/editar-recepcao"
+            class="tm-nav-link">
+            <i class="fas fa-user-edit"></i>
+            Editar Perfil
+          </a>
+        </li>
+
+        <li *ngIf="profile.type_user == 'admin'" class="tm-nav-item">
+          <a routerLink="/admin/editar-admin"
+          class="tm-nav-link">
+            <i class="fas fa-user-edit"></i>
+            Editar Perfil
+          </a>
+        </li>
 
         <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item"><a routerLink="{{ rota }}"
             class="tm-nav-link">
             <i class="far fa-comments"></i>
             Relatórios
-          </a></li>
+          </a>
+        </li>
 
 
       </ul>

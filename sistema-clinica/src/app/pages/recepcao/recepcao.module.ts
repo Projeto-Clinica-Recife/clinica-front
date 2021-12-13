@@ -8,6 +8,7 @@ import { CadPatientComponent } from './cad-patient/cad-patient.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgendaComponent } from './agenda/agenda.component';
 import { RegisterComponent } from './agenda/register/register.component';
+import { SettingsReceptionComponent } from './settings-reception/settings-reception.component';
 
 const routes: Routes = [{
   path: '',
@@ -25,7 +26,8 @@ const routes: Routes = [{
 @NgModule({
   declarations: [
     AgendaComponent,
-    RegisterComponent
+    RegisterComponent,
+    SettingsReceptionComponent
   ],
   imports: [
     CommonModule,
@@ -35,5 +37,6 @@ const routes: Routes = [{
   ]
 })
 export class RecepcaoModule {
+
 
 }

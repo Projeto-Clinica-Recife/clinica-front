@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/providers/auth/auth.service';
+import { UsersService } from 'src/app/providers/users/users.service';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +12,9 @@ import { AuthService } from 'src/app/providers/auth/auth.service';
 export class LoginComponent implements OnInit {
   
   constructor(
-    private fb: FormBuilder,
     private router: Router,
     private authService: AuthService,
+    private userService: UsersService,
   ) {}
   
   login: string = '';
@@ -26,7 +27,20 @@ export class LoginComponent implements OnInit {
   
 
   ngOnInit(): void {
-
+    const user = this.userService.get_profile();
+    if(user) {
+      switch (user.type_user){
+            case 'admin':
+              this.router.navigate(['/admin/home']);
+              break;
+            case 'doctor':
+              this.router.navigate(['medico/home-medico']);
+              break;
+            case 'reception':
+              this.router.navigate(['/home']);
+              break;
+          }
+    }
   }
 
   async onSubmit() {

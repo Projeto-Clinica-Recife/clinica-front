@@ -1,0 +1,28 @@
+<body>
+    <div class="container-fluid">
+        <main class="tm-main">
+            <div class="row tm-row titulo-header" id="top">
+                <div class="col-12">
+                  <h2>LISTA DE PROTOCOLOS</h2>
+                </div>
+            </div>
+
+            <div class="row tm-row mt-4">
+                <div class="list col-12">
+                  <table class="table tab col-12 table-bordered">
+                      <thead>
+                        <tr>
+                          <th class="" scope="col">Descrição</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr  *ngFor="let protocol of protocols">
+                          <td scope="row" class="">{{ protocol.descricao }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
