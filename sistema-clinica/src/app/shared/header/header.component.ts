@@ -23,7 +23,8 @@ export class HeaderComponent implements OnInit {
   public rota: string = '/home';
   public rotaConsulta: string = '/medico/consulta';
   public rotaEditarPerfil: string = '/medico/editar-medico';
-
+  public rotaAgenda: string = '/agenda';
+  public rotaFinanceiro: string = '/financeiro';
   activeInicial = 'active';
   activeFinanceiro = '';
   activeAgenda = '';
@@ -44,7 +45,7 @@ export class HeaderComponent implements OnInit {
       }
     }
   }
-  
+
 
   async logout() {
     this.tokenManager.remove();

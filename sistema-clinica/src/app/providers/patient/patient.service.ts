@@ -29,7 +29,7 @@ export class PatientService {
     }
 
     getPatientById(patientID: any): Observable<any> {
-      const url = `${this.URL}/showby/${patientID}`;
+      const url = `${this.URL}/detail/${patientID}`;
       return this.http.get(url);
     }
 

@@ -1,0 +1,132 @@
+<body>
+  <div class="container-fluid">
+    <main class="tm-main">
+
+      <div class="row tm-row titulo-header">
+        <div class="col-12">
+          <h2>Agenda Semanal</h2>
+        </div>
+      </div>
+      <table class="calendar table table-bordered">
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th width="16.5%">Seg <br>
+              <span *ngIf="dateCalendar[1] != '' && dateCalendar[1] < 32">{{ dateCalendar[1] }}/{{monthSelected}}</span>
+              <span *ngIf="dateCalendar[1] == '' || dateCalendar[1] > 31 ">--</span>
+            </th>
+            <th width="16.5%">Ter <br>
+              <span *ngIf="dateCalendar[2] != '' && dateCalendar[2] < 32">{{ dateCalendar[2] }}/{{monthSelected}}</span>
+              <span *ngIf="dateCalendar[2] == '' || dateCalendar[2] > 31">--</span>
+            </th>
+            <th width="16.5%">Qua <br>
+              <span *ngIf="dateCalendar[3] != '' && dateCalendar[3] < 32">{{ dateCalendar[3] }}/{{monthSelected}}</span>
+              <span *ngIf="dateCalendar[3] == '' || dateCalendar[3] > 31">--</span>
+            </th>
+            <th width="16.5%">Qui <br>
+              <span *ngIf="dateCalendar[4] != '' && dateCalendar[4] < 32">{{ dateCalendar[4] }}/{{monthSelected}}</span>
+              <span *ngIf="dateCalendar[4] == '' || dateCalendar[4] > 31">--</span>
+            </th>
+            <th width="16.5%">Sex <br>
+              <span *ngIf="dateCalendar[5] != '' && dateCalendar[5] < 32">{{ dateCalendar[5] }}/{{monthSelected}}</span>
+              <span *ngIf="dateCalendar[5] == '' || dateCalendar[5] > 31">--</span>
+            </th>
+            <th width="16.5%">Sab <br>
+              <span *ngIf="dateCalendar[6] != '' && dateCalendar[6] < 32">{{ dateCalendar[6] }}/{{monthSelected}}</span>
+              <span *ngIf="dateCalendar[6] == '' || dateCalendar[6] > 31">--</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hora of horarios" data-toggle="modal" data-target="#agendamento">
+            <td> {{ hora }}</td>
+            <td class="has-events" (click)="cadAgender(hora, '1')" rowspan="1"></td>
+            <td class="has-events" (click)="cadAgender(hora, '2')" rowspan="1"></td>
+            <td class="has-events" (click)="cadAgender(hora, '3')" rowspan="1"></td>
+            <td class="has-events" (click)="cadAgender(hora, '4')" rowspan="1"></td>
+            <td class="has-events" (click)="cadAgender(hora, '5')" rowspan="1"></td>
+            <td class="has-events" (click)="cadAgender(hora, '6')" rowspan="1"></td>
+          </tr>
+          <!-- <tr>
+            <td>10:00</td>
+
+             <td class="has-events" rowspan="2">
+              <div style="width: 100%; height: 100%;">
+                <span class="title">
+                  DR Ana
+                </span>
+                <span>
+                  <a>Dr Herbet</a>
+                </span>
+                <span class="location">D Gil</span>
+              </div>
+            </td>
+
+            <td class="has-events" rowspan="1"></td>
+            <td class="has-events" rowspan="1"></td>
+            <td class="has-events" rowspan="1"></td>
+            <td class="has-events" rowspan="1"></td>
+            <td class="has-events" rowspan="1"></td>
+          </tr> -->
+        </tbody>
+      </table>
+
+    </main>
+  </div>
+</body>
+
+
+
+<div class="modal fade" id="agendamento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLongTitle">Novo Agendamento</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formAgender" action="" class="">
+          <div class="form-group ">
+            <label>Paciente</label>
+            <select formControlName="patient_id" name="" id="" class="form-control">
+              <option *ngFor="let patient of patients" value="{{patient.id}}">{{patient.nome}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Data</label>
+            <input type="date" name="dateCurrent" class="form-control" id="" formControlName="date"
+              [value]="dateCurrent">
+          </div>
+          <div class="form-group ">
+            <label>Médico</label>
+            <select formControlName="doctor_id" name="" id="" class="form-control">
+              <option *ngFor="let doctor of doctors" value="{{doctor.id}}">{{doctor.name}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>De</label>
+            <input value="hourStart" formControlName="hourStart" type="time" name="" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Ate</label>
+            <input value="hourEnd" formControlName="hourEnd" type="time" name="" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Protocolos</label>
+            <select formControlName="protocols_id" class="form-control" multiple id="select">
+              <option *ngFor="let protocol of protocols" value="{{protocol.id}}">{{protocol.descricao}}</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button (click)="agender()" type="button" class="btn btn-info" data-dismiss="modal">Agendar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,11 +10,11 @@ export const routes: Routes = [{
   children: [
     {
       path: 'cadastrar',
-         component: PatientComponent
-        },
-      ],
-    }
-  ];
+      component: PatientComponent
+    },
+  ],
+}
+];
 
 
 // export const routes: Routes = [{

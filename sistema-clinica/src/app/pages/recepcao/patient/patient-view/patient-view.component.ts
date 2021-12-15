@@ -6,7 +6,7 @@ import { PatientService } from 'src/app/providers/patient/patient.service';
 import { ProtocolService } from 'src/app/providers/protocol/protocol.service';
 import { AgenderService } from 'src/app/providers/agender/agender.service';
 import SignaturePad from 'signature_pad';
-import { faCalendarTimes, faEdit, faDollarSign} from '@fortawesome/free-solid-svg-icons';
+import { faCalendarTimes, faEdit, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -25,7 +25,7 @@ export class PatientViewComponent implements OnInit {
   public patient: any;
   public interval: any;
   public end: any
-  public dateCurrent = new Date().toLocaleString("pt-BR", {timeZone: "America/Recife"}).substr(0, 10).split('/').reverse().join('-');
+  public dateCurrent = new Date().toLocaleString("pt-BR", { timeZone: "America/Recife" }).substr(0, 10).split('/').reverse().join('-');
   public selectDoctors: any = '';
 
   constructor(
@@ -39,7 +39,7 @@ export class PatientViewComponent implements OnInit {
     private element: ElementRef,
     private http: HttpClient
   ) { }
-  icons ={
+  icons = {
     faCalendarTimes,
     faEdit,
     faDollarSign
@@ -73,7 +73,7 @@ export class PatientViewComponent implements OnInit {
       estado: [null],
       complemento: [null],
       ponto_referencia: [null],
-      signature:['Assinatura não coletada. Cadastro feito na recepção']
+      signature: ['Assinatura não coletada. Cadastro feito na recepção']
     });
     this.getAgender();
     this.interval = setInterval(() => {
@@ -140,7 +140,7 @@ export class PatientViewComponent implements OnInit {
       ...this.formRecp.value,
     };
     this.patientService.updatePatient(formValue, patient).subscribe(
-      async (result) =>{
+      async (result) => {
         alert('Ficha de Paciente Atualizada')
         this.showPatient();
       }
@@ -163,7 +163,7 @@ export class PatientViewComponent implements OnInit {
     );
   }
 
- async cadAgender() {
+  async cadAgender() {
     const formValue = {
       ...this.formAgender.value,
     };
@@ -189,9 +189,9 @@ export class PatientViewComponent implements OnInit {
     );
   }
 
-  async cancelProtocol(id:number) {
+  async cancelProtocol(id: number) {
     this.agenderService.cancelAgenderProtocol(id).subscribe(
-      async (result) =>{
+      async (result) => {
         alert('Protocolo cancelado')
       }
     );
@@ -202,10 +202,10 @@ export class PatientViewComponent implements OnInit {
     switch (status) {
       case 'waiting':
         state = 'Aguardando';
-      break;
+        break;
       case 'canceled':
         state = 'Cancelado';
-      break;
+        break;
     }
     return state;
   }
@@ -224,9 +224,8 @@ export class PatientViewComponent implements OnInit {
 
   }
 
-
-
-
-
+  viewHistoricPatient() {
+    return this.router.navigate(['/paciente/ver-historico-paciente'], { queryParams: { id: this.patientId } });
+  }
 
 }

@@ -13,7 +13,7 @@
               Opções </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" data-toggle="modal" data-target="#editPaciente"  href="#">Editar</a>
-              <a class="dropdown-item" href="#">Ver Histórico</a>
+              <a class="dropdown-item" (click)="viewHistoricPatient()" data-target="#historico">Ver Histórico</a>
               <a class="dropdown-item" data-toggle="modal" data-target="#agendar" href="#">Agendar</a>
               <a class="dropdown-item" href="#">Cadastrar Plano</a>
             </div>
@@ -37,8 +37,8 @@
               (change)="getAgender();">
           </form>
         </div>
-        <!-- <div class="col-sm-4">            
-                <form action="" class="form-inline">  
+        <!-- <div class="col-sm-4">
+                <form action="" class="form-inline">
                   <strong class="mr-2">Médico: </strong>
                   <select  name="" id="" class="form-control" (ngModel)="selectDoctors">
                     <option>------</option>

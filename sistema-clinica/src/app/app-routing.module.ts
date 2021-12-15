@@ -1,3 +1,9 @@
+import { ContractFormComponent } from './pages/recepcao/finance/contract-form/contract-form.component';
+import { GenerateContractComponent } from './pages/recepcao/finance/generate-contract/generate-contract.component';
+import { FinanceComponent } from './pages/recepcao/finance/finance.component';
+import { RegisterComponent } from './pages/recepcao/agenda/register/register.component';
+import { AgendaComponent } from './pages/recepcao/agenda/agenda.component';
+import { PatientHistoricComponent } from './pages/recepcao/patient/patient-historic/patient-historic.component';
 import { HomeUserComponent } from './pages/users/home-user/home-user.component';
 import { SettingsComponent } from './pages/doctors/settings/settings.component';
 import { NgModule } from '@angular/core';
@@ -51,6 +57,20 @@ const routes: Routes = [
     component: DoctorRecComponent
   },
   {
+    path: 'agenda',
+    children: [
+      {
+        path: '',
+        component: AgendaComponent,
+        canActivate: [AuthGuard, AuthReceptionGuard]
+      },
+      {
+        path: 'semana',
+        component: RegisterComponent,
+        canActivate: [AuthGuard, AuthReceptionGuard]
+      }]
+  },
+  {
     path: 'paciente',
     children: [
       {
@@ -61,10 +81,13 @@ const routes: Routes = [
         path: 'consulta',
         component: PatientConsultaComponent
       },
-  
       {
         path: 'ver-paciente',
         component: PatientViewComponent
+      },
+      {
+        path: 'ver-historico-paciente',
+        component: PatientHistoricComponent
       }
     ]
   },
@@ -174,6 +197,30 @@ const routes: Routes = [
       //   component:
       // }
     ]
+  },
+  {
+    path: 'financeiro',
+    children: [
+      {
+        path: '',
+        component: FinanceComponent,
+        canActivate: [AuthGuard, AuthReceptionGuard]
+      },
+      {
+        path: 'gerar-contrato',
+        component: GenerateContractComponent,
+        canActivate: [AuthGuard, AuthReceptionGuard]
+      },
+      {
+        path: 'formulario-contrato',
+        component: ContractFormComponent,
+        canActivate: [AuthGuard, AuthReceptionGuard]
+      },
+      {
+        path: 'consultar-relatorios',
+        component: HomeComponent,
+        canActivate: [AuthGuard, AuthReceptionGuard]
+      }]
   },
 
 ];

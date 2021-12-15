@@ -1,0 +1,27 @@
+:host{
+  h2{
+      color: rgb(110, 96, 70);
+  }
+  .titulo-header{
+      padding: 30px 5px 0px 0px;
+      margin-bottom: 15px;
+      border-bottom: 5px solid  rgb(146, 133, 109);
+  }
+  input:focus {
+      outline: none !important;
+      border-color: rgb(110, 96, 70);
+      box-shadow: 0px 0px 5px rgb(110, 96, 70);
+  }
+
+  .alert-danger{
+      background-color: rgb(110, 96, 70) !important;
+      color: white;
+      border: none;
+      text-align: center;
+  }
+  .btn-info{
+      background-color:rgb(110, 96, 70) !important;
+      border: none;
+  }
+
+}

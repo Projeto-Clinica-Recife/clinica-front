@@ -1,0 +1,41 @@
+<body>
+  <div class="container-fluid">
+    <main class="tm-main">
+
+      <div class="row tm-row titulo-header">
+        <div class="col-12">
+          <h2>Histórico de Consultas do Paciente</h2>
+        </div>
+      </div>
+
+      <div *ngIf="consultas.length === 0" class="col-sm-12">
+        <div class="alert alert-brow" role="alert">
+          Paciente ainda não possui histórico de consultas.
+        </div>
+      </div>
+
+      <mat-accordion *ngFor="let consulta of consultas">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ consulta.date | date:"dd/MM/yyyy" }}
+            </mat-panel-title>
+            <mat-panel-description>
+              Médico: {{ consulta.doctor_name }}
+              <!-- {{panelOpenState ? 'open' : 'closed'}} -->
+
+            </mat-panel-description>
+            <mat-panel-description>
+              adicionar tipo de consulta
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p> {{ consulta.observation }} </p>
+          <!--Adicionar queixa apenas se for médico olhando-->
+          <p> {{ consulta.plaint }} </p>
+          <p> {{ consulta.protocols }} </p>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+    </main>
+  </div>
+</body>
