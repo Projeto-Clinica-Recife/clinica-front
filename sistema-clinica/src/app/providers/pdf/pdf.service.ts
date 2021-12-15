@@ -1,31 +1,37 @@
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PdfService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
+  private URL = `${environment.api_url}/patient`;
 
   view_pdf(base64: string){
 
-    let html = '';  
-    html += "<html>";  
-    html += '<body style="margin:0!important">';  
+    let html = '';
+    html += "<html>";
+    html += '<body style="margin:0!important">';
     html += '<embed width="100%" height="100%" src="data:application/pdf;base64,' + base64 + '" type="application/pdf" />';
     html += '<a href="www.google.com>Download</a>';
-    html += "</body>";  
-    html += "</html>";  
-    setTimeout(() => {  
-      const win = window.open('', "_blank");  
-      win!.document.write(html);  
-    }, 100); 
+    html += "</body>";
+    html += "</html>";
+    setTimeout(() => {
+      const win = window.open('', "_blank");
+      win!.document.write(html);
+    }, 100);
 
   }
 
-  download_pdf(base64: string){ 
-    
+  download_pdf(base64: string){
+
     var binary = atob(base64.replace(/\s/g, ''));
     var len = binary.length;
     var buffer = new ArrayBuffer(len);
@@ -44,4 +50,11 @@ export class PdfService {
     // downloadLink.download = fileName;
     // downloadLink.click();
   }
+
+
+  generateContractPdf(form: any): Observable<any> {
+    const url = `${environment.api_url}/contract/id`;
+    return this.http.post(url,form);
+  }
+
 }

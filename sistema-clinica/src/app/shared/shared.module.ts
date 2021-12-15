@@ -1,3 +1,4 @@
+import { SearchComponent } from './search/search.component';
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -15,6 +16,7 @@ import { MAT_DATE_LOCALE } from "@angular/material/core";
 const components = [
   FooterComponent,
   HeaderComponent,
+  SearchComponent
 ];
 
 const imports = [

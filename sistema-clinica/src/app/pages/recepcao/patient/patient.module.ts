@@ -7,7 +7,7 @@ import { PatientViewComponent } from './patient-view/patient-view.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PatientHistoricComponent } from './patient-historic/patient-historic.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -22,7 +22,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     ReactiveFormsModule,
     FormsModule,
     FontAwesomeModule,
-    MatExpansionModule
+    MatExpansionModule,
+    SharedModule
   ]
 })
 export class PatientModule { }

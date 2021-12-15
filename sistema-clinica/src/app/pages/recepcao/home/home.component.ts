@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FooterComponent } from 'src/app/shared/footer/footer.component';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { faUserMd,faMedkit } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
+import { TokenManager } from 'src/app/providers/token-manager/token-manager.service';
+import { UsersService } from 'src/app/providers/users/users.service';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +13,24 @@ export class HomeComponent implements OnInit {
   icons ={
     faUserMd,
     faMedkit
-  } 
-  constructor() { }
+  }
+
+  profile!: any;
+
+  constructor(private tokenManager: TokenManager,
+    private router: Router,
+    private usersService: UsersService,
+  ) {
+    this.profile = this.usersService.get_profile();
+  }
 
   ngOnInit(): void {
+
+  }
+
+
+  async logout() {
+    this.tokenManager.remove();
   }
 
 }

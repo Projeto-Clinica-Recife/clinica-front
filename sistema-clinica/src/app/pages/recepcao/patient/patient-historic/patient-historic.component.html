@@ -4,7 +4,13 @@
 
       <div class="row tm-row titulo-header">
         <div class="col-12">
-          <h2>Histórico do Paciente</h2>
+          <h2>Histórico de Consultas do Paciente</h2>
+        </div>
+      </div>
+
+      <div *ngIf="consultas.length === 0" class="col-sm-12">
+        <div class="alert alert-brow" role="alert">
+          Paciente ainda não possui histórico de consultas.
         </div>
       </div>
 

@@ -228,8 +228,4 @@ export class PatientViewComponent implements OnInit {
     return this.router.navigate(['/paciente/ver-historico-paciente'], { queryParams: { id: this.patientId } });
   }
 
-
-
-
-
 }

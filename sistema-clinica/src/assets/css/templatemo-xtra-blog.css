@@ -87,7 +87,7 @@ hr {
 
 .tm-nav-item {
     list-style: none;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .tm-nav-link {
@@ -418,12 +418,13 @@ a:hover figcaption { color: #056767; }
 .tm-contact-form label { font-size: 1.4rem; }
 .tm-contact-form .form-group { display: flex; }
 
+/*AQUI HERBET*/
 @media (max-width: 1540px) {
-    .tm-header { width: 320px; }
+    .tm-header { width: 320px; } /*aqui largura da coluna */
 
     .tm-main {
         margin-left: 320px;
-        width: calc(100% - 320px);
+        width: calc(100% - 320px); /*aqui distancia dos elementos a direita*/
     }
 }
 

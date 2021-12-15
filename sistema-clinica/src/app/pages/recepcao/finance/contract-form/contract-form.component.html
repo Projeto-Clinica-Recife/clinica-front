@@ -1,0 +1,45 @@
+<body>
+  <div class="container-fluid">
+    <main class="tm-main">
+      <div class="row tm-row titulo-header">
+        <div class="col-12">
+          <h2 style="color: rgb(110, 96, 70);">Dados do Contrato</h2>
+        </div>
+      </div>
+
+
+
+      <form [formGroup]="formContract"  class="col-12" >
+        <div class="form-group">
+          <label >Plano Selecionado</label>
+          <input type="text" class="form-control" formControlName="plan">
+        </div>
+        <div class="form-group">
+          <label>Data de Início</label>
+          <input type="date" class="form-control" formControlName="data_inicio">
+        </div>
+        <div class="form-group">
+          <label>Data de Fim</label>
+          <input type="date" class="form-control" formControlName="data_fim">
+        </div>
+        <div class="form-group">
+          <label>Protocolos</label>
+          <input type="text" class="form-control" formControlName="protocols">
+        </div>
+
+
+
+      </form>
+
+
+
+
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" [routerLink]="'/financeiro/gerar-contrato'">Cancelar</button>
+        <button (click)="generateContract()" type="button" class="btn btn-save" data-dismiss="modal">Gerar Contrato</button>
+      </div>
+    </main>
+  </div>
+</body>

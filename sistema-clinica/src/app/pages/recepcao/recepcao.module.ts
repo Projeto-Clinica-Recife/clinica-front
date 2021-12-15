@@ -9,6 +9,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgendaComponent } from './agenda/agenda.component';
 import { RegisterComponent } from './agenda/register/register.component';
 import { SettingsReceptionComponent } from './settings-reception/settings-reception.component';
+import { FinanceComponent } from './finance/finance.component';
+import { GenerateContractComponent } from './finance/generate-contract/generate-contract.component';
+import { ContractFormComponent } from './finance/contract-form/contract-form.component';
 
 const routes: Routes = [{
   path: '',
@@ -27,7 +30,10 @@ const routes: Routes = [{
   declarations: [
     AgendaComponent,
     RegisterComponent,
-    SettingsReceptionComponent
+    SettingsReceptionComponent,
+    FinanceComponent,
+    GenerateContractComponent,
+    ContractFormComponent
   ],
   imports: [
     CommonModule,
