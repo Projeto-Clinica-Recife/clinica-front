@@ -12,7 +12,7 @@ export class PdfService {
     private http: HttpClient
   ) { }
 
-  private URL = `${environment.api_url}/patient`;
+  private URL = `${environment.api_url}`;
 
   view_pdf(base64: string){
 
@@ -52,9 +52,9 @@ export class PdfService {
   }
 
 
-  generateContractPdf(form: any): Observable<any> {
-    const url = `${environment.api_url}/contract/id`;
-    return this.http.post(url,form);
+  generateContractPdf(patientId: number, patientPlanId: number): Observable<any> {
+    const url = `${this.URL}/contract/${patientId}`;
+    return this.http.post(url, {patient_plan_id: patientPlanId});
   }
 
 }

@@ -8,6 +8,7 @@ import { DoctorConsultaComponent } from './doctor/doctor-consulta/doctor-consult
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SettingsComponent } from './settings/settings.component';
 import { DoctorFinanceiroComponent } from './doctor/doctor-financeiro/doctor-financeiro.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 const routes: Routes = [{
   path: '',
@@ -28,7 +29,8 @@ const routes: Routes = [{
     SharedModule,
     RouterModule.forChild(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatExpansionModule,
   ]
 })
 export class DoctorModule { }

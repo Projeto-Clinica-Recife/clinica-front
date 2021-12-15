@@ -12,6 +12,7 @@ import { SettingsReceptionComponent } from './settings-reception/settings-recept
 import { FinanceComponent } from './finance/finance.component';
 import { GenerateContractComponent } from './finance/generate-contract/generate-contract.component';
 import { ContractFormComponent } from './finance/contract-form/contract-form.component';
+import {MatSelectModule} from '@angular/material/select';
 
 const routes: Routes = [{
   path: '',
@@ -33,13 +34,13 @@ const routes: Routes = [{
     SettingsReceptionComponent,
     FinanceComponent,
     GenerateContractComponent,
-    ContractFormComponent
+    ContractFormComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class RecepcaoModule {

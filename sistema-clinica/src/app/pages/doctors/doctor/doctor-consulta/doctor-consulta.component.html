@@ -1,6 +1,19 @@
 <body>
   <div class="container-fluid">
     <main class="tm-main">
+      <div class="row tm-row">
+        <div class="col-12">
+            <div class="row tm-row title">
+                <div class="col-10">
+                  <h2 *ngIf="profile">Bem vindo(a), {{profile.name}}</h2>
+                </div>
+                <div class="col-sm-2 mt-1">
+                  <button type="button" (click)="logout()"
+                    class="btn btn-block btn-info">Sair</button>
+                </div>
+              </div>
+        </div>
+    </div>
       <div class="row tm-row titulo-header">
         <div class="col-12">
           <h2>Consultar Horários</h2>

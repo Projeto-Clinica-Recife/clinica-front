@@ -5,6 +5,8 @@ import { DoctorService } from 'src/app/providers/doctor/doctor.service';
 import { PatientService } from 'src/app/providers/patient/patient.service';
 import { ProtocolService } from 'src/app/providers/protocol/protocol.service';
 import { AgenderService } from 'src/app/providers/agender/agender.service';
+import { PlansService } from 'src/app/providers/plan/plans.service';
+import { PdfService } from 'src/app/providers/pdf/pdf.service';
 import SignaturePad from 'signature_pad';
 import { faCalendarTimes, faEdit, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
@@ -17,6 +19,7 @@ import { HttpClient } from '@angular/common/http';
 export class PatientViewComponent implements OnInit {
   formAgender!: FormGroup;
   formRecp!: FormGroup;
+  formCadPlan!: FormGroup;
   public agenderPatients: any;
   public doctors: any;
   public protocols: any;
@@ -27,6 +30,8 @@ export class PatientViewComponent implements OnInit {
   public end: any
   public dateCurrent = new Date().toLocaleString("pt-BR", { timeZone: "America/Recife" }).substr(0, 10).split('/').reverse().join('-');
   public selectDoctors: any = '';
+  public plans: any;
+  public payOnCredit: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -37,7 +42,9 @@ export class PatientViewComponent implements OnInit {
     private agenderService: AgenderService,
     private formBuilder: FormBuilder,
     private element: ElementRef,
-    private http: HttpClient
+    private http: HttpClient,
+    private plansService: PlansService,
+    private pdfService: PdfService,
   ) { }
   icons = {
     faCalendarTimes,
@@ -49,6 +56,12 @@ export class PatientViewComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.patientId = params.id;
     });
+
+    this.plansService.getPlans().subscribe( plans => {
+      this.plans = plans;
+      console.log(plans);
+      
+    })
 
     this.formAgender = this.formBuilder.group({
       date: [this.dateCurrent],
@@ -75,6 +88,14 @@ export class PatientViewComponent implements OnInit {
       ponto_referencia: [null],
       signature: ['Assinatura não coletada. Cadastro feito na recepção']
     });
+
+    this.formCadPlan = this.formBuilder.group({
+      doctor_id: [null],
+      plan_id: [null],
+      form_of_payment: [null],
+      discount: [null],
+    });
+
     this.getAgender();
     this.interval = setInterval(() => {
       this.getAgender();
@@ -195,6 +216,45 @@ export class PatientViewComponent implements OnInit {
         alert('Protocolo cancelado')
       }
     );
+  }
+
+  async cadPlan(){
+    const form = {
+      ...this.formCadPlan.value,
+    };
+    const patientd = this.patientId;
+    
+    return this.patientService.cadPlan(patientd, form).subscribe( res => {
+      console.log(res);
+      const patientPlanId = res.patient_plan.id;
+
+        // Gera o contrato
+        this.pdfService.generateContractPdf(patientd, patientPlanId).subscribe( async res => {
+
+          // Retorna o pdf do contrato criado
+          this.pdfService.download_pdf(res);
+
+        }, error => {
+          console.log(error);
+          
+        });
+
+    }, error => {
+      console.log(error);
+      
+    })
+    
+  }
+
+  async payCredit(){
+    const form = {
+      ...this.formCadPlan.value,
+    };
+
+    if(form.form_of_payment === 'Cartão de Crédito'){
+      this.payOnCredit = true;
+    }
+    
   }
 
   translateStatus(status: string) {

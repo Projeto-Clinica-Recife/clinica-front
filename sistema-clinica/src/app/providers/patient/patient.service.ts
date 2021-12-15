@@ -33,4 +33,9 @@ export class PatientService {
       return this.http.get(url);
     }
 
+    cadPlan(patientID: any, formValue: any): Observable<any> {
+      const url = `${this.URL}/cad-plan/${patientID}`;
+      return this.http.post(url, formValue);
+    }
+
 }

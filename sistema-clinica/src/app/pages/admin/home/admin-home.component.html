@@ -3,12 +3,21 @@
         <main class="tm-main">
             <div class="row tm-row">
                 <div class="col-12">
-                    <form method="GET" class="form-inline tm-mb-80 tm-search-form">
+                    <div class="row tm-row title">
+                        <div class="col-10">
+                          <h2 *ngIf="profile">Bem vindo(a), {{profile.name}}</h2>
+                        </div>
+                        <div class="col-sm-2 mt-1">
+                          <button type="button" (click)="logout()"
+                            class="btn btn-block btn-info">Sair</button>
+                        </div>
+                      </div>
+                    <!-- <form method="GET" class="form-inline tm-mb-80 tm-search-form">
                         <input class="form-control tm-search-input" name="query" type="text" placeholder="Procurar..." aria-label="Search">
                         <button class="tm-search-button" type="submit">
                             <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
                         </button>
-                    </form>
+                    </form> -->
                 </div>
             </div>
             <div class="row tm-row">

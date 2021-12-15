@@ -8,12 +8,15 @@ import SignaturePad from 'signature_pad';
 import { faCalendarTimes, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { DoctorService } from '../../../../providers/doctor/doctor.service';
 import { UsersService } from 'src/app/providers/users/users.service';
+import { TokenManager } from 'src/app/providers/token-manager/token-manager.service';
 @Component({
   selector: 'app-doctor-consulta',
   templateUrl: './doctor-consulta.component.html',
   styleUrls: ['./doctor-consulta.component.scss',]
 })
 export class DoctorConsultaComponent implements OnInit {
+
+  profile!: any;
 
   constructor(
     private doctorService: DoctorService,
@@ -22,8 +25,11 @@ export class DoctorConsultaComponent implements OnInit {
     private agenderService: AgenderService,
     private formBuilder: FormBuilder,
     private element: ElementRef,
-    private userService: UsersService
-  ) { }
+    private userService: UsersService,
+    private tokenManager: TokenManager,
+  ) {
+    this.profile = this.userService.get_profile();
+   }
 
   public search: any;
   public doctors: any;
@@ -89,6 +95,10 @@ export class DoctorConsultaComponent implements OnInit {
         break;
     }
     return state;
+  }
+
+  async logout() {
+    this.tokenManager.remove();
   }
 
 }

@@ -69,11 +69,12 @@ export class DoctorViewComponent implements OnInit {
     const agender_id = this.item_id;
     this.patientService.getPatientById(this.patientId).subscribe(
       async (result) => {
+        console.log(result);
+        
         this.patient = result;
         this.formReceita = this.formBuilder.group({
           agender_id: agender_id,
-          patient_name: [this.patient.nome],
-          patient_cpf: [this.patient.cpf],
+          patient_id: [this.patientId],
           prescription: [null],
           doctor_name: [this.doctor.name],
           doctor_crm: [this.doctor.user_information.crm],
@@ -94,7 +95,10 @@ export class DoctorViewComponent implements OnInit {
       ...this.formReceita.value
     };
 
-    this.doctorService.generatePdf(formValue).subscribe(
+    console.log(formValue);
+    
+
+    this.doctorService.generatePrescriptionPdf(formValue).subscribe(
       async (result) => {
         const base64 = result;
         

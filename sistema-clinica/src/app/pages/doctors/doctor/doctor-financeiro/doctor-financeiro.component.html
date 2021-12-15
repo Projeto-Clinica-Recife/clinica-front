@@ -7,11 +7,26 @@
                 </div>
             </div>
             <div class="row tm-row" style="margin-bottom: 30px;">
-                <div *ngFor="let plan of doctorPlans">
-                    <p>
-                        {{ plan.plan.value}}
-                    </p>
-                </div>
+                <mat-accordion *ngFor="let doctorPlan of doctorPlans">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          {{ doctorPlan.value}}
+                        </mat-panel-title>
+                        <mat-panel-description>
+            
+                        </mat-panel-description>
+                        <mat-panel-description>
+                          {{ doctorPlan.plan.description }}
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <p> Valor: {{ doctorPlan.plan.value | currency:'BRL' }}</p>
+                      <p> Vencimento: {{ doctorPlan.dueDate | date:"dd/MM/yyyy"}}</p>
+                      <p> Paciente: {{ doctorPlan.patient.nome }}</p>
+                      <!-- <p>Início: {{doctorPlan.created_at  }}</p> -->
+            
+                    </mat-expansion-panel>
+                  </mat-accordion>
             </div>
         </main>
     </div>

@@ -28,7 +28,7 @@ export class PlansService {
     const headers = new HttpHeaders()
         .set('Authorization', 'Bearer ' + this.token,);
     
-    return this.http.get<Plan>(url);
+    return this.http.get<Plan>(url, {headers: headers});
    }
 
    cancelPlan(planId: number){
