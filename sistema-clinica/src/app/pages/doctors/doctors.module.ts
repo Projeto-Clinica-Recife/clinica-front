@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DoctorConsultaComponent } from './doctor/doctor-consulta/doctor-consulta.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SettingsComponent } from './settings/settings.component';
+import { DoctorFinanceiroComponent } from './doctor/doctor-financeiro/doctor-financeiro.component';
 
 const routes: Routes = [{
   path: '',
@@ -20,6 +21,7 @@ const routes: Routes = [{
     DoctorConsultaComponent,
     DoctorViewComponent,
     SettingsComponent,
+    DoctorFinanceiroComponent,
   ],
   imports: [
     CommonModule,

@@ -26,6 +26,7 @@ import { CadProtocolComponent } from './pages/admin/protocol/cad-protocol/cad-pr
 import { ListProtocolsComponent } from './pages/admin/protocol/list-protocols/list-protocols.component';
 import { DoctorRecConsultaComponent } from './pages/recepcao/doctor/doctor-consulta/doctor-consulta.component';
 import { DoctorRecComponent } from './pages/recepcao/doctor/doctor.component';
+import { DoctorFinanceiroComponent } from './pages/doctors/doctor/doctor-financeiro/doctor-financeiro.component';
 
 const routes: Routes = [
   {
@@ -132,6 +133,7 @@ const routes: Routes = [
   },
   {
     path: 'medico',
+    canActivate: [AuthGuard, AuthDoctorGuard],
     children: [
       {
         path: 'home-medico',
@@ -145,6 +147,10 @@ const routes: Routes = [
       {
         path: 'editar-medico',
         component: SettingsComponent
+      },
+      {
+        path: 'financeiro-medico',
+        component: DoctorFinanceiroComponent,
       }
     ]
   },

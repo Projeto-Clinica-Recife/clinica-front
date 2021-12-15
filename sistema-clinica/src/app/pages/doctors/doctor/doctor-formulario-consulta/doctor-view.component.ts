@@ -94,7 +94,7 @@ export class DoctorViewComponent implements OnInit {
       ...this.formReceita.value
     };
 
-    this.doctorService.getGeneratePdf(formValue).subscribe(
+    this.doctorService.generatePdf(formValue).subscribe(
       async (result) => {
         const base64 = result;
         

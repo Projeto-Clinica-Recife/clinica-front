@@ -20,7 +20,7 @@ export class AuthDoctorGuard implements CanActivate {
         state: RouterStateSnapshot
     ): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
         const profile = this.usersService.get_profile();
-        if (profile.type_user != 'doctor') {
+        if (profile.type_user !== 'doctor') {
             return false;
         }
         return true;

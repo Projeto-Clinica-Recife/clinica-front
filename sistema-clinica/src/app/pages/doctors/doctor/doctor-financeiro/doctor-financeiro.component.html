@@ -1,0 +1,18 @@
+<body>
+    <div class="container-fluid">
+        <main class="tm-main">
+            <div class="row tm-row titulo-header">
+                <div class="col-12">
+                    <h2>FINANCEIRO</h2>
+                </div>
+            </div>
+            <div class="row tm-row" style="margin-bottom: 30px;">
+                <div *ngFor="let plan of doctorPlans">
+                    <p>
+                        {{ plan.plan.value}}
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>

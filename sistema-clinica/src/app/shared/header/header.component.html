@@ -51,13 +51,19 @@
           </a>
         </li>
 
+        <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item"><a routerLink="medico/financeiro-medico"
+          class="tm-nav-link">
+          <i class="far fa-comments"></i>
+          Financeiro
+        </a>
+        </li>
+
         <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item"><a routerLink="{{ rota }}"
             class="tm-nav-link">
             <i class="far fa-comments"></i>
             Relatórios
           </a>
         </li>
-
 
       </ul>
     </nav>
