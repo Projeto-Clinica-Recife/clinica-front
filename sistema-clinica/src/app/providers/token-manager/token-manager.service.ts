@@ -32,6 +32,7 @@ export class TokenManager {
             this.router.navigate(['/']);
         }, error => {
             console.log(error);
+            this.router.navigate(['/']);
             }
         );
     }

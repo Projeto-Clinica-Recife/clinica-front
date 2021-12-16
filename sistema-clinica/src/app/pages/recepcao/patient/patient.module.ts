@@ -8,6 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PatientHistoricComponent } from './patient-historic/patient-historic.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { PatientPlansComponent } from './patient-plans/patient-plans.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     PatientConsultaComponent,
     PatientViewComponent,
     PatientHistoricComponent,
+    PatientPlansComponent,
   ],
   imports: [
     CommonModule,

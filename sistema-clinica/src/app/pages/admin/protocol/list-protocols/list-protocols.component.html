@@ -18,8 +18,18 @@
                       <tbody>
                         <tr  *ngFor="let protocol of protocols">
                           <td scope="row" class="">{{ protocol.descricao }}</td>
+                          <td class="text-center">
+                            <button
+                            class="btn btn-sm btn-danger mr-1" title="Exclir Protocolo"
+                            data-toggle="modal" data-target="#modaDelete"
+                            (click)="deleteProtocol(protocol.id)">
+                              <fa-icon [icon]="icons.faTrashAlt"></fa-icon>
+                            </button>
+                          </td>
+                      
                         </tr>
                       </tbody>
+                      <p id="demo"></p>
                     </table>
                 </div>
             </div>

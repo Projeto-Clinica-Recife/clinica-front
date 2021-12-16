@@ -22,12 +22,23 @@ export class DoctorFinanceiroComponent implements OnInit {
   ngOnInit(): void {
     const doctorId = this.profile!.id;
     this.doctorService.getPlansDoctor(doctorId!).subscribe( res => {
-      console.log(res);
       this.doctorPlans = res;
     }, error => {
       console.log(error);
       
     })
+  }
+
+  translate(text: string){
+    switch(text){
+      case 'paid':
+        text = 'Pago';
+        break;
+      case 'pending':
+        text = 'Pendente';
+        break;
+    }
+    return text;
   }
 
 }

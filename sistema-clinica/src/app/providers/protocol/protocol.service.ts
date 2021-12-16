@@ -25,4 +25,10 @@ export class ProtocolService {
       return this.http.post<any>(url, form);
     }
 
+    deleteProtocol(protocolId: number): Observable<any> {
+      const url = `${this.URL}/delete/${protocolId}`;
+
+      return this.http.put(url, undefined);
+    }
+
 }

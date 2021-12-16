@@ -43,17 +43,13 @@ export class PdfService {
     var blob = new Blob( [view], { type: "application/pdf" });
     var url = URL.createObjectURL(blob);
     window.open(url,'_blank');
-
-    // const downloadLink = document.createElement("a");
-    // const fileName = `prescricao_${patient_name}.pdf`;
-    // downloadLink.href = base64;
-    // downloadLink.download = fileName;
-    // downloadLink.click();
+    
   }
 
 
   generateContractPdf(patientId: number, patientPlanId: number): Observable<any> {
     const url = `${this.URL}/contract/${patientId}`;
+
     return this.http.post(url, {patient_plan_id: patientPlanId});
   }
 

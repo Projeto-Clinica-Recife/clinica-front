@@ -57,7 +57,7 @@ export class PatientViewComponent implements OnInit {
       this.patientId = params.id;
     });
 
-    this.plansService.getPlans().subscribe( plans => {
+    this.plansService.getPlansActive().subscribe( plans => {
       this.plans = plans;
       console.log(plans);
       

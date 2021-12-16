@@ -38,4 +38,10 @@ export class PatientService {
       return this.http.post(url, formValue);
     }
 
+    getPlans(patientId: number): Observable<any> {
+      const url = `${this.URL}/plans/${patientId}`;
+
+      return this.http.get(url);
+    }
+
 }

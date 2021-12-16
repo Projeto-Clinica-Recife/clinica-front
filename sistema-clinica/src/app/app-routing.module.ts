@@ -33,6 +33,7 @@ import { ListProtocolsComponent } from './pages/admin/protocol/list-protocols/li
 import { DoctorRecConsultaComponent } from './pages/recepcao/doctor/doctor-consulta/doctor-consulta.component';
 import { DoctorRecComponent } from './pages/recepcao/doctor/doctor.component';
 import { DoctorFinanceiroComponent } from './pages/doctors/doctor/doctor-financeiro/doctor-financeiro.component';
+import { PatientPlansComponent } from './pages/recepcao/patient/patient-plans/patient-plans.component';
 
 const routes: Routes = [
   {
@@ -88,6 +89,10 @@ const routes: Routes = [
       {
         path: 'ver-historico-paciente',
         component: PatientHistoricComponent
+      },
+      {
+        path: 'ver-planos-paciente',
+        component: PatientPlansComponent,
       }
     ]
   },

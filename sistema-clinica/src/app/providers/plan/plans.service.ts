@@ -31,6 +31,15 @@ export class PlansService {
     return this.http.get<Plan>(url, {headers: headers});
    }
 
+   getPlansActive(){
+    const url = `${this.URL}/active`;
+
+    const headers = new HttpHeaders()
+        .set('Authorization', 'Bearer ' + this.token,);
+    
+    return this.http.get<Plan>(url, {headers: headers});
+   }
+
    cancelPlan(planId: number){
     const url = `${this.URL}/cancel/${planId}`;
 

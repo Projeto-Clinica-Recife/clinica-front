@@ -19,7 +19,7 @@
             <i class="fas fa-home"></i>
             Tela Inicial
           </a></li>
-        <li *ngIf="profile.type_user != 'doctor'" class="tm-nav-item"><a routerLink="{{ rotaAgenda }}" class="tm-nav-link">
+        <li *ngIf="profile.type_user != 'doctor' and profile.type_user != 'admin'" class="tm-nav-item"><a routerLink="{{ rotaAgenda }}" class="tm-nav-link">
             <i class="fas fa-pen"></i>
             Agenda
           </a></li>
@@ -28,13 +28,6 @@
             <i class="fas fa-calculator"></i>
             Financeiro
           </a></li>
-
-        <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item"><a routerLink="{{ rotaEditarPerfil }}"
-            class="tm-nav-link">
-            <i class="fas fa-user-edit"></i>
-            Editar Perfil
-          </a>
-        </li>
 
         <li *ngIf="profile.type_user == 'reception'" class="tm-nav-item"><a routerLink="/editar-recepcao"
             class="tm-nav-link">
@@ -62,6 +55,14 @@
             class="tm-nav-link">
             <i class="far fa-comments"></i>
             Relatórios
+          </a>
+        </li>
+
+        <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item">
+          <a routerLink="{{ rotaEditarPerfil }}"
+          class="tm-nav-link">
+          <i class="fas fa-user-edit"></i>
+          Editar Perfil
           </a>
         </li>
 

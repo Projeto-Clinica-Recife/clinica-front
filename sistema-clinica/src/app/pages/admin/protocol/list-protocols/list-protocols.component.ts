@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProtocolService } from 'src/app/providers/protocol/protocol.service';
-import { faCalendarTimes, faEdit} from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faRecycle} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-list-protocols',
@@ -15,8 +15,8 @@ export class ListProtocolsComponent implements OnInit {
    ) { }
 
    icons = {
-    faCalendarTimes,
-    faEdit
+    faTrashAlt,
+    faRecycle,
   }
 
   ngOnInit(): void {
@@ -26,4 +26,13 @@ export class ListProtocolsComponent implements OnInit {
     })
   }
 
+  deleteProtocol(protocolId: number){
+    console.log(protocolId);
+
+    return this.protocolService.deleteProtocol(protocolId).subscribe( res =>{
+      console.log(res);
+      location.reload();
+    })
+    
+  }
 }

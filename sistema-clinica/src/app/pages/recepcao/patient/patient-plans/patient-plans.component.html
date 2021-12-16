@@ -1,0 +1,29 @@
+<body>
+    <div class="container-fluid">
+        <main class="tm-main">
+            <div class="row tm-row titulo-header">
+            <div class="col-8">
+                <h2>PLANOS  DO PACIENTE</h2>
+            </div>
+            </div>
+
+            <div class="row tm-row" style="margin-bottom: 30px;">
+                <div class="col-12">
+                    <div *ngIf="plans.length == 0">
+                        <h3>Nunhum Plano Cadastrado</h3>
+                    </div>
+                    <div class="plans" *ngFor="let plan of plans">
+                        <div class="plan mt-4">
+                            <p>Plano: {{ plan.description }}</p>
+                            <p>Valor: R$ {{ plan.value }}</p>
+                            <p>Forma de Pagamento: {{ plan.form_of_payment }}</p>
+                            <p>Vencimento: {{ plan.vencimento | date:"dd/MM/yyyy" }}</p>
+                            <button class=" btn btn-block btn-info" (click)="getContract(plan.contract_id)">Ver Contrato</button>
+                        </div>
+                        <!-- <p>{{ plan.contract_id }}</p> -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
