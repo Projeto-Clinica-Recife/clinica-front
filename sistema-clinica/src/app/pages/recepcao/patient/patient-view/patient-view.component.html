@@ -136,7 +136,8 @@
             </div>
             <div class="form-group">
               <label>Protocolos</label>
-              <select formControlName="protocols_id" class="form-control" multiple id="select">
+              <select formControlName="protocols_id" class="form-control">
+              <!-- <select formControlName="protocols_id" class="form-control" multiple id="select"> -->
                 <option *ngFor="let protocol of protocols" value="{{protocol.id}}">{{protocol.descricao}}</option>
               </select>
             </div>
@@ -144,7 +145,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button (click)="cadAgender()" type="button" class="btn btn-info" data-dismiss="modal">Agendar</button>
+          <button  (click)="cadAgender()" type="button" class="btn btn-info" data-dismiss="modal">Agendar</button>
         </div>
       </div>
     </div>
@@ -172,11 +173,11 @@
             </div>
             <div class="form-group">
               <label>CPF</label>
-              <input type="text" class="form-control" formControlName="cpf">
+              <input type="text" class="form-control" formControlName="cpf" maxlength="11">
             </div>
             <div class="form-group">
               <label>RG</label>
-              <input type="number" class="form-control" formControlName="rg">
+              <input type="number" class="form-control" formControlName="rg" maxlength="14">
             </div>
             <div class="form-group">
               <label>E-mail</label>
@@ -184,7 +185,7 @@
             </div>
             <div class="form-group">
               <label>CEP</label>
-              <input type="number" class="form-control" formControlName="cep" (keyup)="viaCep()">
+              <input type="number" class="form-control" formControlName="cep" (keyup)="viaCep()" maxlength="8">
             </div>
             <div class="form-group">
               <label>Rua</label>
@@ -218,7 +219,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button (click)="updatePatient(patient.id)" type="button" class="btn btn-info"
+          <button [disabled]="!formRecp.valid" (click)="updatePatient(patient.id)" type="button" class="btn btn-info"
             data-dismiss="modal">Editar</button>
         </div>
       </div>
