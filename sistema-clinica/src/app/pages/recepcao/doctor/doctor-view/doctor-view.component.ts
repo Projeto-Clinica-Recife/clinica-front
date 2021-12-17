@@ -61,17 +61,17 @@ export class DoctorRecViewComponent implements OnInit {
     });
 
     this.formRecp = this.formBuilder.group({
-      nome: [null],
-      data_nascimento: [null],
-      cpf: [null],
-      rg: [null],
-      email: [null],
-      cep: [null],
-      rua: [null],
-      numero: [null],
-      bairro: [null],
-      cidade: [null],
-      estado: [null],
+      nome: [null, Validators.required],
+      data_nascimento: [null, Validators.required],
+      cpf: [null, Validators.required],
+      rg: [null, Validators.required],
+      email: [null, Validators.required],
+      cep: [null, Validators.required],
+      rua: [null, Validators.required],
+      numero: [null, Validators.required],
+      bairro: [null, Validators.required],
+      cidade: [null, Validators.required],
+      estado: [null, Validators.required],
       complemento: [null],
       ponto_referencia: [null],
       signature:['Assinatura não coletada. Cadastro feito na recepção']
@@ -209,7 +209,7 @@ export class DoctorRecViewComponent implements OnInit {
         state = 'Cancelado';
       break;
       case 'finished':
-        state = 'Finalizado';
+        state = 'Finalizadonull, Validators.required';
       break;
     }
     return state;

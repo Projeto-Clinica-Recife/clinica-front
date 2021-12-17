@@ -1,6 +1,6 @@
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { TokenManager } from 'src/app/providers/token-manager/token-manager.service';
 import { UsersService } from 'src/app/providers/users/users.service';
 
@@ -10,7 +10,7 @@ import { UsersService } from 'src/app/providers/users/users.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+ 
   profile!: any;
   constructor(
     private tokenManager: TokenManager,
@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
     private usersService: UsersService,
   ) {
     this.profile = this.usersService.get_profile();
+    
   }
 
   public rota: string = '/home';
@@ -44,6 +45,8 @@ export class HeaderComponent implements OnInit {
           break;
       }
     }
+
+
   }
 
 
