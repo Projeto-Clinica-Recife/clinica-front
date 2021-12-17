@@ -154,6 +154,10 @@ const routes: Routes = [
         component: PatientConsultaComponent
       },
       {
+        path: 'ver-paciente',
+        component: PatientViewComponent
+      },
+      {
         path: 'consultar-medico',
         component: DoctorRecConsultaComponent
       },

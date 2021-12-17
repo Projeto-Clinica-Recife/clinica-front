@@ -42,6 +42,8 @@ export class SearchComponent implements OnInit {
       return this.router.navigate(['/paciente/ver-paciente'], { queryParams: { id: id } });
     } else if (this.rota == '/financeiro/gerar-contrato') {
       return this.router.navigate(['/financeiro/formulario-contrato'], { queryParams: { id: id } });
+    } else if (this.rota == '/admin/consulta-paciente'){
+      return this.router.navigate(['/admin/ver-paciente'], { queryParams: { id: id } })
     }
     return;
   }
