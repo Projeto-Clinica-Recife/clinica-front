@@ -17,10 +17,14 @@ import { DoctorConsultaComponent } from './pages/doctors/doctor/doctor-consulta/
 import { DoctorViewComponent } from './pages/doctors/doctor/doctor-formulario-consulta/doctor-view.component';
 import { PatientComponent } from './pages/recepcao/patient/patient.component';
 import { PatientConsultaComponent } from './pages/recepcao/patient/patient-consulta/patient-consulta.component';
+
+// Guards
 import { AuthGuard } from 'src/app/providers/guard/auth.guard';
 import { AuthAdminGuard } from 'src/app/providers/guard/auth_admin.guard';
 import { AuthReceptionGuard } from 'src/app/providers/guard/auth_reception.guard';
 import { AuthDoctorGuard } from 'src/app/providers/guard/auth_doctor.guard';
+import { AuthRecepAdminGuard } from 'src/app/providers/guard/auth_recep_admin.guard';
+
 import { CadPatientComponent } from './pages/recepcao/cad-patient/cad-patient.component';
 import { HomePlanComponent } from './pages/admin/plan/home-plan/home-plan.component';
 import { CadPlanComponent } from './pages/admin/plan/cad-plan/cad-plan.component';
@@ -213,22 +217,22 @@ const routes: Routes = [
       {
         path: '',
         component: FinanceComponent,
-        canActivate: [AuthGuard, AuthReceptionGuard]
+        canActivate: [AuthGuard, AuthRecepAdminGuard]
       },
       {
         path: 'gerar-contrato',
         component: GenerateContractComponent,
-        canActivate: [AuthGuard, AuthReceptionGuard]
+        canActivate: [AuthGuard, AuthRecepAdminGuard]
       },
       {
         path: 'formulario-contrato',
         component: ContractFormComponent,
-        canActivate: [AuthGuard, AuthReceptionGuard]
+        canActivate: [AuthGuard, AuthRecepAdminGuard]
       },
       {
         path: 'consultar-relatorios',
         component: HomeComponent,
-        canActivate: [AuthGuard, AuthReceptionGuard]
+        canActivate: [AuthGuard, AuthRecepAdminGuard]
       }]
   },
 
