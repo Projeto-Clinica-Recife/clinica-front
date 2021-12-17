@@ -4,7 +4,7 @@
       <!-- Search form -->
       <div class="row tm-row titulo-header">
         <div class="col-8">
-          <h2>CONSULTA DE PACIENTE</h2>
+          <h2>CONSULTA DE MÉDICO</h2>
         </div>
         <div class="col-4">
           <div class="dropdown float-right">
@@ -13,28 +13,26 @@
               Opções </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" data-toggle="modal" data-target="#editPaciente"  href="#">Editar</a>
-              <a class="dropdown-item" href="#">Ver Histórico</a>
               <a class="dropdown-item" data-toggle="modal" data-target="#agendar" href="#">Agendar</a>
-              <a class="dropdown-item" href="#">Cadastrar Plano</a>
             </div>
           </div>
         </div>
       </div>
       <div class="row tm-row" style="margin-bottom: 30px;">
         <div class="col-sm-12">
-          <h3> <strong>PACIENTE: </strong>{{patient.nome}}</h3>
+          <h3> <strong>MÉDICO: </strong>{{doctor.name}}</h3>
         </div>
         <div class="col-sm-6">
-          <h3> <strong>CPF: </strong>{{patient.cpf}}</h3>
+          <h3> <strong>CRM: </strong>{{doctor.user_information.crm}}/{{doctor.user_information.crm_state}}</h3>
         </div>
         <div class="col-sm-6">
-          <h3> <strong>Telefone: </strong></h3>
+          <h3> <strong>Telefone: </strong>{{doctor.user_information.telephone}} </h3>
         </div>
         <div class="col-sm-4">
           <form action="" class="form-inline">
             <strong class="mr-2">Data: </strong>
             <input type="date" name="dateCurrent" class="form-control-sm" id="" [(ngModel)]="dateCurrent"
-              (change)="getAgender();">
+              (change)="getAgenderDoctor();">
           </form>
         </div>
         <!-- <div class="col-sm-4">            
@@ -56,7 +54,7 @@
         <h2>Agendamentos</h2>
         <div *ngIf="agenderPatients.length === 0" class="col-sm-12">
           <div class="alert alert-brow" role="alert">
-            Paciente não possui agendamentos <br>
+            Médico não possui agendamentos <br>
             <button class="btn btn-light" data-toggle="modal" data-target="#agendar">Agendar</button>
 
           </div>
@@ -66,8 +64,8 @@
             <tr>
               <!-- <th>Data</th> -->
               <th>Hora</th>
-              <th>Médico</th>
-              <th>Protocolos</th>
+              <th>Paciente</th>
+              <!-- <th>Protocolos</th> -->
               <th>Status</th>
             </tr>
           </thead>
@@ -75,21 +73,10 @@
             <tr *ngFor="let agenderPatient of agenderPatients">
               <!-- <td>{{agenderPatient.date | date:"dd/MM/yyyy"}}</td> -->
               <td>{{agenderPatient.hour.slice(0,5)}}</td>
-              <td>{{agenderPatient.doctor}}</td>
-              <td>{{agenderPatient.protocol}}</td>
+              <td>{{agenderPatient.patient}}</td>
+              <!-- <td>{{agenderPatient.protocol}}</td> -->
               <td>{{translateStatus(agenderPatient.status)}}</td>
-              <td>
-                <!-- <button class="btn btn-sm btn-secondary mr-1" title="Editar Protocolo">
-                    <fa-icon [icon]="icons.faEdit"></fa-icon>
-                  </button> -->
-                <button *ngIf="agenderPatient.status != 'canceled'" class="btn btn-sm btn-success mr-1" title="Cancelar Protocolo">
-                  <fa-icon [icon]="icons.faDollarSign"></fa-icon>
-                </button>
-                <button *ngIf="agenderPatient.status != 'canceled'" class="btn btn-sm btn-danger mr-1"
-                  title="Cancelar Protocolo" (click)="cancelProtocol(agenderPatient.id);">
-                  <fa-icon [icon]="icons.faCalendarTimes"></fa-icon>
-                </button>
-              </td>
+            
             </tr>
           </tbody>
         </table>
@@ -215,7 +202,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button (click)="updatePatient(patient.id)" type="button" class="btn btn-info"
+          <button (click)="updatePatient(doctor.id)" type="button" class="btn btn-info"
             data-dismiss="modal">Editar</button>
         </div>
       </div>

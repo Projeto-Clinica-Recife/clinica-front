@@ -21,8 +21,8 @@ export class DoctorRecViewComponent implements OnInit {
   public doctors: any;
   public protocols: any;
   public checkProtocols: any;
-  public patientId: any;
-  public patient: any;
+  public doctorId: any;
+  public doctor: any;
   public interval: any;
   public end: any
   public dateCurrent = new Date().toLocaleString("pt-BR", {timeZone: "America/Recife"}).substr(0, 10).split('/').reverse().join('-');
@@ -47,15 +47,16 @@ export class DoctorRecViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
-      this.patientId = params.id;
+      this.doctorId = params.id;
     });
+    console.log(this.doctorId);
 
     this.formAgender = this.formBuilder.group({
       date: [this.dateCurrent],
-      doctor_id: [null],
+      doctor_id: [this.doctorId],
       hour: [null],
       protocols_id: [null],
-      patient_id: [this.patientId]
+      patient_id: [null]
 
     });
 
@@ -75,11 +76,11 @@ export class DoctorRecViewComponent implements OnInit {
       ponto_referencia: [null],
       signature:['Assinatura não coletada. Cadastro feito na recepção']
     });
-    this.getAgender();
+    this.getAgenderDoctor();
     this.interval = setInterval(() => {
-      this.getAgender();
+      this.getAgenderDoctor();
     }, 1500);
-    this.showPatient();
+    this.showDoctor();
     this.allDoctors();
     this.allProtocols();
   }
@@ -108,26 +109,27 @@ export class DoctorRecViewComponent implements OnInit {
 
   // }
 
-  async showPatient() {
-    this.patientService.getPatient(this.patientId).subscribe(
+  async showDoctor() {
+    this.doctorService.getDoctor(this.doctorId).subscribe(
       async (result) => {
-        this.patient = result;
-        this.formRecp.patchValue({
-          nome: this.patient.nome,
-          data_nascimento: this.patient.data_nascimento,
-          cpf: this.patient.cpf,
-          rg: this.patient.rg,
-          email: this.patient.email,
-          cep: this.patient.cep,
-          rua: this.patient.rua,
-          numero: this.patient.numero,
-          bairro: this.patient.bairro,
-          cidade: this.patient.cidade,
-          estado: this.patient.estado,
-          complemento: this.patient.complemento,
-          ponto_referencia: this.patient.ponto_referencia,
+        console.log(result);
+        this.doctor = result;
+        // this.formRecp.patchValue({
+        //   nome: this.patient.nome,
+        //   data_nascimento: this.patient.data_nascimento,
+        //   cpf: this.patient.cpf,
+        //   rg: this.patient.rg,
+        //   email: this.patient.email,
+        //   cep: this.patient.cep,
+        //   rua: this.patient.rua,
+        //   numero: this.patient.numero,
+        //   bairro: this.patient.bairro,
+        //   cidade: this.patient.cidade,
+        //   estado: this.patient.estado,
+        //   complemento: this.patient.complemento,
+        //   ponto_referencia: this.patient.ponto_referencia,
 
-        });
+        // });
       },
       async (error) => {
         console.log(error);
@@ -142,7 +144,7 @@ export class DoctorRecViewComponent implements OnInit {
     this.patientService.updatePatient(formValue, patient).subscribe(
       async (result) =>{
         alert('Ficha de Paciente Atualizada')
-        this.showPatient();
+        this.showDoctor();
       }
     );
   }
@@ -174,14 +176,14 @@ export class DoctorRecViewComponent implements OnInit {
         this.formAgender.reset({
           date: this.dateCurrent,
         });
-        this.getAgender()
+        this.getAgenderDoctor()
       }
     );
 
   }
 
-  async getAgender() {
-    this.agenderService.getAgender(this.patientId, this.dateCurrent).subscribe(
+  async getAgenderDoctor() {
+    this.doctorService. getAgendaDoctor(this.doctorId, this.dateCurrent).subscribe(
       async (result) => {
         console.log(result);
         this.agenderPatients = result;
@@ -205,6 +207,9 @@ export class DoctorRecViewComponent implements OnInit {
       break;
       case 'canceled':
         state = 'Cancelado';
+      break;
+      case 'finished':
+        state = 'Finalizado';
       break;
     }
     return state;

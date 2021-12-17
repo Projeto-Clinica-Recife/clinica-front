@@ -34,6 +34,11 @@
 
 }
 
+.hasEvents{
+  background-color: #08C;
+  color: white;
+}
+
 table.calendar {
   margin-bottom: 0;
 }
@@ -61,10 +66,10 @@ table.calendar > tbody > tr > td.has-events {
   border-radius: 4px;
 }
 
-table.calendar > tbody > tr > td.has-events > div {
-  background-color: #08C;
-  border-left: 1px solid white;
-}
+// table.calendar > tbody > tr > td > div > div.has-events {
+//   background-color: #08C;
+//   border-left: 1px solid white;
+// }
 
 table.calendar > tbody > tr > td.has-events > div:first-child {
   border-left: 0;
@@ -99,3 +104,4 @@ table.table-borderless > thead > tr > th, table.table-borderless > tbody > tr > 
 .table tbody tr.hover td, .table tbody tr.hover th {
   background-color: whiteSmoke;
 }
+

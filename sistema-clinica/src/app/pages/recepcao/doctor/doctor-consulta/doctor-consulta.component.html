@@ -25,7 +25,7 @@
           <tbody *ngIf="doctors !== 0">
             <tr *ngFor="let doctor of doctors">
               <td style="width: 75%;">{{doctor.name}}</td>
-              <td class="text-right"><button class="btn btn-secondary" (click)="viewPatient(doctor.id)">Ver detalhes</button></td>
+              <td class="text-right"><button class="btn btn-secondary" (click)="viewDoctor(doctor.id)">Ver detalhes</button></td>
             </tr>
           </tbody>
         </table>

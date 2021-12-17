@@ -34,6 +34,7 @@ import { DoctorRecConsultaComponent } from './pages/recepcao/doctor/doctor-consu
 import { DoctorRecComponent } from './pages/recepcao/doctor/doctor.component';
 import { DoctorFinanceiroComponent } from './pages/doctors/doctor/doctor-financeiro/doctor-financeiro.component';
 import { PatientPlansComponent } from './pages/recepcao/patient/patient-plans/patient-plans.component';
+import { DoctorRecViewComponent } from './pages/recepcao/doctor/doctor-view/doctor-view.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path: 'consulta-medico',
     component: DoctorRecConsultaComponent
+  },
+  {
+    path: 'ver-medico',
+    component: DoctorRecViewComponent
   },
   {
     path: 'cadastrar-medico',

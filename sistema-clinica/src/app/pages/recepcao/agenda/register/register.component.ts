@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit {
   public selectDoctors: any = '';
   public patientId: any;
   public agenderPatients: any;
+  public weekAgender:any;
   headerComponent: any;
   daySelected!: number;
   dayPosition!: number;
@@ -60,6 +61,7 @@ export class RegisterComponent implements OnInit {
         }
       }
     }
+
   }
 
   ngOnInit(): void {
@@ -67,7 +69,7 @@ export class RegisterComponent implements OnInit {
     this.formAgender = this.formBuilder.group({
       date: [this.dateCurrent],
       doctor_id: [null],
-      hourStart: [null],
+      hour: [null],
       hourEnd: [null],
       protocols_id: [null],
       patient_id: [this.patientId]
@@ -76,8 +78,9 @@ export class RegisterComponent implements OnInit {
     this.allProtocols();
     this.allDoctors();
     this.getPatient('h'); //Modificar pra entrar com alguma letra e pesquisar
+    this.getAllAgender();
 
-
+  
   }
 
   async allDoctors() {
@@ -109,30 +112,58 @@ export class RegisterComponent implements OnInit {
 
   async cadAgender(hora: any, position: any) {
 
-    let dia = this.dateCalendar[position];
-
+    let dia = this.dateCurrent.slice(0,4)+'-'+this.monthSelected+'-'+ this.dateCalendar[position];
     this.formAgender.patchValue({
-      hourStart: hora,
+      hour: hora,
       date: dia
     });
-    // const formValue = {
-    //   ...this.formAgender.value,
-    // };
-    // this.agenderService.postAgender(formValue).subscribe(
-    //   async (result) => {
-    //     // console.log(result);
-
-    //     this.formAgender.reset({
-    //       date: this.dateCurrent,
-    //     });
-    //   }
-    // );
+   
 
   }
 
 
-  agender() {
-
+async agender() {
+ const formValue = {
+      ...this.formAgender.value,
+    };
+    this.agenderService.postAgender(formValue).subscribe(
+      async (result) => {
+        console.log(result);
+        this.formAgender.reset({
+          date: this.dateCurrent,
+        });
+        alert('Agendamento Realizando com sucesso');
+      }
+    );
   }
+
+  async getAllAgender() {
+  
+    this.agenderService.getAgenderByWeek({date: this.dateCurrent}).subscribe(
+      async (result) => {
+        // console.log(result);
+        this.weekAgender = result;
+        console.log(this.weekAgender);
+      }
+    );
+  }
+
+  editAgender(){
+    alert('sds');
+  }
+  // pointAgender(hora:any, position: any){
+  //   let point ={
+  //     hora:'',
+  //     has: false
+  //   }
+  //   let test = '';
+  //   let dia = this.dateCurrent.slice(0,4)+'-'+this.monthSelected+'-'+ this.dateCalendar[position];
+
+  //   this.weekAgender.forEach((element: any) => {
+  //     test = element;
+  //   });
+    
+
+  // }
 
 }
