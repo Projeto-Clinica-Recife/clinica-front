@@ -23,6 +23,11 @@ export class AgenderService {
       const url = `${this.URL}/${id}/${date}`;
       return this.http.get(url);
     }
+
+    getAgenderByWeek(date:any): Observable<any> {
+      const url = `${this.URL}/week`;
+      return this.http.post(url,date);
+    }
   
   cancelAgenderProtocol(id: number){
       const url = `${this.URL}/cancel-agender/${id}`;

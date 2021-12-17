@@ -37,15 +37,90 @@
             </th>
           </tr>
         </thead>
-        <tbody>
-          <tr *ngFor="let hora of horarios" data-toggle="modal" data-target="#agendamento">
+        <tbody *ngFor="let hora of horarios" >
+          <tr data-toggle="modal" data-target="#agendamento">
             <td> {{ hora }}</td>
-            <td class="has-events" (click)="cadAgender(hora, '1')" rowspan="1"></td>
-            <td class="has-events" (click)="cadAgender(hora, '2')" rowspan="1"></td>
-            <td class="has-events" (click)="cadAgender(hora, '3')" rowspan="1"></td>
-            <td class="has-events" (click)="cadAgender(hora, '4')" rowspan="1"></td>
-            <td class="has-events" (click)="cadAgender(hora, '5')" rowspan="1"></td>
-            <td class="has-events" (click)="cadAgender(hora, '6')" rowspan="1"></td>
+            <td (click)="cadAgender(hora, '1')" rowspan="1">
+              <div style="width:100%">
+              <div *ngFor="let week of weekAgender" style="width: 100%;" >
+                <div *ngIf="week.hour.slice(0,5) === hora && week.date === this.dateCurrent.slice(0,4)+'-'+this.monthSelected+'-'+ this.dateCalendar[1]" style="width: 100%; text-align: center; " class="hasEvents">
+                <small>
+                  <a>{{week.doctor.name}}</a>
+                </small>
+              </div>
+              </div>
+              </div>
+            </td>
+            <td (click)="cadAgender(hora, '2')" rowspan="1">
+              <div style="width:100%">
+              <div *ngFor="let week of weekAgender" style="width: 100%;" >
+                <div *ngIf="week.hour.slice(0,5) === hora && week.date === this.dateCurrent.slice(0,4)+'-'+this.monthSelected+'-'+ this.dateCalendar[2]" style="width: 100%; text-align: center; " class="hasEvents">
+                <small>
+                  <a>{{week.doctor.name}}</a>
+                </small>
+              </div>
+              </div>
+              </div>
+            </td>
+            <td (click)="cadAgender(hora, '3')" rowspan="1">
+              <div style="width:100%">
+              <div *ngFor="let week of weekAgender" style="width: 100%;" >
+                <div *ngIf="week.hour.slice(0,5) === hora && week.date === this.dateCurrent.slice(0,4)+'-'+this.monthSelected+'-'+ this.dateCalendar[3]" style="width: 100%; text-align: center; " class="hasEvents">
+                <small>
+                  <a>{{week.doctor.name}}</a>
+                </small>
+              </div>
+              </div>
+              </div>
+            </td>
+            <td (click)="cadAgender(hora, '4')" rowspan="1">
+              <div style="width:100%">
+              <div *ngFor="let week of weekAgender" style="width: 100%;" >
+                <div *ngIf="week.hour.slice(0,5) === hora && week.date === this.dateCurrent.slice(0,4)+'-'+this.monthSelected+'-'+ this.dateCalendar[4]" style="width: 100%; text-align: center; " class="hasEvents">
+                <small>
+                  <a>{{week.doctor.name}}</a>
+                </small>
+              </div>
+              </div>
+              </div>
+            </td>
+            <td (click)="cadAgender(hora, '5')" rowspan="1">
+              <div style="width:100%">
+              <div *ngFor="let week of weekAgender" style="width: 100%;" >
+                <div *ngIf="week.hour.slice(0,5) === hora && week.date === this.dateCurrent.slice(0,4)+'-'+this.monthSelected+'-'+ this.dateCalendar[5]" style="width: 100%; text-align: center; " class="hasEvents">
+                <small>
+                  <a>{{week.doctor.name}}</a>
+                </small>
+              </div>
+              </div>
+              </div>
+            </td>
+            <td (click)="cadAgender(hora, '6')" rowspan="1">
+              <div style="width:100%">
+              <div *ngFor="let week of weekAgender" style="width: 100%;" >
+                <div *ngIf="week.hour.slice(0,5) === hora && week.date === this.dateCurrent.slice(0,4)+'-'+this.monthSelected+'-'+ this.dateCalendar[6]" style="width: 100%; text-align: center; " class="hasEvents">
+                <small>
+                  <a>{{week.doctor.name}}</a>
+                </small>
+              </div>
+              </div>
+              </div>
+            </td>
+            <!-- <td class="has-events text-black-50" (click)="cadAgender(hora, '2')" rowspan="1">
+              {{pointAgender(hora, '2')}}
+            </td>
+            <td class="has-events text-black-50" (click)="cadAgender(hora, '3')" rowspan="1">
+              {{pointAgender(hora, '3')}}
+            </td>
+            <td class="has-events text-black-50" (click)="cadAgender(hora, '4')" rowspan="1">
+              {{pointAgender(hora, '4')}}
+            </td>
+            <td class="has-events text-black-50" (click)="cadAgender(hora, '5')" rowspan="1">
+              {{pointAgender(hora, '5')}}
+            </td>
+            <td class="has-events text-black-50" (click)="cadAgender(hora, '6')" rowspan="1">
+              {{pointAgender(hora, '6')}}
+            </td> -->
           </tr>
           <!-- <tr>
             <td>10:00</td>
@@ -109,7 +184,7 @@
 
           <div class="form-group">
             <label>De</label>
-            <input value="hourStart" formControlName="hourStart" type="time" name="" class="form-control">
+            <input value="hour" formControlName="hour" type="time" name="" class="form-control">
           </div>
           <div class="form-group">
             <label>Ate</label>
