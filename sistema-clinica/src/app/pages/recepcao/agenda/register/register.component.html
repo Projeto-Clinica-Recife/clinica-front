@@ -52,7 +52,7 @@
               </div>
             </td>
             <td (click)="cadAgender(hora, '2')" rowspan="1">
-              <div style="width:100%">
+              <div style="width:100%" >
               <div *ngFor="let week of weekAgender" style="width: 100%;" >
                 <div *ngIf="week.hour.slice(0,5) === hora && week.date === this.dateCurrent.slice(0,4)+'-'+this.monthSelected+'-'+ this.dateCalendar[2]" style="width: 100%; text-align: center; " class="hasEvents">
                 <small>

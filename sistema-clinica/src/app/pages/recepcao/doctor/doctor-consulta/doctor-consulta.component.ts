@@ -37,8 +37,8 @@ export class DoctorRecConsultaComponent implements OnInit {
     );
   }
 
-  viewPatient(id: any){
-    return this.router.navigate(['/paciente/ver-paciente'], {queryParams: {id: id}});
+  viewDoctor(id: any){
+    return this.router.navigate(['/ver-medico'], {queryParams: {id: id}});
   }
 
 }

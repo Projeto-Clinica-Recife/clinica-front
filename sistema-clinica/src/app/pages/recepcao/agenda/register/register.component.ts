@@ -113,7 +113,6 @@ export class RegisterComponent implements OnInit {
   async cadAgender(hora: any, position: any) {
 
     let dia = this.dateCurrent.slice(0,4)+'-'+this.monthSelected+'-'+ this.dateCalendar[position];
-
     this.formAgender.patchValue({
       hour: hora,
       date: dia
@@ -149,21 +148,22 @@ async agender() {
     );
   }
 
-  pointAgender(hora:any, position: any){
-    let point ={
-      hora:'',
-      has: false
-    }
-    let test = '';
-    let dia = this.dateCurrent.slice(0,4)+'-'+this.monthSelected+'-'+ this.dateCalendar[position];
+  editAgender(){
+    alert('sds');
+  }
+  // pointAgender(hora:any, position: any){
+  //   let point ={
+  //     hora:'',
+  //     has: false
+  //   }
+  //   let test = '';
+  //   let dia = this.dateCurrent.slice(0,4)+'-'+this.monthSelected+'-'+ this.dateCalendar[position];
 
-    this.weekAgender.forEach((element: any) => {
-      test = element;
-    });
- 
-
+  //   this.weekAgender.forEach((element: any) => {
+  //     test = element;
+  //   });
     
 
-  }
+  // }
 
 }
