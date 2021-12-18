@@ -39,6 +39,8 @@ import { DoctorRecComponent } from './pages/recepcao/doctor/doctor.component';
 import { DoctorFinanceiroComponent } from './pages/doctors/doctor/doctor-financeiro/doctor-financeiro.component';
 import { PatientPlansComponent } from './pages/recepcao/patient/patient-plans/patient-plans.component';
 import { DoctorRecViewComponent } from './pages/recepcao/doctor/doctor-view/doctor-view.component';
+import { ContractListComponent } from './pages/recepcao/finance/contract-list/contract-list.component';
+import { DoctorPlansComponent } from './pages/recepcao/doctor/doctor-plans/doctor-plans.component';
 
 const routes: Routes = [
   {
@@ -99,10 +101,6 @@ const routes: Routes = [
         path: 'ver-historico-paciente',
         component: PatientHistoricComponent
       },
-      {
-        path: 'ver-planos-paciente',
-        component: PatientPlansComponent,
-      }
     ]
   },
   {
@@ -192,7 +190,7 @@ const routes: Routes = [
       {
         path: 'financeiro-medico',
         component: DoctorFinanceiroComponent,
-      }
+      },
     ]
   },
   {
@@ -222,23 +220,32 @@ const routes: Routes = [
       {
         path: '',
         component: FinanceComponent,
-        canActivate: [AuthGuard, AuthRecepAdminGuard]
+        canActivate: [AuthGuard, AuthRecepAdminGuard],
       },
       {
         path: 'gerar-contrato',
         component: GenerateContractComponent,
-        canActivate: [AuthGuard, AuthRecepAdminGuard]
+        canActivate: [AuthGuard, AuthRecepAdminGuard],
       },
       {
         path: 'formulario-contrato',
         component: ContractFormComponent,
-        canActivate: [AuthGuard, AuthRecepAdminGuard]
+        canActivate: [AuthGuard, AuthRecepAdminGuard],
       },
       {
         path: 'consultar-relatorios',
-        component: HomeComponent,
-        canActivate: [AuthGuard, AuthRecepAdminGuard]
-      }]
+        component: ContractListComponent,
+        canActivate: [AuthGuard, AuthRecepAdminGuard],
+      },
+      {
+        path: 'ver-planos-paciente',
+        component: PatientPlansComponent,
+      },
+      {
+        path: 'ver-planos-medico',
+        component: DoctorPlansComponent,
+      }
+    ]
   },
 
 ];

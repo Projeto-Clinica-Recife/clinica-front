@@ -13,6 +13,7 @@ import { FinanceComponent } from './finance/finance.component';
 import { GenerateContractComponent } from './finance/generate-contract/generate-contract.component';
 import { ContractFormComponent } from './finance/contract-form/contract-form.component';
 import {MatSelectModule} from '@angular/material/select';
+import { ContractListComponent } from './finance/contract-list/contract-list.component';
 
 const routes: Routes = [{
   path: '',
@@ -35,6 +36,7 @@ const routes: Routes = [{
     FinanceComponent,
     GenerateContractComponent,
     ContractFormComponent,
+    ContractListComponent,
   ],
   imports: [
     CommonModule,

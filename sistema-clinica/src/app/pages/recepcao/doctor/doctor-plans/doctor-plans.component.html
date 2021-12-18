@@ -3,7 +3,7 @@
         <main class="tm-main">
             <div class="row tm-row titulo-header">
             <div class="col-8">
-                <h2>PLANOS  DO PACIENTE</h2>
+                <h2>PLANOS  VINCULADOS</h2>
             </div>
             </div>
 
@@ -14,20 +14,19 @@
                     </div>
                     <div class="plans" *ngFor="let plan of plans">
                         <div class="plan mt-4">
+                            <p>Paciente {{plan.patient_name}}</p>
                             <p>Plano: {{ plan.description }}</p>
                             <p>Valor: R$ {{ plan.value }}</p>
                             <p>Forma de Pagamento: {{ plan.form_of_payment }}</p>
                             <p>Vencimento: {{ plan.vencimento | date:"dd/MM/yyyy" }}</p>
-                            <button class="btn btn-block btn-info"
+                            <button class=" btn btn-block btn-info"
                             (click)="getContract(plan.contract_id)">
                             Contrato
                             </button>
-
                             <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
                                 Editar
                             </button>
                         </div>
-
                         <!-- Modal -->
 
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -57,14 +56,14 @@
                                       </select>
                                     </div>
                                     <div class="form-group">
-                                      <label for="exampleInputEmail1">Desconto</label>
-                                      <input type="number"
-                                      class="form-control"
-                                      id="discount"
-                                      aria-describedby="emailHelp"
-                                      placeholder="Em Porcentagem"
-                                      formControlName="discount">
-                                      <small id="obs" class="form-text text-muted">*Opcional.</small>
+                                        <label for="exampleInputEmail1">Desconto</label>
+                                        <input type="number"
+                                        class="form-control"
+                                        id="discount"
+                                        aria-describedby="emailHelp"
+                                        placeholder="Em Porcentagem"
+                                        formControlName="discount">
+                                        <small id="obs" class="form-text text-muted">*Opcional.</small>
                                     </div>
                                   </form>
                                 </div>
@@ -75,7 +74,6 @@
                               </div>
                             </div>
                           </div>
-
                     </div>
                 </div>
             </div>

@@ -1,0 +1,78 @@
+<body>
+    <div class="container-fluid">
+      <main class="tm-main">
+        <div class="row tm-row titulo-header">
+          <div class="col-12">
+            <h2 style="color: rgb(110, 96, 70);">CONSULTAR CONTRATO</h2>
+          </div>
+        </div>
+        
+        <div class="row check">
+          <p>Pesquisar por:</p>
+          <div class="col-2">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios"
+              value="paciente"
+              [(ngModel)]="type"
+              checked>
+              <label class="form-check-label" for="exampleRadios1">
+                Paciente
+              </label>
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios"
+              value="medico"
+              [(ngModel)]="type">
+              <label class="form-check-label" for="exampleRadios2">
+                Médico
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row tm-row" style="margin-bottom: 30px;">
+
+          <form action="" class="col-12" (ngSubmit)="searchPD()" >
+            <div class="row">
+            <div class="col-sm-10">
+              <input type="text" name="search" id="" class="form-control" placeholder="Pesquise pelo CPF"
+              [(ngModel)]="search">
+            </div>
+            <div class="col-sm-2 mt-1">
+              <button type="submit" class="btn btn-info btn-block">Pesquisar</button>
+            </div>
+          </div>
+          </form>
+        </div>
+          
+        <div class="row tm-row">
+          <table class="table tab col-12" >
+            <tbody *ngIf="itens">
+              <tr>
+                <td *ngIf="type == 'paciente'" style="width: 75%;">{{itens.nome}}</td>
+                <td *ngIf="type == 'medico'" style="width: 75%;">{{itens.name}}</td>
+        
+                <td class="text-right">
+                  <button *ngIf="type == 'paciente'" class="btn btn-secondary" (click)="viewResultsPatient(itens.id)">+</button>
+                </td>
+                <td class="text-right">
+                  <button *ngIf="type == 'medico'" class="btn btn-secondary" (click)="viewResultsDoctor(itens.id)">+</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div *ngIf="itens == 0" class="alert alert-danger col-12" role="alert">
+            Nenhum plano ou contrato vinculado <br>
+            <small>Por favor, pesquise pelo CPF</small>
+          </div>
+        </div>
+        <div *ngIf="loading" class="text-center ">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden"></span>
+          </div>
+        </div>
+    </main>
+  </div>
+</body>

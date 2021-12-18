@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Plan } from 'src/app/models/plan';
 import { TokenManager } from '../token-manager/token-manager.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,18 @@ export class PlansService {
     
     return this.http.get<Plan>(url, {headers: headers});
    }
+
+   searchPlanPatient(search: any): Observable<any> {
+     const url = `${this.URL}/search-patient/${search}`;
+
+     return this.http.get<Plan>(url);
+   }
+
+   searchPlanDoctot(search: any): Observable<any> {
+    const url = `${this.URL}/search-doctor/${search}`;
+
+    return this.http.get<Plan>(url);
+  }
 
    cancelPlan(planId: number){
     const url = `${this.URL}/cancel/${planId}`;

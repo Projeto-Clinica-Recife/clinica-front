@@ -1,44 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { PatientService } from 'src/app/providers/patient/patient.service';
+import { DoctorService } from 'src/app/providers/doctor/doctor.service';
 import { ContractService } from 'src/app/providers/contract/contract.service';
 import { PdfService } from 'src/app/providers/pdf/pdf.service';
-import { DoctorService } from 'src/app/providers/doctor/doctor.service';
-import { PlansService } from 'src/app/providers/plan/plans.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { PlansService } from 'src/app/providers/plan/plans.service';
 
 @Component({
-  selector: 'app-patient-plans',
-  templateUrl: './patient-plans.component.html',
-  styleUrls: ['./patient-plans.component.scss']
+  selector: 'app-doctor-plans',
+  templateUrl: './doctor-plans.component.html',
+  styleUrls: ['./doctor-plans.component.scss']
 })
-export class PatientPlansComponent implements OnInit {
+export class DoctorPlansComponent implements OnInit {
 
+  doctorId: any;
+  plans: any;
   formContract!: FormGroup;
   patientId!: number;
-  plans: any;
   public plansExist: any;
   public doctors: any;
 
   constructor(
+    private doctorService: DoctorService,
     private activatedRoute: ActivatedRoute,
-    private patientService: PatientService,
     private contractService: ContractService,
     private pdfService: PdfService,
-    private doctorService: DoctorService,
     private plansService: PlansService,
   ) { }
 
   ngOnInit(): void {
 
     this.activatedRoute.queryParams.subscribe((params: Params) => {
-      this.patientId = params.id;
+      this.doctorId = params.id;
     });
 
-    this.patientService.getPlans(this.patientId).subscribe( res => {
-      console.log(res);
-      this.plans = res;
-      
+    this.doctorService.getPlansDoctor(this.doctorId).subscribe(plans => {
+      console.log(plans);
+      this.plans = plans;
     });
 
     this.formContract = new FormGroup({
@@ -54,7 +52,6 @@ export class PatientPlansComponent implements OnInit {
     this.getPlans();
 
     this.allDoctors();
-
   }
 
   getContract(contractId: any){
@@ -92,4 +89,5 @@ export class PatientPlansComponent implements OnInit {
       }
     );
   }
+
 }

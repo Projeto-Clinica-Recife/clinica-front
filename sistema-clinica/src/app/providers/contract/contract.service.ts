@@ -19,4 +19,10 @@ export class ContractService {
 
     return this.http.get(url);
   }
+
+  edit_contract(contractId: any, form: any): Observable<any>{
+    const url = `${this.URL}/edit/${contractId}`;
+
+    return this.http.put(url, form);
+  }
 }

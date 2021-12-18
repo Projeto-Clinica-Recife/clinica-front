@@ -22,6 +22,8 @@ export class DoctorFinanceiroComponent implements OnInit {
   ngOnInit(): void {
     const doctorId = this.profile!.id;
     this.doctorService.getPlansDoctor(doctorId!).subscribe( res => {
+      console.log(res);
+      
       this.doctorPlans = res;
     }, error => {
       console.log(error);
