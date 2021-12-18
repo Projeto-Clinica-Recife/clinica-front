@@ -28,7 +28,7 @@
           </div>
           <div class="form-group">
             <label>CPF</label>
-            <input type="text" class="form-control" formControlName="cpf">
+            <input type="text" class="form-control" formControlName="cpf" maxlength="11">
           </div>
           <div class="form-group">
             <label>E-mail</label>
@@ -44,7 +44,7 @@
           </div>
           <div class="form-group">
             <label>Tefefone</label>
-            <input type="text" class="form-control" formControlName="telephone">
+            <input type="text" class="form-control" formControlName="telephone" maxlength="11">
           </div>
           <button [disabled]="!formUser.valid" type="button" (click)="cadUser()" class="btn btn-block btn-primary">Cadastrar</button>
         </form>

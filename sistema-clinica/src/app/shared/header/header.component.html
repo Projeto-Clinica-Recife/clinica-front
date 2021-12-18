@@ -3,11 +3,13 @@
     <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
       <i class="fas fa-bars"></i>
     </button>
+  
     <div class="tm-site-header">
       <div class="mb-3 mx-auto">
         <img src="../../../assets/img/logomarcaInstitutoCoelhoBranca.png" alt="Image" class="img-fluid">
+        <img src="../../../assets/img/icone.png" alt="Image" class="img-icone">
       </div>
-      <p class="text-center subtitle">Emagrecimento e Performance Humana</p>
+      <!-- <p class="text-center subtitle">Emagrecimento e Performance Humana</p> -->
       <!-- <div class="logout">
         <p *ngIf="profile">Bem vindo(a), {{profile.name}}</p>
         <a href="" (click)="logout()" class="link">Sair</a>
@@ -15,25 +17,26 @@
     </div>
     <nav class="tm-nav" id="tm-nav">
       <ul>
-        <li class="tm-nav-item {{activeInicial}}"><a routerLink="{{ rota }}" class="tm-nav-link">
+        <li class="tm-nav-item {{activeInicial}}">
+          <a routerLink="{{ rota }}" class="tm-nav-link">
             <i class="fas fa-home"></i>
-            Tela Inicial
+           <p class="p-item"> Tela Inicial</p>
           </a></li>
         <li *ngIf="profile.type_user != 'doctor' and profile.type_user != 'admin'" class="tm-nav-item"><a routerLink="{{ rotaAgenda }}" class="tm-nav-link">
             <i class="fas fa-pen"></i>
-            Agenda
+            <p class="p-item">Agenda</p>
           </a></li>
           
         <li *ngIf="profile.type_user != 'doctor'" class="tm-nav-item"><a routerLink="{{ rotaFinanceiro }}"
           class="tm-nav-link">
             <i class="fas fa-calculator"></i>
-            Financeiro
+            <p class="p-item">  Financeiro</p>
           </a></li>
 
         <li *ngIf="profile.type_user == 'reception'" class="tm-nav-item"><a routerLink="/editar-recepcao"
             class="tm-nav-link">
             <i class="fas fa-user-edit"></i>
-            Editar Perfil
+            <p class="p-item">Editar Perfil </p>
           </a>
         </li>
 
@@ -41,21 +44,21 @@
           <a routerLink="/admin/editar-admin"
           class="tm-nav-link">
             <i class="fas fa-user-edit"></i>
-            Editar Perfil
+            <p class="p-item">Editar Perfil </p>
           </a>
         </li>
 
         <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item"><a routerLink="medico/financeiro-medico"
           class="tm-nav-link">
           <i class="far fa-comments"></i>
-          Financeiro
+          <p class="p-item"> Financeiro</p>
         </a>
         </li>
 
         <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item"><a routerLink="{{ rota }}"
             class="tm-nav-link">
             <i class="far fa-comments"></i>
-            Relatórios
+            <p class="p-item">   Relatórios</p>
           </a>
         </li>
 
@@ -63,7 +66,7 @@
           <a routerLink="{{ rotaEditarPerfil }}"
           class="tm-nav-link">
           <i class="fas fa-user-edit"></i>
-          Editar Perfil
+          <p class="p-item">Editar Perfil </p>
           </a>
         </li>
 

@@ -20,15 +20,15 @@
                     </div>
                     <div class="form-group">
                       <label>CPF</label>
-                      <input type="text" class="form-control" formControlName="cpf">
+                      <input type="text" class="form-control" formControlName="cpf" maxlength="11">
                     </div>
                     <div class="form-group">
                       <label>RG</label>
-                      <input type="number" class="form-control" formControlName="rg"> 
+                      <input type="number" class="form-control" formControlName="rg" maxlength="14"> 
                     </div>
                     <div class="form-group">
                       <label>Orgão Expedidor</label>
-                      <input type="text" class="form-control" formControlName="dispatcher"> 
+                      <input type="text" class="form-control" formControlName="dispatcher" maxlength="5"> 
                     </div>
                     <div class="form-group">
                       <label>E-mail</label>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group">
                       <label>CEP</label>
-                      <input type="number" class="form-control" formControlName="cep" (keyup)="viaCep()">
+                      <input type="text" class="form-control" formControlName="cep" (keyup)="viaCep()">
                     </div>
                     <div class="form-group">
                       <label>Rua</label>
@@ -78,7 +78,7 @@
                       <label>Profissão</label>
                       <input type="text" class="form-control" formControlName="profession">
                     </div>
-                    <button type="button" (click)="cadPatient()" class="btn btn-block btn-primary">Cadastrar</button>
+                    <button [disabled]="!formRecp.valid" class="btn btn-primary"type="button" (click)="cadPatient()" class="btn btn-block btn-primary">Cadastrar</button>
                   </form>
             </div>
             
