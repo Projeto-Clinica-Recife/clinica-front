@@ -18,7 +18,8 @@ export class CadProtocolComponent implements OnInit {
 
   ngOnInit(): void {
     this.formProtocol = new FormGroup({
-      description: new FormControl(null, [Validators.required])
+      description: new FormControl(null, [Validators.required]),
+      value: new FormControl(null, [Validators.required]),
     })
   }
 
