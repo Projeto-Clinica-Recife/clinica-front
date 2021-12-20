@@ -6,6 +6,8 @@ import { PdfService } from 'src/app/providers/pdf/pdf.service';
 import { DoctorService } from 'src/app/providers/doctor/doctor.service';
 import { PlansService } from 'src/app/providers/plan/plans.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import {Location} from '@angular/common';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-patient-plans',
@@ -13,7 +15,9 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./patient-plans.component.scss']
 })
 export class PatientPlansComponent implements OnInit {
-
+  icons = {
+    faArrowLeft
+  }
   formContract!: FormGroup;
   patientId!: number;
   plans: any;
@@ -27,6 +31,7 @@ export class PatientPlansComponent implements OnInit {
     private pdfService: PdfService,
     private doctorService: DoctorService,
     private plansService: PlansService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -91,5 +96,9 @@ export class PatientPlansComponent implements OnInit {
         this.doctors = result;
       }
     );
+  }
+
+  back(){
+    this.location.back();
   }
 }

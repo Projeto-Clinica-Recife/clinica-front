@@ -3,6 +3,7 @@ import { PatientService } from '../../../providers/patient/patient.service';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router'
 import { HttpClient } from '@angular/common/http';
+import { faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-patient',
@@ -20,6 +21,9 @@ export class PatientComponent implements OnInit {
   
   public end: any;
   formRecp!: FormGroup;
+  icons = {
+    faArrowLeft: faArrowLeft
+  }
 
   ngOnInit(): void {
     this.formRecp = this.formBuilder.group({
