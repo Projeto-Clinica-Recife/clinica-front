@@ -79,7 +79,8 @@ export class RegisterComponent implements OnInit {
     });
     this.allProtocols();
     this.allDoctors();
-    this.getPatient('h'); //Modificar pra entrar com alguma letra e pesquisar
+    this.allPatients();
+    // this.getPatient('h'); //Modificar pra entrar com alguma letra e pesquisar
     this.getAllAgender();
 
 
@@ -101,15 +102,27 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  getPatient(nome: any) {
-    this.patientService.getPatient(nome).subscribe(
-      async (result) => {
-        this.patients = result;
-      },
-      async (error) => {
-        console.log(error);
-      }
-    );
+  // getPatient(nome: any) {
+  //   this.patientService.getPatient(nome).subscribe(
+  //     async (result) => {
+  //       this.patients = result;
+  //     },
+  //     async (error) => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
+
+  allPatients(){
+    this.patientService.allPatients().subscribe(
+          async (result) => {
+            this.patients = result;
+            // console.log(result);
+          },
+          async (error) => {
+            console.log(error);
+          }
+        );
   }
 
   async cadAgender(hora: any, position: any) {
