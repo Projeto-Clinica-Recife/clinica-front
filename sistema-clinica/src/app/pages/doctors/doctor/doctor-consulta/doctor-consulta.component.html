@@ -30,13 +30,13 @@
       </div>
       <div class="row tm-row" style="margin-bottom: 30px;">
         <h2>Agendamentos:</h2>
-        <div *ngIf="agendamentoDoctor.length === 0" class="col-sm-12">
+        <div *ngIf="agendamentoDoctor?.length === 0" class="col-sm-12">
           <div class="alert alert-brow" role="alert">
             Médico não possui consultas agendadas para esta data!<br>
           </div>
         </div>
         <table class="table tab col-12">
-          <thead *ngIf="agendamentoDoctor.length > 0">
+          <thead *ngIf="agendamentoDoctor?.length > 0">
              <tr>
                 <!-- <th>Data</th> -->
                 <th>Hora</th>

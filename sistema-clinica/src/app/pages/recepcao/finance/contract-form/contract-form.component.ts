@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { PlansService } from 'src/app/providers/plan/plans.service';
 import { PdfService } from 'src/app/providers/pdf/pdf.service';
@@ -14,9 +14,21 @@ import { PatientService } from 'src/app/providers/patient/patient.service';
 export class ContractFormComponent implements OnInit {
 
   formCadPlan!: FormGroup;
+  form_of_payment!: any;
   public patientId: any;
   public plans: any;
   public doctors: any;
+  public paymentForms = [
+    {id: 1, name: 'Dinheiro'},
+    {id: 2, name: 'Pix'},
+    {id: 3, name: 'Cartão de Crédito'},
+    {id: 4, name: 'Cartão de Débito'},
+  ];
+
+  alert = {
+    message: '',
+    color: '',
+  }
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,12 +46,18 @@ export class ContractFormComponent implements OnInit {
     });
 
     this.formCadPlan = this.formBuilder.group({
-      doctor_id: [null],
-      plan_id: [null],
-      form_of_payment: [null],
-      discount: [null],
+      doctor_id: new FormControl(null,
+        Validators.required
+        ),
+      plan_id: new FormControl(null,
+        Validators.required
+        ),
+      form_of_payment: new FormControl([],
+        Validators.required
+        ),
+      discount: new FormControl(null),
+      observation: new FormControl(null),
     });
-
 
     this.getPlans();
 
@@ -47,11 +65,14 @@ export class ContractFormComponent implements OnInit {
   }
 
   async cadPlan(){
-    const form = {
+    var form = {
       ...this.formCadPlan.value,
     };
     const patientd = this.patientId;
-    
+    form.form_of_payment = form.form_of_payment.toString();
+
+    console.log(form);
+     
     return this.patientService.cadPlan(patientd, form).subscribe( res => {
       console.log(res);
       const patientPlanId = res.patient_plan.id;
@@ -62,9 +83,14 @@ export class ContractFormComponent implements OnInit {
           // Retorna o pdf do contrato criado
           this.pdfService.download_pdf(res);
 
+          this.alert.message = 'Contrato gerado com sucesso!';
+          this.alert.color = 'alert-success';
+          window.location.hash = '#top';
         }, error => {
           console.log(error);
-          
+          this.alert.message = 'Houve algum erro ao gerar o contrato!';
+          this.alert.color = 'alert-danger';
+          window.location.hash = '#top';
         });
 
     }, error => {
@@ -86,6 +112,16 @@ export class ContractFormComponent implements OnInit {
         this.doctors = result;
       }
     );
+  }
+
+  closeAlert() {
+    var elem = document.querySelector('.alert');
+    elem!.parentNode!.removeChild(elem!);
+    if(this.alert.color === "alert-success"){
+      this.router.navigate(['/financeiro']);
+    }
+    this.alert.message = '';
+    this.alert.color = '';
   }
 
 }

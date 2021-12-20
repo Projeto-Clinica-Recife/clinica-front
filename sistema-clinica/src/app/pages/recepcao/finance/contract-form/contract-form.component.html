@@ -1,10 +1,17 @@
 <body>
   <div class="container-fluid">
     <main class="tm-main">
-      <div class="row tm-row titulo-header">
+      <div class="row tm-row titulo-header" id="top">
         <div class="col-12">
           <h2 style="color: rgb(110, 96, 70);">Dados do Contrato</h2>
         </div>
+      </div>
+
+      <div class="alert {{alert.color}} alert-dismissible fade show mt-3 text-black" *ngIf="alert.message" role="alert">
+        <h4>{{alert.message}}</h4>
+        <button type="button" class="close" (click)="closeAlert()">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
 
       <form [formGroup]="formCadPlan" action="" class="">
@@ -14,6 +21,7 @@
             <select formControlName="plan_id" name="" id="plano" class="form-control">
               <option *ngFor="let plan of plans" value="{{plan.id}}">{{ plan.description }} - R$ {{ plan.value }}</option>
             </select>
+            <small id="obs" class="form-text text-muted">*Obrigatório.</small>
           </div>
           <div class="form-group ">
             <label>Médico</label>
@@ -23,63 +31,57 @@
               {{ doctor.name }} - {{ doctor.user_information.crm }}/{{ doctor.user_information.crm_state }}
             </option>
             </select>
+            <small id="obs" class="form-text text-muted">*Obrigatório.</small>
           </div>
+
           <div class="form-group ">
             <label>Forma de Pagamento</label>
-            <select formControlName="form_of_payment" name="" id="forma_de_pagamento" class="form-control">
-              <option value="Dinheiro">Dinheiro</option>
+            <select formControlName="form_of_payment"
+             id="forma_de_pagamento" 
+             class="form-control">
+              <!-- <option value="Dinheiro">Dinheiro</option>
+              <option value="Pix">Pix</option>
               <option value="Cartão de Crédito">Cartão de Crédito</option>
-              <option value="Cartão de Débito">Cartão de Débito</option>
+              <option value="Cartão de Débito">Cartão de Débito</option> -->
+              <option *ngFor="let forma of paymentForms" value="{{ forma.name }}" class="">
+                {{ forma.name }}
+              </option>
             </select>
+            <small id="obs" class="form-text text-muted">*Obrigatório.</small>
           </div>
-          <!-- <div *ngIf="payOnCredit" class="form-group">
-            <label>Parcelas</label>
-            <select formControlName="form_of_payment" name="" id="" class="form-control">
-              <option value="dinheiro">Dinheiro</option>
-              <option value="Cartão de Crédito">Cartão de Crédito</option>
-              <option value="Cartão de Débito">Cartão de Débito</option>
-            </select>
-          </div> -->
+
+          <!-- <mat-form-field appearance="fill">
+            <mat-label>Toppings</mat-label>
+            <mat-select [formControl]="form_of_payment" multiple>
+              <mat-option *ngFor="let forma of paymentForms" [value]="{{ forma.name }}">{{ forma.name }}</mat-option>
+            </mat-select>
+          </mat-form-field> -->
+          
+          <div class="form-group">
+            <label for="">Observações</label>
+            <input type="text" class="form-control"
+            id="observation"
+            formControlName="observation"
+            autocomplete="off">
+            <small id="obs" class="form-text text-muted">Opcional.</small>
+          </div>
+          
           <div class="form-group">
             <label for="exampleInputEmail1">Desconto</label>
             <input type="number"
             class="form-control"
             id="discount"
-            aria-describedby="emailHelp"
+            aria-describedby="desconto"
             placeholder="Em Porcentagem"
             formControlName="discount">
-            <small id="obs" class="form-text text-muted">*Opcional.</small>
+            <small id="obs" class="form-text text-muted">Opcional.</small>
           </div>
         </div>
       </form>
 
-      <!-- <form [formGroup]="formContract"  class="col-12" >
-        <div class="form-group ">
-          <label>Plano</label>
-          <select formControlName="plan_id" name="" id="" class="form-control">
-            <option *ngFor="let plan of plans" value="{{plan.id}}">{{ plan.description }} - R$ {{ plan.value }}</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Data de Início</label>
-          <input type="date" class="form-control" formControlName="data_inicio">
-        </div>
-        <div class="form-group">
-          <label>Data de Fim</label>
-          <input type="date" class="form-control" formControlName="data_fim">
-        </div>
-        <div class="form-group">
-          <label>Protocolos</label>
-          <input type="text" class="form-control" formControlName="protocols">
-        </div>
-
-      </form> -->
-
-
-
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" [routerLink]="'/financeiro/gerar-contrato'">Cancelar</button>
-        <button (click)="cadPlan()" type="button" class="btn btn-save" data-dismiss="modal">Gerar Contrato</button>
+        <button [disabled]="!formCadPlan.valid" (click)="cadPlan()" type="button" class="btn btn-save" data-dismiss="modal">Gerar Contrato</button>
       </div>
     </main>
   </div>
