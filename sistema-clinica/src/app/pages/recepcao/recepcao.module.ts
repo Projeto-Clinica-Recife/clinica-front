@@ -14,6 +14,7 @@ import { GenerateContractComponent } from './finance/generate-contract/generate-
 import { ContractFormComponent } from './finance/contract-form/contract-form.component';
 import {MatSelectModule} from '@angular/material/select';
 import { ContractListComponent } from './finance/contract-list/contract-list.component';
+import { ProtocolComponent } from './finance/protocol/protocol.component';
 
 const routes: Routes = [{
   path: '',
@@ -37,6 +38,7 @@ const routes: Routes = [{
     GenerateContractComponent,
     ContractFormComponent,
     ContractListComponent,
+    ProtocolComponent,
   ],
   imports: [
     CommonModule,
