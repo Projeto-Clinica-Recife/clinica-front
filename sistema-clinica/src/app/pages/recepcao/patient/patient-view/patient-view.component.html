@@ -4,6 +4,8 @@
       <!-- Search form -->
       <div class="row tm-row titulo-header">
         <div class="col-8">
+          <a routerLink="/paciente/consulta" class="float-left mr-3" >
+            <fa-icon routerLink="" [icon]="icons.faArrowLeft" style="color: rgb(110, 96, 70)"></fa-icon></a>
           <h2>CONSULTA DE PACIENTE</h2>
         </div>
         <div class="col-4">
@@ -14,8 +16,9 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" data-toggle="modal" data-target="#editPaciente"  href="#">Editar</a>
               <a class="dropdown-item" (click)="viewHistoricPatient()" data-target="#historico">Ver Histórico</a>
-              <!-- <a class="dropdown-item" 
-              [routerLink]="['/paciente/ver-planos-paciente']" 
+              <a class="dropdown-item" (click)="addProtocol()" data-target="#protocolo">Contratar Protocolo</a>
+              <!-- <a class="dropdown-item"
+              [routerLink]="['/paciente/ver-planos-paciente']"
               [queryParams]="{id: patientId}">Ver Planos</a> -->
               <a class="dropdown-item" data-toggle="modal" data-target="#agendar" href="#">Agendar</a>
               <!-- <a class="dropdown-item" data-toggle="modal" data-target="#modalCadPlan" href="#">Cadastrar Plano</a> -->
@@ -249,7 +252,7 @@
               <div class="form-group ">
                 <label>Médico</label>
                 <select formControlName="doctor_id" name="" id="" class="form-control">
-                  <option *ngFor="let doctor of doctors" 
+                  <option *ngFor="let doctor of doctors"
                   value="{{doctor.id}}">
                   {{ doctor.name }} - {{ doctor.user_information.crm }}/{{ doctor.user_information.crm_state }}
                 </option>

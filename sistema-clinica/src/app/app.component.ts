@@ -3,6 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { AuthService } from 'src/app/providers/auth/auth.service';
 import { UsersService } from 'src/app/providers/users/users.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,6 +14,7 @@ export class AppComponent {
   showHeader: boolean = true;
   user = this.userService.get_profile();
   first_access: boolean = false;
+ 
 
   constructor(
     private router: Router,

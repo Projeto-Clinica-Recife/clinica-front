@@ -1,3 +1,4 @@
+import { ProtocolComponent } from './pages/recepcao/finance/protocol/protocol.component';
 import { ContractFormComponent } from './pages/recepcao/finance/contract-form/contract-form.component';
 import { GenerateContractComponent } from './pages/recepcao/finance/generate-contract/generate-contract.component';
 import { FinanceComponent } from './pages/recepcao/finance/finance.component';
@@ -100,6 +101,10 @@ const routes: Routes = [
       {
         path: 'ver-historico-paciente',
         component: PatientHistoricComponent
+      },
+      {
+        path: 'contratar-protocolo',
+        component: ProtocolComponent
       },
     ]
   },

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-patient-consulta',
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientConsultaComponent implements OnInit {
 
+  icons = {
+    faArrowLeft: faArrowLeft
+  }
   constructor(
 
   ) { }
