@@ -1,0 +1,50 @@
+<body>
+  <div class="container-fluid">
+    <main class="tm-main">
+      <div class="row tm-row titulo-header">
+        <div class="col-12">
+          <h2 style="color: rgb(110, 96, 70);">Contratar Protocolo</h2>
+        </div>
+      </div>
+
+      <form [formGroup]="formAddProtocol" action="" class="">
+
+      <div class="form-group margem">
+        <label>Protocolos:</label>
+        <select formControlName="protocols_id" class="form-control">
+        <!-- <select formControlName="protocols_id" class="form-control" multiple id="select"> -->
+          <option *ngFor="let protocol of protocols" value="{{protocol.id}}">{{protocol.descricao}}</option>
+        </select>
+      </div>
+
+      <div class="form-group margem">
+        <label>Forma de Pagamento:</label>
+        <select formControlName="form_of_payment" name="" id="forma_de_pagamento" class="form-control">
+          <option value="Dinheiro">Dinheiro</option>
+          <option value="Cartão de Crédito">Cartão de Crédito</option>
+          <option value="Cartão de Débito">Cartão de Débito</option>
+          <option value="Outra">Outra</option>
+        </select>
+      </div>
+
+      <div class="form-group margem">
+        <label>*Observações: </label>
+        <textarea class="form-control consulta-size" formControlName="obs"></textarea>
+        <small id="obs" class="form-text text-muted" style="font-size: 8px;">*Opcional</small>
+      </div>
+
+      <div class="form-group margem">
+        <label>Valor final:</label>
+        <input type="number"class="form-control consulta-size" formControlName="value">
+      </div>
+
+
+    </form>
+
+    <div class="modal-footer margem">
+      <button  (click)="addProtocol()" type="button" class="btn btn-info" data-dismiss="modal">Finalizar Compra</button>
+    </div>
+
+    </main>
+  </div>
+</body>

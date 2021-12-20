@@ -3,7 +3,7 @@
     <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
       <i class="fas fa-bars"></i>
     </button>
-  
+
     <div class="tm-site-header">
       <div class="mb-3 mx-auto">
         <img src="../../../assets/img/logomarcaInstitutoCoelhoBranca.png" alt="Image" class="img-fluid">
@@ -26,7 +26,7 @@
             <i class="fas fa-pen"></i>
             <p class="p-item">Agenda</p>
           </a></li>
-          
+
         <li *ngIf="profile.type_user != 'doctor'" class="tm-nav-item"><a routerLink="{{ rotaFinanceiro }}"
           class="tm-nav-link">
             <i class="fas fa-calculator"></i>
@@ -70,7 +70,17 @@
           </a>
         </li>
 
+
+        <li class="tm-nav-item">
+          <a href="" (click)="logout()"
+          class="tm-nav-link">
+          <i class="fas fa-power-off"></i>
+          <p class="p-item">Sair</p>
+          </a>
+        </li>
+
       </ul>
+
     </nav>
 
 

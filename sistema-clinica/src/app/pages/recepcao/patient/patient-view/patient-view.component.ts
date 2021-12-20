@@ -61,7 +61,7 @@ export class PatientViewComponent implements OnInit {
     this.plansService.getPlansActive().subscribe( plans => {
       this.plans = plans;
       console.log(plans);
-      
+
     })
 
     this.formAgender = this.formBuilder.group({
@@ -224,7 +224,7 @@ export class PatientViewComponent implements OnInit {
       ...this.formCadPlan.value,
     };
     const patientd = this.patientId;
-    
+
     return this.patientService.cadPlan(patientd, form).subscribe( res => {
       console.log(res);
       const patientPlanId = res.patient_plan.id;
@@ -237,14 +237,14 @@ export class PatientViewComponent implements OnInit {
 
         }, error => {
           console.log(error);
-          
+
         });
 
     }, error => {
       console.log(error);
-      
+
     })
-    
+
   }
 
   async payCredit(){
@@ -255,7 +255,7 @@ export class PatientViewComponent implements OnInit {
     if(form.form_of_payment === 'Cartão de Crédito'){
       this.payOnCredit = true;
     }
-    
+
   }
 
   translateStatus(status: string) {
@@ -287,6 +287,10 @@ export class PatientViewComponent implements OnInit {
 
   viewHistoricPatient() {
     return this.router.navigate(['/paciente/ver-historico-paciente'], { queryParams: { id: this.patientId } });
+  }
+
+  addProtocol(){
+    return this.router.navigate(['/paciente/contratar-protocolo'], { queryParams: { id: this.patientId } });
   }
 
 }
