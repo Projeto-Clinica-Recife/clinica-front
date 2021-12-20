@@ -27,6 +27,8 @@ export class RegisterComponent implements OnInit {
   daySelected!: number;
   dayPosition!: number;
   monthSelected!: any;
+  public modal: boolean = true;
+  public targetModal: any;
   // dateCalendar = [{
   //     'data': '2'
   //   }
@@ -111,6 +113,10 @@ export class RegisterComponent implements OnInit {
   }
 
   async cadAgender(hora: any, position: any) {
+    this.modal= true;
+    if(this.modal){
+    this.targetModal = "#agendamento"
+    }
     let dia = ''
     if(this.dateCalendar[position] >= 1 && this.dateCalendar[position] <= 9){
       dia = +this.dateCurrent.slice(0,4)+'-'+this.monthSelected+'-0'+this.dateCalendar[position];
@@ -155,7 +161,10 @@ async agender() {
   }
 
   editAgender(){
-    alert('sds');
+    // this.modal = false;
+    // if(!this.modal){
+    //   this.targetModal = "#editAgender"
+    // }
   }
   // pointAgender(hora:any, position: any){
   //   let point ={
