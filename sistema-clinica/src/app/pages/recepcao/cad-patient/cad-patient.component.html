@@ -19,11 +19,11 @@
                   </div>
                   <div class="form-group">
                     <label>CPF</label>
-                    <input type="text" class="form-control" formControlName="cpf">
+                    <input type="text" class="form-control" formControlName="cpf" maxlength="11">
                   </div>
                   <div class="form-group">
                     <label>RG</label>
-                    <input type="number" class="form-control" formControlName="rg"> 
+                    <input type="text" class="form-control" formControlName="rg" maxlength="14"> 
                   </div>
                   <div class="form-group">
                     <label>Orgão Expedidor</label>
@@ -35,7 +35,7 @@
                   </div>
                   <div class="form-group">
                     <label>CEP</label>
-                    <input type="number" class="form-control" formControlName="cep" (keyup)="viaCep()">
+                    <input type="text" class="form-control" formControlName="cep" (keyup)="viaCep()" maxlength="8">
                   </div>
                   <div class="form-group">
                     <label>Rua</label>
