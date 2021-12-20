@@ -17,18 +17,18 @@
       border: none;
       text-align: center;
   }
-  .btn-info{
-      background-color:rgb(110, 96, 70) !important;
-      border: none;
+
+  .payment-select small{
+    margin-top: 0px;
+    margin-bottom: 20px;
   }
 
-  .dropdown-item:active{
-      background-color:rgb(110, 96, 70) !important;
-
+  .form-group input{
+    height: 50px;
   }
 
-  table{
-      font-size:14px;
+  .mat-select{
+    height: 0.5em !important;
   }
 
   .botao-grid{
@@ -43,18 +43,6 @@
     background-color: rgb(110, 96, 70) !important;
     border: none !important;
     color: rgb(255, 255, 255);
-  }
-
-  .forma_de_pagamento{
-    height: 40px;
-  }
-
-  // #forma_de_pagamento option{
-  //   display: none !important;
-  // }
-
-  .select_pagamento{
-    height: 100px;
   }
 
 

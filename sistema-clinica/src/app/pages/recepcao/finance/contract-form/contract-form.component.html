@@ -34,35 +34,35 @@
             <small id="obs" class="form-text text-muted">*Obrigatório.</small>
           </div>
 
-          <div class="form-group ">
+          <!-- <div class="form-group ">
             <label>Forma de Pagamento</label>
             <select formControlName="form_of_payment"
              id="forma_de_pagamento" 
              class="form-control">
-              <!-- <option value="Dinheiro">Dinheiro</option>
-              <option value="Pix">Pix</option>
-              <option value="Cartão de Crédito">Cartão de Crédito</option>
-              <option value="Cartão de Débito">Cartão de Débito</option> -->
               <option *ngFor="let forma of paymentForms" value="{{ forma.name }}" class="">
                 {{ forma.name }}
               </option>
             </select>
             <small id="obs" class="form-text text-muted">*Obrigatório.</small>
-          </div>
+          </div> -->
 
-          <!-- <mat-form-field appearance="fill">
-            <mat-label>Toppings</mat-label>
-            <mat-select [formControl]="form_of_payment" multiple>
-              <mat-option *ngFor="let forma of paymentForms" [value]="{{ forma.name }}">{{ forma.name }}</mat-option>
-            </mat-select>
-          </mat-form-field> -->
+          <div class="form-groug payment-select">
+            <label>Forma de Pagamento</label>
+            <mat-form-field [style.width.%]="100" appearance="outline">
+              <mat-select formControlName="form_of_payment" multiple>
+                <mat-option *ngFor="let forma of paymentForms" value="{{ forma.name }}">{{ forma.name }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <small id="obs" class="form-text text-muted">*Obrigatório.</small>
+          </div>
           
           <div class="form-group">
             <label for="">Observações</label>
-            <input type="text" class="form-control"
+            <textarea type="text" class="form-control"
             id="observation"
             formControlName="observation"
             autocomplete="off">
+            </textarea>
             <small id="obs" class="form-text text-muted">Opcional.</small>
           </div>
           
