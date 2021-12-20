@@ -8,7 +8,7 @@ import { AgenderService } from 'src/app/providers/agender/agender.service';
 import { PlansService } from 'src/app/providers/plan/plans.service';
 import { PdfService } from 'src/app/providers/pdf/pdf.service';
 import SignaturePad from 'signature_pad';
-import { faCalendarTimes, faEdit, faDollarSign } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarTimes, faEdit, faDollarSign, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -49,7 +49,8 @@ export class PatientViewComponent implements OnInit {
   icons = {
     faCalendarTimes,
     faEdit,
-    faDollarSign
+    faDollarSign,
+    faArrowLeft
   }
 
   ngOnInit(): void {

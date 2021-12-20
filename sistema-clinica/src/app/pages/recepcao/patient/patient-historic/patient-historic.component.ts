@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { PatientService } from 'src/app/providers/patient/patient.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-patient-historic',
@@ -8,7 +10,9 @@ import { PatientService } from 'src/app/providers/patient/patient.service';
   styleUrls: ['./patient-historic.component.scss']
 })
 export class PatientHistoricComponent implements OnInit {
-
+  icons = {
+    faArrowLeft
+  }
   public patientId: any;
   public patient: any;
   panelOpenState = false;
@@ -17,6 +21,8 @@ export class PatientHistoricComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private patientService: PatientService,
+    private router: Router,
+    private location: Location
 
   ) { }
 
@@ -38,6 +44,10 @@ export class PatientHistoricComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  back(){
+    this.location.back();
   }
 
 }
