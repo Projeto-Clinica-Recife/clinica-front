@@ -24,13 +24,17 @@
         border: none;
     }
 
-    
     .check{
         font-size: 14px;
     }
     
     .check p{
         color: #000;
+    }
+
+    .btn-block p{
+       color: #000;
+       transform: translateY(25%);
     }
     
   }
