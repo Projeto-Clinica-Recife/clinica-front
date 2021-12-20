@@ -33,6 +33,7 @@ export class PatientComponent implements OnInit {
       rg: [null, Validators.required],
       dispatcher: [null, Validators.required],
       email: [null, Validators.required],
+      telephone: [null, Validators.required],
       cep: [null, Validators.required],
       rua: [null, Validators.required],
       numero: [null, Validators.required],
