@@ -111,8 +111,12 @@ export class RegisterComponent implements OnInit {
   }
 
   async cadAgender(hora: any, position: any) {
-
-    let dia = this.dateCurrent.slice(0,4)+'-'+this.monthSelected+'-'+ this.dateCalendar[position];
+    let dia = ''
+    if(this.dateCalendar[position] >= 1 && this.dateCalendar[position] <= 9){
+      dia = +this.dateCurrent.slice(0,4)+'-'+this.monthSelected+'-0'+this.dateCalendar[position];
+    }else{
+    dia = this.dateCurrent.slice(0,4)+'-'+this.monthSelected+'-'+ this.dateCalendar[position];
+  }
     this.formAgender.patchValue({
       hour: hora,
       date: dia
@@ -126,6 +130,7 @@ async agender() {
  const formValue = {
       ...this.formAgender.value,
     };
+ console.log(formValue);
     this.agenderService.postAgender(formValue).subscribe(
       async (result) => {
         console.log(result);
@@ -133,6 +138,7 @@ async agender() {
           date: this.dateCurrent,
         });
         alert('Agendamento Realizando com sucesso');
+        this.getAllAgender();
       }
     );
   }
