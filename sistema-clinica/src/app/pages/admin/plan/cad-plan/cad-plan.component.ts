@@ -20,13 +20,13 @@ export class CadPlanComponent implements OnInit {
   ngOnInit(): void {
     this.formPlan = new FormGroup({
       description: new FormControl(null, [
-        // Validators.required
+        Validators.required
       ]),
       period: new FormControl(null, [
-        // Validators.required
+        Validators.required
       ]),
       value: new FormControl(null, [
-        // Validators.required
+        Validators.required
       ]),
     });
   }

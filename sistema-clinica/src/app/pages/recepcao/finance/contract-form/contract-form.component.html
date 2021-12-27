@@ -17,21 +17,23 @@
       <form [formGroup]="formCadPlan" action="" class="">
         <div class="plans">
           <div class="form-group ">
-            <label>Plano</label>
+            <label>
+              Plano<sup class="obrigatorio">*</sup>
+            </label>
             <select formControlName="plan_id" name="" id="plano" class="form-control">
               <option *ngFor="let plan of plans" value="{{plan.id}}">{{ plan.description }} - R$ {{ plan.value }}</option>
             </select>
-            <small id="obs" class="form-text text-muted">*Obrigatório.</small>
           </div>
           <div class="form-group ">
-            <label>Médico</label>
+            <label>
+              Médico<sup class="obrigatorio">*</sup>
+            </label>
             <select formControlName="doctor_id" name="" id="dotor" class="form-control">
               <option *ngFor="let doctor of doctors" 
               value="{{doctor.id}}">
               {{ doctor.name }} - {{ doctor.user_information.crm }}/{{ doctor.user_information.crm_state }}
             </option>
             </select>
-            <small id="obs" class="form-text text-muted">*Obrigatório.</small>
           </div>
 
           <!-- <div class="form-group ">
@@ -47,13 +49,14 @@
           </div> -->
 
           <div class="form-groug payment-select">
-            <label>Forma de Pagamento</label>
+            <label>
+              Forma de Pagamento<sup class="obrigatorio">*</sup>
+            </label>
             <mat-form-field [style.width.%]="100" appearance="outline">
               <mat-select formControlName="form_of_payment" multiple>
                 <mat-option *ngFor="let forma of paymentForms" value="{{ forma.name }}">{{ forma.name }}</mat-option>
               </mat-select>
             </mat-form-field>
-            <small id="obs" class="form-text text-muted">*Obrigatório.</small>
           </div>
           
           <div class="form-group">
@@ -63,7 +66,6 @@
             formControlName="observation"
             autocomplete="off">
             </textarea>
-            <small id="obs" class="form-text text-muted">Opcional.</small>
           </div>
           
           <div class="form-group">
@@ -74,7 +76,6 @@
             aria-describedby="desconto"
             placeholder="Em Porcentagem"
             formControlName="discount">
-            <small id="obs" class="form-text text-muted">Opcional.</small>
           </div>
         </div>
       </form>

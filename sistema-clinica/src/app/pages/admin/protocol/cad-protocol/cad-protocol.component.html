@@ -17,11 +17,15 @@
                 <div class="row tm-row">
                     <form [formGroup]="formProtocol" class="col-12">
                         <div class="form-group">
-                            <label>Descrição</label>
+                            <label>
+                                Descrição<sup class="obrigatorio">*</sup>
+                            </label>
                             <input type="text" class="form-control" formControlName="description">
                         </div>
                         <div class="form-group">
-                            <label>Valor</label>
+                            <label>
+                                Valor<sup class="obrigatorio">*</sup>
+                            </label>
                             <input type="number" class="form-control" formControlName="value">
                         </div>
                         <button [disabled]="!formProtocol.valid" type="button" (click)="cadProtocol()" class="btn btn-block btn-primary">Cadastrar</button>
