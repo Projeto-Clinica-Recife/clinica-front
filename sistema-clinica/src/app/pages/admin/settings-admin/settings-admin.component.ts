@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/providers/users/users.service';
-import { FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-settings-admin',
@@ -24,9 +24,13 @@ export class SettingsAdminComponent implements OnInit {
 
     this.formEditAdmin = this.formBuilder.group({
       name: this.admin.name,
-      cpf: this.admin.cpf,
+      cpf: new FormControl(this.admin.cpf, [
+        Validators.required, Validators.minLength(11),
+      ]),
       email: this.admin.email,
-      telephone: this.admin.user_information.telephone,
+      telephone: new FormControl(this.admin.user_information.telephone,[
+        Validators.minLength(10),
+      ]),
       password: null,
       confirm_password: null,
     });

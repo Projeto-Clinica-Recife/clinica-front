@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/providers/users/users.service';
-import { FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-settings',
@@ -34,9 +34,13 @@ export class SettingsReceptionComponent implements OnInit {
 
     this.formEditPatient = this.formBuilder.group({
       name: this.patient.name,
-      cpf: this.patient.cpf,
+      cpf: new FormControl(this.patient.cpf,[
+        Validators.required, Validators.minLength(11),
+      ]),
       email: this.patient.email,
-      telephone: this.patient.user_information.telephone,
+      telephone: new FormControl(this.patient.user_information.telephone,[
+        Validators.minLength(10),
+      ]),
       password: null,
       confirm_password: null,
     });

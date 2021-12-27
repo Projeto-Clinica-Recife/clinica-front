@@ -23,7 +23,7 @@
               </div>
               <div class="form-group">
                 <label>CPF</label>
-                <input type="text" class="form-control" formControlName="cpf">
+                <input type="text" class="form-control" formControlName="cpf" maxlength="11">
               </div>
               <div class="form-group">
                 <label>E-mail</label>
@@ -31,7 +31,7 @@
               </div>
               <div class="form-group">
                 <label>Telefone</label>
-                <input type="telephone" class="form-control" formControlName="telephone">
+                <input type="telephone" class="form-control" formControlName="telephone" maxlength="11">
               </div>
               <div class="row">
                 <div class="form-group col-6">
@@ -50,7 +50,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" routerLink="/home">Cancelar</button>
-            <button (click)="updatePatient(patient.id)" type="button" class="btn btn-save btn-primary" data-dismiss="modal">Editar</button>
+            <button [disabled]="!formEditPatient.valid" (click)="updatePatient(patient.id)" type="button" class="btn btn-save btn-primary" data-dismiss="modal">Editar</button>
           </div>
   
       </main>
