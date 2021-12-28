@@ -14,16 +14,20 @@
         </button>
       </div>
 
-
       <div class="">
           <form [formGroup]="formEditDoctor"  class="col-12" >
+            <div class="upload-logo">
+              <button class="btn btn-sm" data-toggle="modal" data-target="#modalUploadLogo">
+                Logo <i class="fas fa-upload"></i>
+              </button>
+            </div>
             <div class="form-group">
               <label >Nome Completo</label>
               <input type="text" class="form-control" formControlName="name">
             </div>
             <div class="form-group">
               <label>CPF</label>
-              <input type="text" class="form-control" formControlName="cpf">
+              <input type="text" class="form-control" formControlName="cpf" maxlength="11">
             </div>
             <div class="form-group">
               <label>E-mail</label>
@@ -31,7 +35,7 @@
             </div>
             <div class="form-group">
               <label>Telefone</label>
-              <input type="telephone" class="form-control" formControlName="telephone">
+              <input type="telephone" class="form-control" formControlName="telephone" maxlength="11">
             </div>
             <div class="form-group">
               <label>CRM</label>
@@ -57,8 +61,41 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" [routerLink]="'/medico/home-medico'">Cancelar</button>
-          <button (click)="updateDoctor(doctor.id)" type="button" class="btn btn-save" data-dismiss="modal">Editar</button>
+          <button type="button" id="closeModal" class="btn btn-secondary" [routerLink]="'/medico/home-medico'">Cancelar</button>
+          <button [disabled]="!formEditDoctor.valid" (click)="updateDoctor(doctor.id)" type="button" class="btn btn-save" data-dismiss="modal">Editar</button>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalUploadLogo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Selecione o arquivo</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="formImage">
+                  <input (change)="uploadLogo($event)" 
+                  type="file" 
+                  class="form-control-file form-control-sm" 
+                  formControlName="image">
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button 
+                [disabled]="!formImage.valid" 
+                type="button" 
+                class="btn btn-primary" 
+                (click)="onSubmit()"
+                data-dismiss="modal">
+                  Salvar
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
     </main>

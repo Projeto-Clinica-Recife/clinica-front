@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/providers/users/users.service';
 import { DoctorService } from 'src/app/providers/doctor/doctor.service';
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-settings',
@@ -12,7 +12,9 @@ import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from
 export class SettingsComponent implements OnInit {
 
   formEditDoctor!: FormGroup;
+  formImage!: FormGroup;
   public doctor: any;
+  files: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,13 +29,21 @@ export class SettingsComponent implements OnInit {
 
     this.formEditDoctor = this.formBuilder.group({
       name: this.doctor.name,
-      cpf: this.doctor.cpf,
+      cpf: new FormControl(this.doctor.cpf, [
+        Validators.required, Validators.minLength(11),
+      ]),
       email: this.doctor.email,
-      telephone: this.doctor.user_information.telephone,
+      telephone: new FormControl(this.doctor.user_information.telephone, [
+        Validators.minLength(10),
+      ]),
       crm: this.doctor.user_information.crm,
       crm_state: this.doctor.user_information.crm_state,
       password: null,
       confirm_password: null,
+    });
+
+    this.formImage = this.formBuilder.group({
+      image: [null, Validators.required],
     });
 
   }
@@ -94,6 +104,32 @@ export class SettingsComponent implements OnInit {
         window.location.hash = '#top';
       }
     );
+  }
+
+  uploadLogo(event: any){
+    this.files = event.target.files[0];
+    console.log(this.files);
+  }
+
+  onSubmit(){
+    const formData = new FormData();
+    formData.append("logo_doctor", this.files);
+    const doctorId = this.doctor.id;
+    
+    return this.doctorService.uploadLogo(doctorId, formData). subscribe( res => {
+      console.log(res);
+
+      this.message.alertColor = 'alert-success';
+      this.message.message = res.message;
+      const user = res.user;
+      this.userService.refresh_profile(user);
+
+    }, err => {
+      console.log(err);
+      this.message.alertColor = 'alert-danger';
+        this.message.message = err.error.error;
+    });
+    
   }
 
   closeAlert() {

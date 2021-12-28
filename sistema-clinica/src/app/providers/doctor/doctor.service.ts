@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -47,6 +47,14 @@ export class DoctorService {
   updateDoctor(formValue: any, doctorId: any): Observable<any> {
     const url = `${environment.api_url}/user/update/${doctorId}`;
     return this.http.put(url,formValue);
+  }
+
+  uploadLogo(doctorId: number, data: any): Observable<any> {
+    const url = `${this.URL}/upload-image/${doctorId}`;
+    const headers = new HttpHeaders;
+    return this.http.post(url, data,{
+      headers: headers,
+    });
   }
 
   generatePrescriptionPdf(form: any): Observable<any> {
