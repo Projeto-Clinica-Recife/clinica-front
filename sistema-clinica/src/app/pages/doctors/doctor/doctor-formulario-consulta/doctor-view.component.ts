@@ -76,9 +76,7 @@ export class DoctorViewComponent implements OnInit {
           agender_id: agender_id,
           patient_id: [this.patientId],
           prescription: [null],
-          doctor_name: [this.doctor.name],
-          doctor_crm: [this.doctor.user_information.crm],
-          crm_state: [this.doctor.user_information.crm_state],
+          doctor_id: [this.doctor.id],
           data_current: [this.dateCurrent]
         });
         console.log(result);
