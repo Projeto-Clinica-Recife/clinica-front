@@ -152,12 +152,17 @@ async agender() {
  console.log(formValue);
     this.agenderService.postAgender(formValue).subscribe(
       async (result) => {
-        console.log(result);
         this.formAgender.reset({
           date: this.dateCurrent,
         });
         alert('Agendamento Realizando com sucesso');
         this.getAllAgender();
+      },
+      async (error) => {
+        this.formAgender.reset({
+          date: this.dateCurrent,
+        });
+      alert(error.error.message);
       }
     );
   }
