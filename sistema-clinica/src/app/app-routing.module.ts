@@ -42,6 +42,7 @@ import { PatientPlansComponent } from './pages/recepcao/patient/patient-plans/pa
 import { DoctorRecViewComponent } from './pages/recepcao/doctor/doctor-view/doctor-view.component';
 import { ContractListComponent } from './pages/recepcao/finance/contract-list/contract-list.component';
 import { DoctorPlansComponent } from './pages/recepcao/doctor/doctor-plans/doctor-plans.component';
+import { EditProtocolComponent } from './pages/admin/protocol/edit-protocol/edit-protocol.component';
 
 const routes: Routes = [
   {
@@ -155,6 +156,11 @@ const routes: Routes = [
       {
         path: 'cadastrar-protocolo',
         component: CadProtocolComponent,
+        canActivate: [AuthGuard, AuthAdminGuard],
+      },
+      {
+        path: 'editar-protocolo/:item_id',
+        component: EditProtocolComponent,
         canActivate: [AuthGuard, AuthAdminGuard],
       },
       {

@@ -1,0 +1,28 @@
+<body>
+    <div class="container-fluid">
+      <main class="tm-main">
+
+        <div class="row tm-row titulo-header" id="top">
+          <div class="col-12">
+            <h2>EDITAR PROTOCOLO</h2>
+          </div>
+        </div>
+
+        <div class="form">
+            <form [formGroup]="formUpdateProtocol">
+
+                <div class="form-group">
+                    <label >Descrição</label>
+                    <input type="text" class="form-control" formControlName="descricao">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Valor</label>
+                    <input type="number" class="form-control" formControlName="value" maxlength="11">
+                  </div>
+
+            </form>
+        </div>
+      </main>
+    </div>
+</body>

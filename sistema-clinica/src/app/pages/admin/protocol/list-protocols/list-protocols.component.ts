@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProtocolService } from 'src/app/providers/protocol/protocol.service';
-import { faTrashAlt, faRecycle} from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faRecycle, faPenSquare} from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-protocols',
@@ -12,11 +13,13 @@ export class ListProtocolsComponent implements OnInit {
   protocols: any;
   constructor( 
     private protocolService: ProtocolService,
+    private router: Router,
    ) { }
 
    icons = {
     faTrashAlt,
     faRecycle,
+    faPenSquare,
   }
 
   ngOnInit(): void {
@@ -26,6 +29,10 @@ export class ListProtocolsComponent implements OnInit {
     })
   }
 
+  updateProtocol(protocolId: number){
+    return this.router.navigate([`/admin/editar-protocolo/${protocolId}`]);
+  }
+
   deleteProtocol(protocolId: number){
     console.log(protocolId);
 
@@ -33,6 +40,5 @@ export class ListProtocolsComponent implements OnInit {
       console.log(res);
       location.reload();
     })
-    
   }
 }
