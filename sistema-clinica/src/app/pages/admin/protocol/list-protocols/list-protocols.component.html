@@ -25,6 +25,13 @@
                             (click)="deleteProtocol(protocol.id)">
                               <fa-icon [icon]="icons.faTrashAlt"></fa-icon>
                             </button>
+                            <button
+                            class="btn btn-sm btn-primary mr-1"
+                            title="Editar Protocolo"
+                            (click)="updateProtocol(protocol.id)"
+                            >
+                              <fa-icon [icon]="icons.faPenSquare"></fa-icon>
+                            </button>
                           </td>
                       
                         </tr>
@@ -33,6 +40,7 @@
                     </table>
                 </div>
             </div>
+
         </main>
     </div>
 </body>

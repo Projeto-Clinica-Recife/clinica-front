@@ -10,6 +10,7 @@ import { SettingsAdminComponent } from './settings-admin/settings-admin.componen
 import { HomeProtocolComponent } from './protocol/home-protocol/home-protocol.component';
 import { CadProtocolComponent } from './protocol/cad-protocol/cad-protocol.component';
 import { ListProtocolsComponent } from './protocol/list-protocols/list-protocols.component';
+import { EditProtocolComponent } from './protocol/edit-protocol/edit-protocol.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ListProtocolsComponent } from './protocol/list-protocols/list-protocols
     HomeProtocolComponent,
     CadProtocolComponent,
     ListProtocolsComponent,
+    EditProtocolComponent,
   ],
   imports: [
     CommonModule,
