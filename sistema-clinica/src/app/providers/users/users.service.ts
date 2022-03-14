@@ -74,6 +74,11 @@ export class UsersService {
     .subscribe();
   }
 
+  get_data_to_copy(userId: number): Observable<any>{
+    const url = `${this.URL}/user/copy/${userId}`;
+    return this.http.get<any>(url);
+  }
+
   public refresh_profile(user: any){
     localStorage.setItem('profile', JSON.stringify(user));
   }
