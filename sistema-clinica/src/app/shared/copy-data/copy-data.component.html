@@ -1,0 +1,26 @@
+<div class="copy-data">
+    <button class="btn btn-outline-secondary"
+     (click)="copyData()" 
+     data-toggle="tooltip" 
+     data-placement="top" 
+     title="Copiar Dados">
+        <i class="fas fa-copy"></i>
+    </button>
+    <div class="data" id="data" *ngIf="dataUser">
+            <p>
+              Nome: {{ dataUser[0] }}
+            </p>
+            <p>
+              E-mail: {{ dataUser[1] }}
+            </p>
+            <p>
+              CPF: {{ dataUser[2] }}
+            </p>
+            <p>
+              Celular: {{ dataUser[3] }}
+            </p>
+            <p *ngIf="dataUser[4]">
+              Conselho/UF: {{ dataUser[4] }}
+            </p>
+    </div>
+  </div>

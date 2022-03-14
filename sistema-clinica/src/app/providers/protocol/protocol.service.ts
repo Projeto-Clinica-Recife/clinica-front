@@ -16,7 +16,7 @@ export class ProtocolService {
 
 
     getProtocols(): Observable<any> {
-      const url = `${this.URL}/protocols`;
+      const url = `${this.URL}/`;
       return this.http.get(url);
     }
 
@@ -26,9 +26,9 @@ export class ProtocolService {
     }
 
     deleteProtocol(protocolId: number): Observable<any> {
-      const url = `${this.URL}/delete/${protocolId}`;
+      const url = `${this.URL}/${protocolId}`;
 
-      return this.http.put(url, undefined);
+      return this.http.delete(url, undefined);
     }
 
 }
