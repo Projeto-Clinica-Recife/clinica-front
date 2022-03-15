@@ -36,18 +36,6 @@
             </select>
           </div>
 
-          <!-- <div class="form-group ">
-            <label>Forma de Pagamento</label>
-            <select formControlName="form_of_payment"
-             id="forma_de_pagamento" 
-             class="form-control">
-              <option *ngFor="let forma of paymentForms" value="{{ forma.name }}" class="">
-                {{ forma.name }}
-              </option>
-            </select>
-            <small id="obs" class="form-text text-muted">*Obrigatório.</small>
-          </div> -->
-
           <div class="form-groug payment-select">
             <label>
               Forma de Pagamento<sup class="obrigatorio">*</sup>
@@ -64,7 +52,8 @@
             <textarea type="text" class="form-control"
             id="observation"
             formControlName="observation"
-            autocomplete="off">
+            autocomplete="off"
+            placeholder="Ex: Detalhe sobre a forma de pagamento">
             </textarea>
           </div>
           
