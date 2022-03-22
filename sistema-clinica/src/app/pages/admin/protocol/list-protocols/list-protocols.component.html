@@ -1,10 +1,22 @@
-<body>
+<body class="body">
     <div class="container-fluid">
         <main class="tm-main">
+
+          <div class="overlay"></div>
+
             <div class="row tm-row titulo-header" id="top">
                 <div class="col-12">
                   <h2>LISTA DE PROTOCOLOS</h2>
                 </div>
+            </div>
+
+            <div class="alert {{message.alertColor}} alert-dismissible fade show mt-3 text-black" 
+            *ngIf="message.message" 
+            role="alert">
+              <h4>{{message.message}}</h4>
+              <button type="button" class="close" (click)="closeAlert()">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
 
             <div class="row tm-row mt-4">
@@ -13,18 +25,39 @@
                       <thead>
                         <tr>
                           <th class="" scope="col">Descrição</th>
+                          <th class="text-center" scope="col">Status</th>
+                          <th class="text-center" scope="col">Valor</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr  *ngFor="let protocol of protocols">
+
                           <td scope="row" class="">{{ protocol.descricao }}</td>
+
+                          <td scope="row" class="text-center">{{ protocol.status }}</td>
+
+                          <td scope="row" class="text-center">R$ {{ protocol.value }}</td>
+
                           <td class="text-center">
+
                             <button
-                            class="btn btn-sm btn-danger mr-1" title="Exclir Protocolo"
-                            data-toggle="modal" data-target="#modaDelete"
-                            (click)="deleteProtocol(protocol.id)">
-                              <fa-icon [icon]="icons.faTrashAlt"></fa-icon>
+                            *ngIf="protocol.status === 'Ativo'"
+                            class="btn btn-sm btn-danger mr-1" title="Desativar Protocolo"
+                            data-toggle="modal"
+                            (click)="disabledProtocol(protocol.id)"
+                            id="btn-disabled">
+                              <fa-icon [icon]="icons.faBan"></fa-icon>
                             </button>
+
+                            <button
+                            *ngIf="protocol.status === 'Inativo'"
+                            class="btn btn-sm btn-success mr-1" title="Reativar Protocolo"
+                            data-toggle="modal"
+                            (click)="disabledProtocol(protocol.id)"
+                            id="btn-disabled">
+                              <fa-icon [icon]="icons.faRecycle"></fa-icon>
+                            </button>
+                            
                             <button
                             class="btn btn-sm btn-primary mr-1"
                             title="Editar Protocolo"
@@ -32,6 +65,7 @@
                             >
                               <fa-icon [icon]="icons.faPenSquare"></fa-icon>
                             </button>
+
                           </td>
                       
                         </tr>

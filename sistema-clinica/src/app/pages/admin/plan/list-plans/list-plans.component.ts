@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PlansService } from 'src/app/providers/plan/plans.service';
-import { faCalendarTimes, faRecycle} from '@fortawesome/free-solid-svg-icons';
+import { faBan, faRecycle, faPenSquare } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import {Plan } from 'src/app/models/plan';
 
@@ -19,8 +19,9 @@ export class ListPlansComponent implements OnInit {
    ) { }
 
    icons = {
-    faCalendarTimes,
+    faBan,
     faRecycle,
+    faPenSquare
   }
 
   message = '';
@@ -35,26 +36,26 @@ export class ListPlansComponent implements OnInit {
     
   }
 
-  cancelPlan(planId: number){
-    // return this.plansService.cancelPlan(planId).subscribe( res => { 
-    //   console.log(res);
-    //   location.reload();
-    // }, error => {
-    //   console.log(error);
-    //   this.message = error.message;
-    // })
-    console.log(planId);
-    
+  disabledPlan(planId: number){
+    return this.plansService.cancelPlan(planId).subscribe( res => { 
+      location.reload();
+    }, error => {
+      console.log(error);
+      this.message = error.message;
+    })
   }
 
   reactivatePlan(planId: number){
-    // return this.plansService.activePlan(planId).subscribe( res => { 
-    //   console.log(res);
-    //   // location.reload();
-    // }, error => {
-    //   console.log(error);
-    //   this.message = error.message;
-    // })
+    return this.plansService.activePlan(planId).subscribe( res => { 
+      console.log(res);
+      location.reload();
+    }, error => {
+      console.log(error);
+      this.message = error.message;
+    });
+  }
+
+  updatePlan(planId: number){
     console.log(planId);
     
   }
