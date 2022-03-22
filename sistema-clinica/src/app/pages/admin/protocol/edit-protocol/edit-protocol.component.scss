@@ -1,0 +1,27 @@
+:host{
+    h2 {
+        color: rgb(110, 96, 70);
+      }
+
+      .titulo-header {
+        padding: 30px 5px 0px 0px;
+        margin-bottom: 15px;
+        border-bottom: 5px solid rgb(146, 133, 109);
+      }
+
+      .form input{
+          width: 30%;
+      }
+
+      @media (max-width: 600px) {
+          .form input{
+              width: 50%;
+          }
+      }
+
+      @media (max-width: 768px){
+        .form input{
+            width: 50%;
+        }
+      }
+}

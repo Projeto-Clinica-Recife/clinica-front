@@ -23,6 +23,7 @@ export class ContractFormComponent implements OnInit {
     {id: 2, name: 'Pix'},
     {id: 3, name: 'Cartão de Crédito'},
     {id: 4, name: 'Cartão de Débito'},
+    {id: 4, name: 'Outro'},
   ];
 
   alert = {

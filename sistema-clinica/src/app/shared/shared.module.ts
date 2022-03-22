@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { FooterComponent } from "./footer/footer.component";
 import { HeaderComponent } from "./header/header.component";
+import { CopyDataComponent } from './copy-data/copy-data.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -16,7 +17,8 @@ import { MAT_DATE_LOCALE } from "@angular/material/core";
 const components = [
   FooterComponent,
   HeaderComponent,
-  SearchComponent
+  SearchComponent,
+  CopyDataComponent,
 ];
 
 const imports = [
