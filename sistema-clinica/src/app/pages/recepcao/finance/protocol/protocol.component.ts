@@ -42,8 +42,10 @@ export class ProtocolComponent implements OnInit {
   }
 
   async allProtocols() {
-    this.protocolService.getProtocols().subscribe(
+    this.protocolService.getActiveProtocols().subscribe(
       async (result) => {
+        console.log(result);
+        
         this.protocols = result;
       }
     );

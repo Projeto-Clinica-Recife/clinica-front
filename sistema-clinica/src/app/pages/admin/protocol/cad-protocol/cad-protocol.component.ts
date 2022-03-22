@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DoctorService } from 'src/app/providers/doctor/doctor.service';
 import { ProtocolService } from 'src/app/providers/protocol/protocol.service';
 
 @Component({
@@ -11,16 +12,22 @@ import { ProtocolService } from 'src/app/providers/protocol/protocol.service';
 export class CadProtocolComponent implements OnInit {
 
   formProtocol!: FormGroup;
+  doctors: any;
+
   constructor( 
     private router: Router,
     private protocolService: ProtocolService,
+    private doctorService: DoctorService,
    ) { }
 
   ngOnInit(): void {
     this.formProtocol = new FormGroup({
       description: new FormControl(null, [Validators.required]),
       value: new FormControl(null, [Validators.required]),
-    })
+      doctor_id: new FormControl(null),
+    });
+
+    this.getDoctors();
   }
 
   message = {
@@ -32,7 +39,6 @@ export class CadProtocolComponent implements OnInit {
     const form = {
       ...this.formProtocol.value,
     }
-    console.log(form);
 
     return this.protocolService.cadProtocol(form).subscribe( res => {
       console.log(res);
@@ -46,6 +52,14 @@ export class CadProtocolComponent implements OnInit {
       this.message.message = error.error;
     });
     
+  }
+
+  async getDoctors() {
+    this.doctorService.getDoctors().subscribe(
+      async (result) => {
+        this.doctors = result;
+      }
+    );
   }
 
   closeAlert() {
