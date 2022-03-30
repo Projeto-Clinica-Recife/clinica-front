@@ -1,4 +1,5 @@
 <app-redefine-password *ngIf='showHeader && first_access'></app-redefine-password>
+<h1 *ngIf="type !== '' " class="p-2">{{type}}</h1>
 <app-header *ngIf='showHeader'></app-header>
 
 <router-outlet></router-outlet>

@@ -14,7 +14,8 @@ export class AppComponent {
   showHeader: boolean = true;
   user = this.userService.get_profile();
   first_access: boolean = false;
- 
+  type: any;
+
 
   constructor(
     private router: Router,
@@ -22,24 +23,43 @@ export class AppComponent {
     private userService: UsersService,
   ) {
     this.router.events.subscribe((event: any) => {
-      if (event instanceof NavigationEnd){
-        if(event.url === '/' ||
-         event.url ==='/usuario/cadastro-paciente' ||
-         event.url ==='/usuario/home-paciente' ||
-         event.url ==='/usuario'){
+      if (event instanceof NavigationEnd) {
+        if (event.url === '/' ||
+          event.url === '/usuario/cadastro-paciente' ||
+          event.url === '/usuario/home-paciente' ||
+          event.url === '/usuario') {
           this.showHeader = false;
-        } else{
+          this.type = '';
+        } else {
           this.showHeader = true;
-          if(this.user.first_access === 1){
+          if (this.user.first_access === 1) {
             this.first_access = true;
-          }else{
+          } else {
             this.first_access = false;
           }
-          
+
         }
-        
+
+
       }
-      
+
     });
+    if (this.user) {
+      switch (this.user.type_user) {
+        case 'reception':
+          this.type = "Painel Recepção";
+          break;
+        case 'admin':
+          this.type = "Painel Administração";
+          break;
+        case 'doctor':
+          this.type = "Painel Médico";
+          break;
+        default:
+          break;
+      }
+    }
   }
+
+
 }
