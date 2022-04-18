@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
     private usersService: UsersService,
   ) {
     this.profile = this.usersService.get_profile();
+    
   }
 
   ngOnInit(): void {
