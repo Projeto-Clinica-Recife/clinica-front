@@ -29,7 +29,13 @@ export class PlansService {
     const headers = new HttpHeaders()
         .set('Authorization', 'Bearer ' + this.token,);
     
-    return this.http.get<Plan>(url, {headers: headers});
+    return this.http.get<Plan>(url);
+   }
+
+   getPlanById(planId: number){
+    const url = `${this.URL}/get-plan/${planId}`;
+
+    return this.http.get<Plan>(url);
    }
 
    getPlansActive(){
@@ -38,7 +44,7 @@ export class PlansService {
     const headers = new HttpHeaders()
         .set('Authorization', 'Bearer ' + this.token,);
     
-    return this.http.get<Plan>(url, {headers: headers});
+    return this.http.get<Plan>(url);
    }
 
    searchPlanPatient(search: any): Observable<any> {
@@ -51,6 +57,12 @@ export class PlansService {
     const url = `${this.URL}/search-doctor/${search}`;
 
     return this.http.get<Plan>(url);
+  }
+
+  updatePlan(body: any, planId: number){
+    const url = `${this.URL}/edit/${planId}`;
+
+    return this.http.put<any>(url, body);
   }
 
    cancelPlan(planId: number){

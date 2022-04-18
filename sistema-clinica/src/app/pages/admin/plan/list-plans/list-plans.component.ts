@@ -57,7 +57,7 @@ export class ListPlansComponent implements OnInit {
 
   updatePlan(planId: number){
     console.log(planId);
-    
+    return this.router.navigate([`/admin/editar-plan/${planId}`]);
   }
 
   closeModal() {

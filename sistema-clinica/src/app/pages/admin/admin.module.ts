@@ -11,6 +11,7 @@ import { HomeProtocolComponent } from './protocol/home-protocol/home-protocol.co
 import { CadProtocolComponent } from './protocol/cad-protocol/cad-protocol.component';
 import { ListProtocolsComponent } from './protocol/list-protocols/list-protocols.component';
 import { EditProtocolComponent } from './protocol/edit-protocol/edit-protocol.component';
+import { EditPlanComponent } from './plan/edit-plan/edit-plan.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { EditProtocolComponent } from './protocol/edit-protocol/edit-protocol.co
     CadProtocolComponent,
     ListProtocolsComponent,
     EditProtocolComponent,
+    EditPlanComponent,
   ],
   imports: [
     CommonModule,

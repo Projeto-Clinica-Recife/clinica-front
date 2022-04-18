@@ -1,0 +1,47 @@
+<body>
+    <div class="container-fluid">
+      <main class="tm-main">
+
+        <div class="row tm-row titulo-header" id="top">
+
+          <div class="col-12">
+            <h2>EDITAR PROTOCOLO</h2>
+          </div>
+          
+        </div>
+
+        <div class="alert {{message.alertColor}} alert-dismissible fade show mt-3 text-black" *ngIf="message.message" role="alert">
+          <h4>{{message.message}}</h4>
+          <button type="button" class="close" (click)="closeAlert()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="form">
+            <form [formGroup]="formUpdatePlan">
+
+                <div class="form-group">
+                    <label >Descrição</label>
+                    <input type="text" class="form-control" formControlName="description">
+                </div>
+
+                <div class="form-group">
+                    <label for="period">Período</label>
+                    <input type="number" class="form-control" id="period" autocomplete="off" formControlName="period">
+                </div>
+
+                <div class="form-group">
+                    <label>Valor</label>
+                    <input class="form-control" id="value" autocomplete="off" formControlName="value">
+                </div>
+
+                <button type="submit" 
+                class="btn btn-save"
+                (click)="onSubmit()"> Salvar
+                </button>
+
+            </form>
+        </div>
+      </main>
+    </div>
+</body>

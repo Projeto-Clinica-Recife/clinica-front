@@ -43,6 +43,7 @@ import { DoctorRecViewComponent } from './pages/recepcao/doctor/doctor-view/doct
 import { ContractListComponent } from './pages/recepcao/finance/contract-list/contract-list.component';
 import { DoctorPlansComponent } from './pages/recepcao/doctor/doctor-plans/doctor-plans.component';
 import { EditProtocolComponent } from './pages/admin/protocol/edit-protocol/edit-protocol.component';
+import { EditPlanComponent } from './pages/admin/plan/edit-plan/edit-plan.component';
 
 const routes: Routes = [
   {
@@ -136,6 +137,11 @@ const routes: Routes = [
       {
         path: 'listar-planos',
         component: ListPlansComponent,
+        canActivate: [AuthGuard, AuthAdminGuard],
+      },
+      {
+        path: 'editar-plan/:item_id',
+        component: EditPlanComponent,
         canActivate: [AuthGuard, AuthAdminGuard],
       },
       {
