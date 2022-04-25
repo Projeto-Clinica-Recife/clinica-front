@@ -9,12 +9,40 @@
       <div class="row tm-row">
         <form [formGroup]="formRecp"  class="col-12" >
             <div class="form-group">
+              <label>Paciente:</label>
+              <select formControlName="client_id" class="form-control">
+                <option *ngFor="let patient of patients" value="{{patient.id}}">{{ patient.nome }}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Médico(a):</label>
+              <select formControlName="doctor_id" class="form-control">
+                <option *ngFor="let doctor of doctors" value="{{doctor.id}}">{{ doctor.name }}</option>
+              </select>
+            </div>
+            <div class="form-group">
               <label>O que o paciente irá pagar: </label>
-              <input type="text" class="form-control" formControlName="type_product">
+              <select (change)="selectProduct()" formControlName="type_product" class="form-control">
+                <option value="plan">Plano</option>
+                <option value="protocol">Protocolo</option>
+                <option value="single">Consulta Avulsa</option>
+              </select>
+            </div>
+            <div class="form-group" *ngIf="product_type === 'plan'">
+              <label>Selecione o Plano:</label>
+              <select formControlName="product_id" class="form-control">
+                <option *ngFor="let plan of plans" value="{{plan.id}}">{{ plan.description }}</option>
+              </select>
+            </div>
+            <div class="form-group" *ngIf="product_type === 'protocol'">
+              <label>Selecione o Protocolo:</label>
+              <select formControlName="product_id" class="form-control">
+                <option *ngFor="let protocol of protocols" value="{{protocol.id}}">{{ protocol.descricao }}</option>
+              </select>
             </div>
             <div class="form-group">
               <label>Valor: </label>
-              <input type="text" class="form-control" formControlName="value">
+              <input type="number" class="form-control" formControlName="value">
             </div>
             <div class="form-group ">
               <label>Forma de Pagamento:</label>

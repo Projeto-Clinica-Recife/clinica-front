@@ -58,6 +58,7 @@ export class ContractFormComponent implements OnInit {
         ),
       discount: new FormControl(null),
       observation: new FormControl(null),
+      payment_status: new FormControl(null),
     });
 
     this.getPlans();
