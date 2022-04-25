@@ -4,7 +4,6 @@ import { environment } from 'src/environments/environment';
 import { Credentials } from './auth.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TokenManager } from '../token-manager/token-manager.service';
-import { UsersService } from 'src/app/providers/users/users.service';
 import { Router } from '@angular/router';
 
 export const messageError = '';
@@ -17,10 +16,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private tokenManager: TokenManager,
-    private usersService: UsersService,
     private router: Router,
   ) { }
-   messageError: string = '';
 
   async login(credentials: Credentials) {
     const url = `${this.URL}/api/login`;

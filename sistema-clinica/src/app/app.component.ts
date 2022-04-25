@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { AuthService } from 'src/app/providers/auth/auth.service';
 import { UsersService } from 'src/app/providers/users/users.service';
 
 
@@ -19,7 +18,6 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    private authService: AuthService,
     private userService: UsersService,
   ) {
     this.router.events.subscribe((event: any) => {
@@ -37,9 +35,7 @@ export class AppComponent {
           } else {
             this.first_access = false;
           }
-
         }
-
 
       }
 
