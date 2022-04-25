@@ -23,7 +23,7 @@
            <p class="p-item"> Tela Inicial</p>
           </a></li>
         <li *ngIf="profile.type_user != 'doctor' and profile.type_user != 'admin'" class="tm-nav-item"><a routerLink="{{ rotaAgenda }}" class="tm-nav-link">
-            <i class="fas fa-pen"></i>
+            <i class="fas fa-calendar"></i>
             <p class="p-item">Agenda</p>
           </a></li>
 
@@ -50,17 +50,17 @@
 
         <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item"><a routerLink="medico/financeiro-medico"
           class="tm-nav-link">
-          <i class="far fa-comments"></i>
+          <i class="fas fa-calculator"></i>
           <p class="p-item"> Financeiro</p>
         </a>
-        </li>
+        </li> 
 
-        <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item"><a routerLink="{{ rota }}"
+        <!--<li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item"><a routerLink="{{ rota }}"
             class="tm-nav-link">
             <i class="far fa-comments"></i>
             <p class="p-item">   Relatórios</p>
           </a>
-        </li>
+        </li>-->
 
         <li *ngIf="profile.type_user == 'doctor'" class="tm-nav-item">
           <a routerLink="{{ rotaEditarPerfil }}"

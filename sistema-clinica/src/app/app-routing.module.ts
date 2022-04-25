@@ -44,6 +44,8 @@ import { ContractListComponent } from './pages/recepcao/finance/contract-list/co
 import { DoctorPlansComponent } from './pages/recepcao/doctor/doctor-plans/doctor-plans.component';
 import { EditProtocolComponent } from './pages/admin/protocol/edit-protocol/edit-protocol.component';
 import { EditPlanComponent } from './pages/admin/plan/edit-plan/edit-plan.component';
+import { RegisterPaymentComponent } from './pages/recepcao/finance/register-payment/register-payment.component';
+import { RegisterPaymentSearchComponent } from './pages/recepcao/finance/register-payment-search/register-payment-search.component';
 
 const routes: Routes = [
   {
@@ -261,6 +263,14 @@ const routes: Routes = [
       {
         path: 'ver-planos-medico',
         component: DoctorPlansComponent,
+      },
+      {
+        path: 'lancar-pagamento-busca',
+        component: RegisterPaymentSearchComponent,
+      },
+      {
+        path: 'lancar-pagamento',
+        component: RegisterPaymentComponent,
       }
     ]
   },

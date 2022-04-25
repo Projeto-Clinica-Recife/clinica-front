@@ -1,0 +1,59 @@
+<body>
+  <div class="container-fluid">
+    <main class="tm-main">
+      <div class="row tm-row titulo-header">
+        <div class="col-12">
+          <h2 >LANÇAR PAGAMENTO</h2>
+        </div>
+      </div>       
+      <div class="row tm-row">
+        <form [formGroup]="formRecp"  class="col-12" >
+            <div class="form-group">
+              <label>O que o paciente irá pagar: </label>
+              <input type="text" class="form-control" formControlName="type_product">
+            </div>
+            <div class="form-group">
+              <label>Valor: </label>
+              <input type="text" class="form-control" formControlName="value">
+            </div>
+            <div class="form-group ">
+              <label>Forma de Pagamento:</label>
+              <select formControlName="form_of_payment" name="" id="" class="form-control">
+                <option value="Dinheiro">Dinheiro</option>
+                <option value="Pix">Pix</option>
+                <option value="Cartão de Débito">Cartão de Débito</option>
+                <option value="Cartão de Crédito">Cartão de Crédito</option>
+                <option value="Outros">Outros</option>
+              </select>
+            </div>       
+           <div class="form-group ">
+              <label>Status de pagamento:</label>
+              <select formControlName="payment_status" name="" id="" class="form-control">
+                <option value="paid">Pago</option>
+                <option value="partially_paid">Parcialmente Pago</option>
+              </select>
+            </div>  
+            <div class="form-group row">
+              <div class="col-3">
+                <label>Valor faltante: </label>
+                <input type="text" class="form-control" formControlName="value_remaing">
+                </div>
+              <div class="col-9">
+                <label>Descrição adicional do pagamento:</label>
+                <input type="text" class="form-control" formControlName="observation" maxlength="14"> 
+              </div>              
+            </div>   
+           
+            <button [disabled]="!formRecp.valid" class="btn btn-primary"type="button" (click)="register()" class="btn btn-block btn-primary">Registrar e Gerar Recibo</button>
+          </form>
+    </div>
+
+
+      <div *ngIf="loading" class="text-center ">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden"></span>
+        </div>
+      </div>
+  </main>
+</div>
+</body>
